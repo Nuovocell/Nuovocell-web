@@ -1,0 +1,67 @@
+.payment-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-logo__img {
+  width: 80px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: var(--border);
+  padding: 6px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.payment-logo__img:hover {
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.payment-logo__img svg {
+  width: 100%;
+  height: 100%;
+}
+
+.payment-logo__label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--white-50);
+  text-align: center;
+}
+
+/* Digitel logo */
+.digitel-logo svg {
+  height: auto;
+}
+
+.digitel-logo--sm svg { width: 80px; }
+.digitel-logo--md svg { width: 110px; }
+.digitel-logo--lg svg { width: 140px; }
+
+/* Credit badge */
+.credit-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.credit-badge:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}

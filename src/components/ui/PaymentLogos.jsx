@@ -1,6 +1,71 @@
 import React from 'react';
 import './PaymentLogos.css';
 
+// ── Real brand images ──────────────────────────────────────────────
+
+export function DigitelLogo({ size = 'md' }) {
+  return (
+    <div className={`digitel-logo digitel-logo--${size}`}>
+      <img src="/logos/digitel.svg" alt="Digitel" />
+    </div>
+  );
+}
+
+export function PaymentLogo({ icon, label }) {
+  const imgMap = {
+    pagomovil: '/logos/pagomovil.jpg',
+  };
+  const src = imgMap[icon];
+  return (
+    <div className="payment-logo">
+      <div className="payment-logo__img">
+        {src ? <img src={src} alt={label} /> : <FallbackLogo icon={icon} />}
+      </div>
+      <span className="payment-logo__label">{label}</span>
+    </div>
+  );
+}
+
+function FallbackLogo({ icon }) {
+  const logos = {
+    cash: (
+      <svg viewBox="0 0 48 32" fill="none"><rect width="48" height="32" rx="4" fill="#1a7a3f"/><text x="24" y="21" textAnchor="middle" fontFamily="Georgia,serif" fontSize="13" fontWeight="bold" fill="white">USD</text></svg>
+    ),
+    zelle: (
+      <svg viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="4" fill="#6D1ED4"/><text x="40" y="21" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="15" fontWeight="900" fill="white">zelle</text></svg>
+    ),
+    binance: (
+      <svg viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="4" fill="#1E2026"/><polygon points="16,16 19,13 22,16 19,19" fill="#F0B90B"/><polygon points="22,10 28,16 22,22 16,16" fill="#F0B90B" opacity="0.7"/><text x="48" y="21" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="12" fontWeight="800" fill="#F0B90B">Binance</text></svg>
+    ),
+    card: (
+      <svg viewBox="0 0 48 32" fill="none"><rect width="48" height="32" rx="4" fill="#1a1a2e"/><rect x="4" y="8" width="40" height="6" rx="1" fill="#4a9eff" opacity="0.6"/><circle cx="36" cy="22" r="4" fill="#eb001b" opacity="0.8"/><circle cx="41" cy="22" r="4" fill="#f79e1b" opacity="0.8"/></svg>
+    ),
+  };
+  return logos[icon] || null;
+}
+
+export function CreditBadge({ nombre, color, textColor, url }) {
+  const imgMap = {
+    'Cashea':       '/logos/cashea.png',
+    'Zona Naranja': '/logos/zona-naranja.png',
+    'Krece':        '/logos/krece.jpg',
+    'Chollo':       '/logos/chollo.webp',
+    'Listo':        '/logos/lysto.png',
+  };
+  const src = imgMap[nombre];
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer"
+      className={`credit-badge${src ? ' credit-badge--img' : ''}`}
+      style={src ? {} : { background: color, color: textColor }}
+    >
+      {src ? <img src={src} alt={nombre} className="credit-badge__img" /> : nombre}
+    </a>
+  );
+}
+
+// ── Legacy exports (unused but kept for safety) ───────────────────
+const _unused = null;
+
 // SVG logos inline — no dependency on external CDN
 const LOGOS = {
   cash: (

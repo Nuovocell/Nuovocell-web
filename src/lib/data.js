@@ -148,11 +148,11 @@ export const PAGOS = [
 ];
 
 export const CREDITO = [
-  { nombre: 'Cashea', color: '#F5C300', textColor: '#000', url: 'https://cashea.app' },
-  { nombre: 'Zona Naranja', color: '#FF6B00', textColor: '#fff', url: 'https://zonanaranja.com.ve' },
-  { nombre: 'Krece', color: '#6C3CE1', textColor: '#fff', url: 'https://krece.app' },
-  { nombre: 'Chollo', color: '#00C853', textColor: '#fff', url: 'https://chollo.com.ve' },
-  { nombre: 'Listo', color: '#0057FF', textColor: '#fff', url: '#' },
+  { nombre: 'Cashea',       color: '#F5C300', textColor: '#000', url: 'https://www.cashea.app' },
+  { nombre: 'Zona Naranja', color: '#FF6B00', textColor: '#fff', url: 'https://www.zonanaranja.com.ve' },
+  { nombre: 'Krece',        color: '#6C3CE1', textColor: '#fff', url: 'https://www.krece.app' },
+  { nombre: 'Chollo',       color: '#00C853', textColor: '#fff', url: 'https://www.chollo.com.ve' },
+  { nombre: 'Listo',        color: '#0057FF', textColor: '#fff', url: 'https://www.lysto.com.ve' },
 ];
 
 export const WA_NUMBER = '584123621133';

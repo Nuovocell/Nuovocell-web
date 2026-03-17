@@ -24,6 +24,7 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const { toggleCart } = useUIStore();
   const { mobileMenuOpen, toggleMenu, closeAll } = useUIStore();
   const count = useCartStore(s => s.items.reduce((n, i) => n + i.qty, 0));
@@ -50,9 +51,19 @@ export default function Navbar() {
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
+
         {/* Logo */}
         <Link to="/" className="navbar__logo">
-          <span className="navbar__logo-text">nuovo<span>cell</span></span>
+          {!imgError ? (
+            <img
+              src="/logo-blanco.png"
+              alt="Nuovocell"
+              className="navbar__logo-img"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <span className="navbar__logo-text">nuovo<span>cell</span></span>
+          )}
         </Link>
 
         {/* Desktop links */}
@@ -74,12 +85,10 @@ export default function Navbar() {
           <button className="navbar__lang" onClick={toggleLang}>
             {i18n.language === 'es' ? 'EN' : 'ES'}
           </button>
-
           <button className="navbar__cart" onClick={toggleCart} aria-label="Carrito">
             <ShoppingBagIcon />
             {count > 0 && <span className="navbar__cart-count">{count}</span>}
           </button>
-
           <a
             href="https://wa.me/584123621133"
             target="_blank"
@@ -91,7 +100,6 @@ export default function Navbar() {
             </svg>
             WhatsApp
           </a>
-
           <button className="navbar__mobile-toggle" onClick={toggleMenu}>
             {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>

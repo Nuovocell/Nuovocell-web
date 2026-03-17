@@ -1,27 +1,23 @@
 import React from 'react';
 import './PaymentLogos.css';
 
-// ─── Digitel Logo ──────────────────────────────────────────────────────────────────────────
+// ─── Digitel Logo ────────────────────────────────────────────────────────────
 
 export function DigitelLogo({ size = 'md' }) {
   return (
     <div className={`digitel-logo digitel-logo--${size}`}>
-      <img
-        src="/logos/digitel.svg"
-        alt="Digitel"
+      <img src="/logos/digitel.svg" alt="Digitel"
         onError={e => {
-          e.target.replaceWith(
-            Object.assign(document.createElementNS('http://www.w3.org/2000/svg', 'svg'), {
-              innerHTML: `<text x="0" y="30" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#E30613" letter-spacing="-1">digitel</text><rect x="0" y="33" width="80" height="3" rx="1.5" fill="#E30613"/>`,
-            })
-          );
+          e.target.replaceWith(Object.assign(document.createElementNS('http://www.w3.org/2000/svg','svg'),{
+            viewBox:'0 0 120 40',innerHTML:'<text x="0" y="30" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="#E30613">digitel</text><rect x="0" y="33" width="80" height="3" rx="1.5" fill="#E30613"/>'
+          }));
         }}
       />
     </div>
   );
 }
 
-// ─── SVG Fallbacks ──────────────────────────────────────────────────────────────────────────
+// ─── SVG Fallbacks ───────────────────────────────────────────────────────────
 
 const SVG_LOGOS = {
   cash: (
@@ -66,40 +62,31 @@ const SVG_LOGOS = {
   ),
 };
 
-// ─── PaymentLogo ──────────────────────────────────────────────────────────────────────────
-
-const IMG_MAP = {
-  pagomovil: '/logos/pagomovil.jpg',
-};
+// ─── PaymentLogo ─────────────────────────────────────────────────────────────
 
 export function PaymentLogo({ icon, label }) {
-  const src = IMG_MAP[icon];
+  const src = icon === 'pagomovil' ? '/logos/pagomovil.jpg' : null;
   return (
     <div className="payment-logo">
       <div className="payment-logo__img">
-        {src ? (
-          <img
-            src={src}
-            alt={label}
-            onError={e => { e.target.style.display = 'none'; }}
-          />
-        ) : (
-          SVG_LOGOS[icon] || <span>{label[0]}</span>
-        )}
+        {src
+          ? <img src={src} alt={label} onError={e => { e.target.style.display='none'; }} />
+          : SVG_LOGOS[icon] || <span>{label[0]}</span>
+        }
       </div>
       <span className="payment-logo__label">{label}</span>
     </div>
   );
 }
 
-// ─── CreditBadge ──────────────────────────────────────────────────────────────────────────
+// ─── CreditBadge ─────────────────────────────────────────────────────────────
 
 const CREDIT_IMG_MAP = {
-  'Cashea':       '/logos/cashea.png',
+  'Cashea':       '/logos/cashea.webp',
   'Zona Naranja': '/logos/zona-naranja.png',
   'Krece':        '/logos/krece.jpg',
   'Chollo':       '/logos/chollo.webp',
-  'Listo':        '/logos/lysto.png',
+  'Listo':        '/logos/lysto.webp',
 };
 
 const CREDIT_URLS = {
@@ -113,31 +100,22 @@ const CREDIT_URLS = {
 export function CreditBadge({ nombre, color, textColor, url }) {
   const src = CREDIT_IMG_MAP[nombre];
   const href = CREDIT_URLS[nombre] || url || '#';
-
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <a href={href} target="_blank" rel="noopener noreferrer"
       className={`credit-badge${src ? ' credit-badge--img' : ''}`}
       style={src ? {} : { background: color, color: textColor }}
     >
       {src ? (
-        <img
-          src={src}
-          alt={nombre}
-          className="credit-badge__img"
+        <img src={src} alt={nombre} className="credit-badge__img"
           onError={e => {
-            const parent = e.target.parentNode;
-            parent.classList.remove('credit-badge--img');
-            parent.style.background = color;
-            parent.style.color = textColor;
-            parent.innerHTML = nombre;
+            const p = e.target.parentNode;
+            p.classList.remove('credit-badge--img');
+            p.style.background = color;
+            p.style.color = textColor;
+            p.innerHTML = nombre;
           }}
         />
-      ) : (
-        nombre
-      )}
+      ) : nombre}
     </a>
   );
 }

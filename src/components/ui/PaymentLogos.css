@@ -1,97 +1,116 @@
 .payment-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .payment-logo__img {
-  width: 80px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-2);
-  border: var(--border);
-  padding: 6px;
-  transition: border-color 0.2s, transform 0.2s;
+    width: 80px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-2);
+    border: var(--border);
+    padding: 6px;
+    transition: border-color 0.2s, transform 0.2s;
 }
 
 .payment-logo__img:hover {
-  border-color: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
 }
 
 .payment-logo__img svg {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .payment-logo__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .payment-logo__label {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--white-50);
-  text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--white-50);
+    text-align: center;
 }
 
 /* Digitel logo */
-.digitel-logo img {
-  height: auto;
-  display: block;
-}
-
+.digitel-logo img { height: auto; display: block; }
 .digitel-logo--sm img { width: 80px; }
 .digitel-logo--md img { width: 110px; }
 .digitel-logo--lg img { width: 140px; }
 
-/* Credit badge */
+/* Credit badge base */
 .credit-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  transition: opacity 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  min-width: 120px;
-  min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    min-width: 120px;
+    min-height: 48px;
 }
 
-/* Badges con imagen: fondo oscuro semitransparente en lugar de blanco */
+/* Credit badge con SVG integrado */
+.credit-badge--svg {
+    background: transparent !important;
+    border: none;
+    padding: 0;
+    min-width: unset;
+    min-height: unset;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.credit-badge--svg svg {
+    display: block;
+    width: 120px;
+    height: 48px;
+    border-radius: 8px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.credit-badge--svg:hover svg {
+    transform: translateY(-2px);
+    opacity: 0.88;
+}
+
+/* Badges con imagen legacy */
 .credit-badge--img {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  min-width: 110px;
-  min-height: 48px;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    min-width: 110px;
+    min-height: 48px;
 }
 
 .credit-badge__img {
-  max-height: 36px;
-  max-width: 110px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  /* Ajuste para logos con fondo propio de color */
-  border-radius: 6px;
+    max-height: 36px;
+    max-width: 110px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 6px;
 }
 
 .credit-badge:hover {
-  opacity: 0.88;
-  transform: translateY(-2px);
+    opacity: 0.88;
+    transform: translateY(-2px);
 }

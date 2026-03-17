@@ -71,20 +71,24 @@
   min-height: 48px;
 }
 
+/* Badges con imagen: fondo oscuro semitransparente en lugar de blanco */
 .credit-badge--img {
-  background: white !important;
-  padding: 8px 16px;
-  min-width: 130px;
-  min-height: 52px;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  min-width: 110px;
+  min-height: 48px;
 }
 
 .credit-badge__img {
   max-height: 36px;
-  max-width: 120px;
+  max-width: 110px;
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
+  /* Ajuste para logos con fondo propio de color */
+  border-radius: 6px;
 }
 
 .credit-badge:hover {

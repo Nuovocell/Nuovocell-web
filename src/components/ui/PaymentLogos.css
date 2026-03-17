@@ -58,8 +58,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 7px 16px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
   font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 800;
@@ -67,19 +67,22 @@
   text-decoration: none;
   transition: opacity 0.2s, transform 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  min-width: 90px;
-  min-height: 40px;
+  min-width: 120px;
+  min-height: 48px;
 }
 
 .credit-badge--img {
   background: white !important;
-  padding: 6px 12px;
+  padding: 8px 16px;
+  min-width: 130px;
+  min-height: 52px;
 }
 
 .credit-badge__img {
-  max-height: 30px;
-  max-width: 110px;
+  max-height: 36px;
+  max-width: 120px;
   width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
 }

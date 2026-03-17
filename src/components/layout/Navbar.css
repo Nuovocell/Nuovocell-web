@@ -26,6 +26,13 @@
   flex-shrink: 0;
 }
 
+.navbar__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .navbar__logo-text {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -186,4 +193,5 @@
 
 @media (max-width: 480px) {
   .navbar__lang { display: none; }
+  .navbar__logo-img { height: 26px; }
 }

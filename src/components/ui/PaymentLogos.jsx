@@ -56,7 +56,7 @@ export function DigitelLogo({ size = 'md' }) {
                                                                                                                                                                                   };
 
                                                                                                                                                                                   const CREDIT_URLS = {
-                                                                                                                                                                                    Cashea: 'https://www.cashea.app',
+                                                                                                                                                                                    Cashea: 'https://play.google.com/store/apps/details?id=com.cashea.app',
                                                                                                                                                                                       'Zona Naranja': 'https://www.zonanaranja.com.ve',
                                                                                                                                                                                         Krece: 'https://www.krece.app',
                                                                                                                                                                                           Chollo: 'https://www.chollo.com.ve',

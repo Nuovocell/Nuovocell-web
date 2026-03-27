@@ -59,8 +59,8 @@ export function DigitelLogo({ size = 'md' }) {
                                                                                                                                                                                     Cashea: 'https://play.google.com/store/apps/details?id=com.cashea.app',
                                                                                                                                                                                       'Zona Naranja': 'https://tuzonanaranja.com',
                                                                                                                                                                                         Krece: 'https://www.krece.app',
-                                                                                                                                                                                          Chollo: 'https://play.google.com/store/apps/details?id=com.grupochollo.cholloapp',
-                                                                                                                                                                                            Lysto: 'https://play.google.com/store/apps/details?id=lysto.bvs.cdt.app',
+                                                                                                                                                                                          Chollo: 'https://chollo.app',
+                                                                                                                                                                                            Lysto: 'https://lysto.app',
                                                                                                                                                                                             };
 
                                                                                                                                                                                             const CREDIT_FALLBACK = {

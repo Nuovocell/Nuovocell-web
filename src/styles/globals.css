@@ -12,6 +12,8 @@
   --bg-hover: #181828;
 
   --blue: #00aaff;
+  --blue-dark: #0088cc;
+  --blue-darker: #006fa8;
   --blue-dim: rgba(0, 170, 255, 0.12);
   --blue-glow: rgba(0, 170, 255, 0.25);
   --blue-mid: #0088cc;
@@ -23,6 +25,7 @@
   --white-08: rgba(255,255,255,0.08);
 
   --green: #00e676;
+  --green-dark: #00b85d;
   --amber: #ffab00;
   --red: #ff3d57;
 
@@ -156,12 +159,13 @@ input, textarea, select { font-family: inherit; }
   cursor: pointer;
 }
 
+/* Hover = tono más oscuro del color base — consistente en todos los botones */
 .btn-primary {
   background: var(--blue);
   color: var(--bg);
 }
 .btn-primary:hover {
-  background: #22bbff;
+  background: var(--blue-dark);
   box-shadow: var(--shadow-blue);
   transform: translateY(-1px);
 }
@@ -173,6 +177,7 @@ input, textarea, select { font-family: inherit; }
 }
 .btn-outline:hover {
   background: var(--blue-dim);
+  border-color: var(--blue);
   transform: translateY(-1px);
 }
 
@@ -191,7 +196,7 @@ input, textarea, select { font-family: inherit; }
   color: white;
 }
 .btn-wa:hover {
-  background: #20bc5b;
+  background: var(--green-dark);
   transform: translateY(-1px);
 }
 
@@ -201,12 +206,12 @@ input, textarea, select { font-family: inherit; }
   border: var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .card:hover {
-  border-color: rgba(0,170,255,0.2);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card);
+  border-color: rgba(0,170,255,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,170,255,0.1);
 }
 
 /* ─── Noise overlay (global) ─── */

@@ -3,9 +3,17 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
 .pcard--sold { opacity: 0.6; }
+
+/* Microinteracción: elevación + borde azul al hover */
+.pcard:hover {
+  border-color: rgba(0,170,255,0.35) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,170,255,0.12);
+}
 
 .pcard__badges {
   position: absolute;
@@ -34,12 +42,17 @@
 }
 
 .pcard:hover .pcard__img {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .pcard__img-placeholder {
   font-size: 4rem;
   opacity: 0.4;
+  transition: transform 0.4s ease;
+}
+
+.pcard:hover .pcard__img-placeholder {
+  transform: scale(1.1);
 }
 
 .pcard__body {
@@ -105,6 +118,7 @@
   min-width: 0;
 }
 
+/* Botón Agregar — texto blanco, color oscuro al hover */
 .pcard__add {
   flex: 1;
   justify-content: center;
@@ -114,6 +128,16 @@
   min-width: 0;
   overflow: hidden;
   white-space: nowrap;
+  color: var(--bg) !important;
+}
+
+.pcard__add.btn-primary {
+  color: var(--bg) !important;
+}
+
+.pcard__add.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
 }
 
 .pcard__add--added {
@@ -121,6 +145,11 @@
   color: var(--bg) !important;
 }
 
+.pcard__add--added:hover {
+  background: var(--green-dark) !important;
+}
+
+/* Botón WhatsApp — tamaño fijo */
 .pcard__wa {
   flex-shrink: 0;
   padding: 8px 10px;

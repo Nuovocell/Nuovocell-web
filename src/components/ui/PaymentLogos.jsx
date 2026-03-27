@@ -56,11 +56,11 @@ export function DigitelLogo({ size = 'md' }) {
                                                                                                                                                                                   };
 
                                                                                                                                                                                   const CREDIT_URLS = {
-                                                                                                                                                                                    Cashea: 'https://play.google.com/store/apps/details?id=com.cashea.app',
-                                                                                                                                                                                      'Zona Naranja': 'https://www.zonanaranja.com.ve',
+                                                                                                                                                                                    Cashea: 'https://cashea.app',
+                                                                                                                                                                                      'Zona Naranja': 'https://tuzonanaranja.com',
                                                                                                                                                                                         Krece: 'https://www.krece.app',
-                                                                                                                                                                                          Chollo: 'https://www.chollo.com.ve',
-                                                                                                                                                                                            Listo: 'https://www.lysto.com.ve',
+                                                                                                                                                                                          Chollo: 'https://chollo.app',
+                                                                                                                                                                                            Lysto: 'https://lysto.app',
                                                                                                                                                                                             };
 
                                                                                                                                                                                             const CREDIT_FALLBACK = {

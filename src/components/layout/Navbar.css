@@ -63,6 +63,9 @@
   border-radius: 6px;
   transition: color 0.2s, background 0.2s;
   white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .navbar__link:hover,
@@ -73,6 +76,70 @@
 
 .navbar__link.active {
   color: var(--blue);
+}
+
+/* Dropdown */
+.navbar__dropdown-wrap {
+  position: relative;
+}
+
+.navbar__dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar__chevron {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+  opacity: 0.6;
+}
+
+.navbar__chevron--open {
+  transform: rotate(180deg);
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 200px;
+  background: rgba(12, 12, 24, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: fadeIn 0.15s ease;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.navbar__dropdown-item {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--white-50);
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.navbar__dropdown-item:first-child {
+  color: var(--blue);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 4px;
+  padding-bottom: 10px;
+}
+
+.navbar__dropdown-item:hover {
+  color: var(--white);
+  background: var(--white-08);
 }
 
 /* Actions */
@@ -156,6 +223,25 @@
   animation: fadeIn 0.2s ease;
 }
 
+.navbar__mobile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 4px;
+}
+
+.navbar__mobile-section-label {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding: 4px 16px 8px;
+}
+
 .navbar__mobile-link {
   font-family: var(--font-display);
   font-size: 1rem;
@@ -166,7 +252,15 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.navbar__mobile-link:hover {
+.navbar__mobile-link--sub {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--white-50);
+  padding: 8px 16px;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link--sub:hover {
   background: var(--white-08);
   color: var(--white);
 }

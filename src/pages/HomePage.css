@@ -227,3 +227,23 @@
   .home-pagos__grid { grid-template-columns: repeat(2, 1fr); }
   .home-services__grid { grid-template-columns: 1fr; }
 }
+/* Header de Categorías con link Ver más */
+.home-cats__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0;
+}
+
+.home-cats__ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--blue);
+  transition: opacity 0.2s;
+  padding-bottom: 4px;
+}
+.home-cats__ver-mas:hover { opacity: 0.7; }

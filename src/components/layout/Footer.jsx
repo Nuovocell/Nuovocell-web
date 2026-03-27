@@ -47,36 +47,36 @@ export default function Footer() {
 
         {/* Tienda */}
         <div className="footer__col">
-          <p className="footer__col-title">Tienda</p>
+          <p className="footer__col-title">{t('footer.links_title')}</p>
           <ul className="footer__links">
-            <li><Link to="/catalogo">Catálogo</Link></li>
-            <li><Link to="/catalogo?cat=smartphones">Smartphones</Link></li>
-            <li><Link to="/catalogo?cat=laptops">Laptops</Link></li>
-            <li><Link to="/catalogo?cat=ofertas">Ofertas</Link></li>
-            <li><Link to="/catalogo?cat=usados">Usados Certificados</Link></li>
+            <li><Link to="/catalogo">{t('nav.catalogo')}</Link></li>
+            <li><Link to="/catalogo?cat=smartphones">{t('nav.smartphones')}</Link></li>
+            <li><Link to="/catalogo?cat=laptops">{t('nav.laptops')}</Link></li>
+            <li><Link to="/catalogo?cat=ofertas">{t('nav.ofertas')}</Link></li>
+            <li><Link to="/catalogo?cat=usados">{t('footer.usados')}</Link></li>
           </ul>
         </div>
 
         {/* Información */}
         <div className="footer__col">
-          <p className="footer__col-title">Información</p>
+          <p className="footer__col-title">{t('footer.info_title')}</p>
           <ul className="footer__links">
             <li><Link to="/sucursales">{t('nav.sucursales')}</Link></li>
             <li><Link to="/servicio-tecnico">{t('nav.servicio')}</Link></li>
-            <li><a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer">Planes Digitel</a></li>
+            <li><a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer">{t('digitel.planes')}</a></li>
             <li><a href={WA_URL} target="_blank" rel="noopener noreferrer">{t('footer.contacto')}</a></li>
           </ul>
         </div>
 
         {/* Métodos de pago — logos monocromáticos */}
         <div className="footer__col">
-          <p className="footer__col-title">Métodos de pago</p>
+          <p className="footer__col-title">{t('footer.payments_title')}</p>
           <div className="footer__pagos">
             {PAGOS.map(p => (
               <PaymentLogo key={p.label} icon={p.icon} label={p.label} mono />
             ))}
           </div>
-          <p className="footer__col-title footer__col-title--mt">Crédito disponible</p>
+          <p className="footer__col-title footer__col-title--mt">{t('footer.credit_title')}</p>
           <div className="footer__credito">
             {CREDITO.map(c => (
               <CreditBadge key={c.nombre} {...c} />

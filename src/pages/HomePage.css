@@ -207,3 +207,10 @@
   .home-pagos__grid { grid-template-columns: repeat(2, 1fr); }
   .home-services__grid { grid-template-columns: 1fr; }
 }
+
+.home-digitel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}

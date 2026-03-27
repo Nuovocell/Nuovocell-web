@@ -11,11 +11,46 @@ const WAIcon = () => (
 );
 
 const TRUST_ITEMS = [
-  { icon: '📍', key: 'sucursales' },
-  { icon: '🚚', key: 'envios' },
-  { icon: '✅', key: 'garantia' },
-  { icon: '💳', key: 'credito' },
-  { icon: '💵', key: 'pagos' },
+  {
+    key: 'sucursales',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'envios',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'garantia',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'credito',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'pagos',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function Hero() {
@@ -61,11 +96,11 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trust bar */}
+          {/* Trust bar — iconos SVG */}
           <div className="hero__trust">
             {TRUST_ITEMS.map(item => (
               <div key={item.key} className="hero__trust-item">
-                <span>{item.icon}</span>
+                <span className="hero__trust-icon">{item.icon}</span>
                 <span>{t(`trust.${item.key}`)}</span>
               </div>
             ))}
@@ -77,7 +112,11 @@ export default function Hero() {
           <div className="hero__phone-grid">
             {['Honor', 'Samsung', 'iPhone', 'Infinix', 'Redmi', 'Tecno'].map((brand, i) => (
               <div key={brand} className="hero__phone-card" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className="hero__phone-icon">📱</div>
+                <div className="hero__phone-icon">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"/>
+                  </svg>
+                </div>
                 <div className="hero__phone-brand">{brand}</div>
               </div>
             ))}

@@ -129,8 +129,18 @@ export default function HomePage() {
       {/* Categories */}
       <section className="section home-cats">
         <div className="container">
-          <div className="section-label">Explora</div>
-          <h2 className="section-title">Categorías</h2>
+          <div className="home-cats__header">
+            <div>
+              <div className="section-label">Explora</div>
+              <h2 className="section-title">Categorías</h2>
+            </div>
+            <a href="/catalogo" className="home-cats__ver-mas">
+              Ver todo el catálogo
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
           <div className="home-cats__grid">
             {CATEGORIAS_HOME.map(({ id, Icon, label, color }) => (
               <Link

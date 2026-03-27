@@ -96,13 +96,13 @@ export default function ServicioPage() {
       <div className="container">
         {/* Header */}
         <div className="serv-page__header">
-          <div className="section-label">Servicios</div>
+          <div className="section-label">{t('servicios.label')}</div>
           <h1 className="section-title">
-            Servicio <span>Técnico</span>
+            {t('servicios.title')} <span>{t('servicios.subtitle')}</span>
           </h1>
           <p className="serv-page__sub">
             Reparamos smartphones y dispositivos de todas las marcas.{' '}
-            <strong className="serv-page__sub--highlight">Diagnóstico gratis.</strong>
+            <strong className="serv-page__sub--highlight">{t('servicios.diag_gratis')}</strong>
           </p>
         </div>
 
@@ -143,7 +143,7 @@ export default function ServicioPage() {
 
             <div className="serv-form">
               <div className="serv-form__field">
-                <label>Nombre <span className="serv-form__req">*</span></label>
+                <label>{t('servicios.nombre')} <span className="serv-form__req">*</span></label>
                 <input
                   name="nombre"
                   value={form.nombre}
@@ -153,7 +153,7 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field">
-                <label>Teléfono / WhatsApp</label>
+                <label>{t('servicios.telefono')}</label>
                 <input
                   name="telefono"
                   value={form.telefono}
@@ -164,7 +164,7 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field">
-                <label>Equipo / Modelo <span className="serv-form__req">*</span></label>
+                <label>{t('servicios.equipo')} <span className="serv-form__req">*</span></label>
                 <input
                   name="equipo"
                   value={form.equipo}
@@ -174,9 +174,9 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field">
-                <label>Tipo de servicio</label>
+                <label>{t('servicios.tipo_servicio')}</label>
                 <select name="servicio" value={form.servicio} onChange={handleChange}>
-                  <option value="">Seleccionar...</option>
+                  <option value="">{t('servicios.seleccionar')}</option>
                   {SERVICIOS.map(s => (
                     <option key={s.id} value={s.label}>{s.label}</option>
                   ))}
@@ -184,9 +184,9 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field">
-                <label>Sucursal más cercana</label>
+                <label>{t('servicios.sucursal')}</label>
                 <select name="sucursal" value={form.sucursal} onChange={handleChange}>
-                  <option value="">Seleccionar sucursal...</option>
+                  <option value="">{t('servicios.sel_sucursal')}</option>
                   {SUCURSALES.map(s => (
                     <option key={s._id} value={s._id}>{s.nombre} — {s.ciudad}</option>
                   ))}
@@ -194,7 +194,7 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field serv-form__field--full">
-                <label>Describe el problema <span className="serv-form__req">*</span></label>
+                <label>{t('servicios.problema')} <span className="serv-form__req">*</span></label>
                 <textarea
                   name="problema"
                   value={form.problema}

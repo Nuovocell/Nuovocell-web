@@ -95,10 +95,11 @@ export default function AIAssistant() {
     <>
       {/* Floating button */}
       {!aiOpen && (
-        <button className="ai-fab" onClick={toggleAI} aria-label="Asistente IA">
-          <BotIcon />
-          <span className="ai-fab__dot" />
-        </button>
+              <button className="ai-fab" onClick={toggleAI} aria-label="Asistente IA">
+        <BotIcon />
+        <span className="ai-fab__label">Asistente IA</span>
+        <span className="ai-fab__dot" />
+      </button>
       )}
 
       {/* Chat panel */}

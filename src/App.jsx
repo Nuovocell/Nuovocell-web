@@ -10,6 +10,7 @@ import AIAssistant from './components/ai/AIAssistant';
 
 import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
+import ProductPage from './pages/ProductPage';
 import SucursalesPage from './pages/SucursalesPage';
 import ServicioPage from './pages/ServicioPage';
 
@@ -35,6 +36,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/catalogo" element={<CatalogPage />} />
+            <Route path="/catalogo/:id" element={<ProductPage />} />
             <Route path="/sucursales" element={<SucursalesPage />} />
             <Route path="/servicio-tecnico" element={<ServicioPage />} />
             <Route path="*" element={<NotFound />} />
@@ -69,7 +71,9 @@ function NotFound() {
       gap: '16px',
       paddingTop: '68px',
     }}>
-      <p style={{ fontSize: '4rem' }}>📱</p>
+      <svg width="64" height="64" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"/>
+      </svg>
       <h1 style={{ fontFamily: 'Syne, sans-serif', fontSize: '2rem', fontWeight: 800 }}>
         Página no encontrada
       </h1>

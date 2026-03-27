@@ -3,13 +3,66 @@ import { useTranslation } from 'react-i18next';
 import { SUCURSALES } from '../lib/data';
 import './ServicioPage.css';
 
+/* Iconos SVG consistentes */
+const IconScreen = () => (
+  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2.5"/>
+  </svg>
+);
+const IconBattery = () => (
+  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/><line x1="6" y1="12" x2="12" y2="12"/>
+  </svg>
+);
+const IconCode = () => (
+  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </svg>
+);
+const IconDroplet = () => (
+  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+  </svg>
+);
+const IconPlug = () => (
+  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <path d="M18 6L6 18M9 3v4m6-4v4M3 9h4m10 0h4M5 19l2 2M17 5l2 2"/>
+  </svg>
+);
+const IconSearch = () => (
+  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+  </svg>
+);
+const IconCheck = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+  </svg>
+);
+const IconShield = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </svg>
+);
+const IconZap = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </svg>
+);
+
 const SERVICIOS = [
-  { id: 'pantalla', icon: '📱', label: 'Cambio de pantalla' },
-  { id: 'bateria', icon: '🔋', label: 'Cambio de batería' },
-  { id: 'software', icon: '💾', label: 'Actualización / Flasheo' },
-  { id: 'agua', icon: '💧', label: 'Daño por agua' },
-  { id: 'carga', icon: '⚡', label: 'Puerto de carga' },
-  { id: 'general', icon: '🔧', label: 'Diagnóstico general' },
+  { id: 'pantalla', Icon: IconScreen,  label: 'Cambio de pantalla' },
+  { id: 'bateria',  Icon: IconBattery, label: 'Cambio de batería' },
+  { id: 'software', Icon: IconCode,    label: 'Actualización / Flasheo' },
+  { id: 'agua',     Icon: IconDroplet, label: 'Daño por agua' },
+  { id: 'carga',    Icon: IconPlug,    label: 'Puerto de carga' },
+  { id: 'general',  Icon: IconSearch,  label: 'Diagnóstico general' },
+];
+
+const INFO_BOXES = [
+  { Icon: IconCheck,  title: 'Diagnóstico gratuito',      sub: 'Revisamos tu equipo sin costo' },
+  { Icon: IconShield, title: 'Garantía en reparaciones',  sub: 'Respaldamos nuestro trabajo' },
+  { Icon: IconZap,    title: 'Reparaciones express',      sub: 'Muchas reparaciones en el día' },
 ];
 
 export default function ServicioPage() {
@@ -27,13 +80,13 @@ export default function ServicioPage() {
     }
 
     const suc = SUCURSALES.find(s => s._id === form.sucursal);
-    const msg = `🔧 *Solicitud de Servicio Técnico*\n\n` +
-      `👤 Nombre: ${form.nombre}\n` +
-      `📱 Teléfono: ${form.telefono || 'No indicado'}\n` +
-      `📲 Equipo: ${form.equipo}\n` +
-      `🛠️ Servicio: ${form.servicio || 'No especificado'}\n` +
-      `📍 Sucursal: ${suc?.nombre || 'No especificada'}\n\n` +
-      `📝 Problema:\n${form.problema}`;
+    const msg = `Solicitud de Servicio Técnico\n\n` +
+      `Nombre: ${form.nombre}\n` +
+      `Teléfono: ${form.telefono || 'No indicado'}\n` +
+      `Equipo: ${form.equipo}\n` +
+      `Servicio: ${form.servicio || 'No especificado'}\n` +
+      `Sucursal: ${suc?.nombre || 'No especificada'}\n\n` +
+      `Problema:\n${form.problema}`;
 
     window.open(`https://wa.me/584123621133?text=${encodeURIComponent(msg)}`, '_blank');
   };
@@ -48,50 +101,39 @@ export default function ServicioPage() {
             Servicio <span>Técnico</span>
           </h1>
           <p className="serv-page__sub">
-            Reparamos smartphones y dispositivos de todas las marcas. Diagnóstico gratis.
+            Reparamos smartphones y dispositivos de todas las marcas.{' '}
+            <strong className="serv-page__sub--highlight">Diagnóstico gratis.</strong>
           </p>
         </div>
 
         <div className="serv-page__layout">
-          {/* Services grid */}
+          {/* Left — services + info */}
           <div className="serv-page__left">
             <p className="serv-page__section-title">¿Qué reparamos?</p>
             <div className="serv-grid">
-              {SERVICIOS.map(s => (
+              {SERVICIOS.map(({ id, Icon, label }) => (
                 <div
-                  key={s.id}
-                  className={`serv-item card${form.servicio === s.label ? ' serv-item--active' : ''}`}
-                  onClick={() => setForm(p => ({ ...p, servicio: s.label }))}
+                  key={id}
+                  className={`serv-item card${form.servicio === label ? ' serv-item--active' : ''}`}
+                  onClick={() => setForm(p => ({ ...p, servicio: label }))}
                 >
-                  <span className="serv-item__icon">{s.icon}</span>
-                  <span className="serv-item__label">{s.label}</span>
+                  <span className="serv-item__icon"><Icon /></span>
+                  <span className="serv-item__label">{label}</span>
                 </div>
               ))}
             </div>
 
             {/* Info boxes */}
             <div className="serv-info-boxes">
-              <div className="serv-info-box">
-                <span>✅</span>
-                <div>
-                  <p className="serv-info-box__title">Diagnóstico gratuito</p>
-                  <p className="serv-info-box__sub">Revisamos tu equipo sin costo</p>
+              {INFO_BOXES.map(({ Icon, title, sub }) => (
+                <div key={title} className="serv-info-box">
+                  <span className="serv-info-box__icon"><Icon /></span>
+                  <div>
+                    <p className="serv-info-box__title">{title}</p>
+                    <p className="serv-info-box__sub">{sub}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="serv-info-box">
-                <span>🛡️</span>
-                <div>
-                  <p className="serv-info-box__title">Garantía en reparaciones</p>
-                  <p className="serv-info-box__sub">Respaldamos nuestro trabajo</p>
-                </div>
-              </div>
-              <div className="serv-info-box">
-                <span>⚡</span>
-                <div>
-                  <p className="serv-info-box__title">Reparaciones express</p>
-                  <p className="serv-info-box__sub">Muchas reparaciones en el día</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -101,7 +143,7 @@ export default function ServicioPage() {
 
             <div className="serv-form">
               <div className="serv-form__field">
-                <label>Nombre *</label>
+                <label>Nombre <span className="serv-form__req">*</span></label>
                 <input
                   name="nombre"
                   value={form.nombre}
@@ -122,7 +164,7 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field">
-                <label>Equipo / Modelo *</label>
+                <label>Equipo / Modelo <span className="serv-form__req">*</span></label>
                 <input
                   name="equipo"
                   value={form.equipo}
@@ -152,7 +194,7 @@ export default function ServicioPage() {
               </div>
 
               <div className="serv-form__field serv-form__field--full">
-                <label>Describe el problema *</label>
+                <label>Describe el problema <span className="serv-form__req">*</span></label>
                 <textarea
                   name="problema"
                   value={form.problema}

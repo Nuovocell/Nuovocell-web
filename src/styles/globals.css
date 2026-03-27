@@ -259,3 +259,16 @@ body::before {
     --section-py: 60px;
   }
 }
+/* ─── Global form elements — border-radius consistente, fuente mínima 12px ─── */
+input, textarea, select {
+  border-radius: var(--radius);
+  font-size: max(0.88rem, 12px);
+}
+
+/* Textos secundarios — mínimo 12px (WCAG legibilidad) */
+.footer__bottom p,
+.suc-card__horas,
+.pcard__price-consult,
+.home-credito__label {
+  font-size: max(0.78rem, 12px);
+}

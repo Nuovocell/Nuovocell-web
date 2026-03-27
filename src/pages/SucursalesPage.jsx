@@ -124,7 +124,7 @@ function SucursalCard({ suc, index, t }) {
 
       {/* Actions */}
       <div className="suc-card__actions">
-        <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline suc-card__btn">
+        <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="suc-card__btn-map">
           <PinIcon />
           {t('sucursales.como_llegar')}
         </a>
@@ -132,7 +132,7 @@ function SucursalCard({ suc, index, t }) {
           href={`https://wa.me/${suc.whatsapp.replace(/\D/g,'')}?text=${waMsg}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-wa suc-card__btn"
+          className="btn btn-wa suc-card__btn-wa"
         >
           <WAIcon />
           WhatsApp

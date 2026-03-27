@@ -3,21 +3,28 @@
   position: fixed;
   bottom: 84px;
   right: 24px;
-  width: 52px;
-  height: 52px;
+  height: 48px;
+  padding: 0 18px 0 14px;
   background: var(--blue);
   color: var(--bg);
-  border-radius: 50%;
+  border-radius: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
   z-index: 150;
-  box-shadow: 0 4px 20px rgba(0, 170, 255, 0.5);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(0, 170, 255, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s, padding 0.2s;
+  white-space: nowrap;
 }
 .ai-fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(0, 170, 255, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 170, 255, 0.7);
+}
+.ai-fab__label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .ai-fab__dot {

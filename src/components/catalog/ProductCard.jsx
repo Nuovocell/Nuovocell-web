@@ -82,8 +82,7 @@ export default function ProductCard({ product }) {
               className={`btn pcard__add${inCart ? ' pcard__add--added' : ' btn-primary'}`}
               onClick={() => addItem(product)}
             >
-              <CartIcon />
-              {inCart ? '✓' : t('catalog.add_cart')}
+              {inCart ? '✓ Agregado' : '+ Agregar'}
             </button>
           )}
           <Link to={`/catalogo/${_id}`} className="btn btn-outline pcard__detail">

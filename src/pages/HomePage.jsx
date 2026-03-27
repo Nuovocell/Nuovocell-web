@@ -35,8 +35,8 @@ const IconBadgeCheck = () => (
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/><polyline points="9 12 11 14 15 10"/>
   </svg>
 );
-const IconDigitelG = () => (
-  <img src="/logos/digitel-g.svg" alt="Digitel" style={{ width: 28, height: 28, objectFit: "contain" }} />
+const IconDigitel4G = () => (
+  <img src="/logos/4g-lte.png" alt="4G LTE Digitel" style={{ width: 38, height: 38, objectFit: "contain" }} />
 );
 const IconWrench = () => (
   <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@ const CATEGORIAS_HOME = [
   { id: 'accesorios',  Icon: IconHeadphones, label: 'Accesorios',      color: '#00e676' },
   { id: 'internet',    Icon: IconWifi,       label: 'Internet Portátil',color: '#ffab00' },
   { id: 'usados',      Icon: IconBadgeCheck, label: 'Usados Cert.',    color: '#06b6d4' },
-  { id: 'digitel',     Icon: IconDigitelG,   label: 'Digitel',         color: '#7B2D8B' },
+  { id: 'digitel',     Icon: IconDigitel4G,  label: 'Planes Digitel',  color: '#7B2D8B', externalUrl: DIGITEL_URL },
 ];
 
 const TRUST_ITEMS = [

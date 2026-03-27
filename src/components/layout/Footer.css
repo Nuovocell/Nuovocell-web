@@ -33,6 +33,7 @@
 .footer__digitel-badge {
   margin-bottom: 20px;
   width: fit-content;
+  font-size: 0.7rem;
 }
 
 .footer__socials {
@@ -62,15 +63,18 @@
   background: rgba(37,211,102,0.1);
 }
 
-/* Columns */
+/* Columns — títulos SIN text-transform uppercase para evitar choque visual */
 .footer__col-title {
   font-family: var(--font-display);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--white-50);
+  color: var(--white-80);
   margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.footer__col-title--mt {
+  margin-top: 24px;
 }
 
 .footer__links {
@@ -87,11 +91,19 @@
 }
 .footer__links a:hover { color: var(--blue); }
 
-/* Payments */
+/* Payments — monocromático */
 .footer__pagos {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  /* Aplica filtro grayscale para unificar estilos visuales */
+  filter: grayscale(1) brightness(1.4);
+  opacity: 0.7;
+  transition: filter 0.2s, opacity 0.2s;
+}
+.footer__pagos:hover {
+  filter: grayscale(0);
+  opacity: 1;
 }
 
 .footer__credito {
@@ -99,9 +111,16 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
+  filter: grayscale(1) brightness(1.2);
+  opacity: 0.6;
+  transition: filter 0.2s, opacity 0.2s;
+}
+.footer__credito:hover {
+  filter: grayscale(0);
+  opacity: 1;
 }
 
-/* Bottom */
+/* Bottom — centrado */
 .footer__bottom {
   border-top: var(--border);
   padding: 20px 0;
@@ -109,22 +128,15 @@
 
 .footer__bottom-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
 .footer__bottom p {
   font-size: 0.78rem;
   color: var(--white-50);
+  text-align: center;
 }
-
-.footer__bottom a {
-  color: var(--blue);
-  transition: opacity 0.2s;
-}
-.footer__bottom a:hover { opacity: 0.8; }
 
 /* WhatsApp float */
 .wa-float {

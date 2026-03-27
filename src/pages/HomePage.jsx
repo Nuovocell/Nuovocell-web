@@ -189,22 +189,11 @@ export default function HomePage() {
           {/* Visual humana — izquierda */}
           <div className="home-digitel__visual">
             <div className="home-digitel__human">
-              <svg viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg" width="280">
-                {/* Fondo circular morado Digitel */}
-                <circle cx="140" cy="160" r="130" fill="#7B2D8B" opacity="0.12"/>
-                <circle cx="140" cy="160" r="95" fill="#7B2D8B" opacity="0.1"/>
-                {/* Silueta persona */}
-                <circle cx="140" cy="90" r="38" fill="#7B2D8B" opacity="0.7"/>
-                <path d="M65 280 Q65 200 140 195 Q215 200 215 280" fill="#7B2D8B" opacity="0.7"/>
-                {/* Teléfono en mano */}
-                <rect x="118" y="105" width="44" height="72" rx="6" fill="white" opacity="0.9"/>
-                <rect x="122" y="110" width="36" height="58" rx="3" fill="#7B2D8B" opacity="0.3"/>
-                <circle cx="140" cy="172" r="3" fill="white" opacity="0.8"/>
-                {/* Señal Digitel */}
-                <path d="M168 85 Q180 72 168 60" stroke="#E30613" strokeWidth="3" strokeLinecap="round" fill="none"/>
-                <path d="M174 90 Q192 72 174 54" stroke="#E30613" strokeWidth="3" strokeLinecap="round" fill="none"/>
-                <path d="M180 95 Q204 72 180 48" stroke="#E30613" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6"/>
-              </svg>
+              <img
+                src="/images/digitel-persona.png"
+                alt="Cliente Digitel"
+                className="home-digitel__persona-img"
+              />
             </div>
           </div>
 

@@ -163,3 +163,17 @@
   .pcard__body { padding: 10px; }
   .pcard__nombre { font-size: 0.82rem; }
 }
+/* Link wrapper para imagen y nombre */
+.pcard__img-wrap {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+.pcard__nombre-link {
+  text-decoration: none;
+  display: block;
+}
+.pcard__nombre-link:hover .pcard__nombre {
+  color: var(--blue);
+}

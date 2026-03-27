@@ -22,6 +22,22 @@ export const queries = {
     }
   `,
 
+  // Producto por ID (página de detalle)
+  productById: `
+    *[_type == "producto" && _id == $id][0] {
+      _id, nombre, slug, categoria, marca, descripcion,
+      destacado, imagen, disponible, esNuevo, esOferta,
+      precio, precioAnterior, precioMin,
+    }
+  `,
+
+  // Productos relacionados (misma categoría, excluyendo el actual)
+  related: `
+    *[_type == "producto" && categoria == $categoria && _id != $id][0...4] {
+      _id, nombre, marca, imagen, precio, precioMin, disponible,
+    }
+  `,
+
   // Sucursales
   allSucursales: `
     *[_type == "sucursal"] | order(nombre asc) {

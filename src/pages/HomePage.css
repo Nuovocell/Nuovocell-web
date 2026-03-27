@@ -15,9 +15,10 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: all 0.25s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
+/* Borde superior con color de categoría — consistente en todos */
 .home-cat-card::before {
   content: '';
   position: absolute;
@@ -31,10 +32,27 @@
 }
 
 .home-cat-card:hover::before { transform: scaleX(1); }
-.home-cat-card:hover { border-color: rgba(255,255,255,0.15); }
 
-.home-cat-card__icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.05); transition: background 0.2s; }
-.home-cat-card:hover .home-cat-card__icon { background: rgba(255,255,255,0.1); }
+/* Hover unificado — usa el mismo color de la categoría para el borde */
+.home-cat-card:hover {
+  border-color: color-mix(in srgb, var(--cat-color, var(--blue)) 40%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+.home-cat-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  transition: background 0.2s, color 0.2s;
+}
+.home-cat-card:hover .home-cat-card__icon {
+  background: color-mix(in srgb, var(--cat-color, var(--blue)) 15%, transparent);
+}
 
 .home-cat-card__label {
   font-family: var(--font-display);
@@ -50,7 +68,7 @@
 }
 .home-cat-card:hover .home-cat-card__arrow {
   transform: translateX(3px);
-  color: var(--blue);
+  color: var(--cat-color, var(--blue));
 }
 
 /* Featured */
@@ -103,12 +121,6 @@
   justify-content: center;
 }
 
-.home-digitel__icon {
-  font-size: 8rem;
-  opacity: 0.3;
-  filter: grayscale(0.5);
-}
-
 /* Payments */
 .home-pagos__grid {
   display: flex;
@@ -127,7 +139,7 @@
 }
 
 .home-credito__label {
-  font-size: 0.82rem;
+  font-size: max(0.82rem, 12px);
   color: var(--white-50);
   white-space: nowrap;
 }
@@ -136,17 +148,6 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-}
-
-.home-credito__tag {
-  padding: 5px 14px;
-  border-radius: 20px;
-  background: var(--blue-dim);
-  border: var(--border-blue);
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--blue);
 }
 
 /* Services */
@@ -164,7 +165,17 @@
   gap: 12px;
 }
 
-.home-service-card__icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: var(--blue-dim); color: var(--blue); }
+.home-service-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--blue-dim);
+  color: var(--blue);
+  flex-shrink: 0;
+}
 
 .home-service-card__title {
   font-family: var(--font-display);
@@ -189,6 +200,14 @@
 }
 .home-service-card__link:hover { opacity: 0.7; }
 
+/* Digitel actions */
+.home-digitel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .home-cats__grid { grid-template-columns: repeat(3, 1fr); }
@@ -207,11 +226,4 @@
   .home-cats__grid { grid-template-columns: repeat(2, 1fr); }
   .home-pagos__grid { grid-template-columns: repeat(2, 1fr); }
   .home-services__grid { grid-template-columns: 1fr; }
-}
-
-.home-digitel__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 8px;
 }

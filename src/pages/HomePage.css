@@ -219,6 +219,7 @@
   .home-cats__grid { grid-template-columns: repeat(3, 1fr); }
   .home-digitel__inner { grid-template-columns: 1fr; }
   .home-digitel__visual { display: none; }
+  .home-digitel__content p { color: #555; }
   .home-featured__header { flex-direction: column; align-items: flex-start; }
 }
 

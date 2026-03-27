@@ -1,54 +1,65 @@
 .serv-page {
-  padding-top: calc(68px + 40px);
-  padding-bottom: 80px;
+  padding-top: calc(68px + 60px);
+  padding-bottom: 100px;
   min-height: 100vh;
 }
 
 .serv-page__header {
-  margin-bottom: 40px;
+  margin-bottom: 56px;
 }
 
 .serv-page__sub {
   font-size: 1rem;
   color: var(--white-50);
-  margin-top: 12px;
+  margin-top: 16px;
   max-width: 480px;
+  line-height: 1.7;
+}
+
+.serv-page__sub--highlight {
+  color: var(--green);
+  font-weight: 600;
 }
 
 .serv-page__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 40px;
   align-items: start;
 }
 
+/* Section title — sin uppercase para evitar choque visual */
 .serv-page__section-title {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white-50);
-  margin-bottom: 16px;
+  color: var(--white-80);
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
 }
 
 /* Services grid */
 .serv-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .serv-item {
-  padding: 20px 12px;
+  padding: 22px 12px;
   text-align: center;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   transition: all 0.2s;
+}
+
+.serv-item:hover {
+  border-color: rgba(0,170,255,0.2);
+  background: var(--bg-hover);
 }
 
 .serv-item--active {
@@ -56,8 +67,23 @@
   background: var(--blue-dim) !important;
 }
 
+/* Icono SVG en item — color dinámico */
 .serv-item__icon {
-  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--white-08);
+  color: var(--white-50);
+  transition: background 0.2s, color 0.2s;
+}
+
+.serv-item--active .serv-item__icon,
+.serv-item:hover .serv-item__icon {
+  background: var(--blue-dim);
+  color: var(--blue);
 }
 
 .serv-item__label {
@@ -83,26 +109,44 @@
   background: var(--bg-card);
   border: var(--border);
   border-radius: var(--radius);
-  padding: 16px;
-  font-size: 1.4rem;
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+}
+
+.serv-info-box:hover {
+  border-color: rgba(0,170,255,0.2);
+}
+
+/* Icono info box */
+.serv-info-box__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--blue-dim);
+  color: var(--blue);
+  flex-shrink: 0;
 }
 
 .serv-info-box__title {
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .serv-info-box__sub {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--white-50);
+  line-height: 1.4;
 }
 
 /* Form */
 .serv-page__form {
-  padding: 28px;
+  padding: 32px;
   position: sticky;
   top: calc(68px + 24px);
 }
@@ -112,44 +156,52 @@
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--white);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .serv-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 18px;
 }
 
 .serv-form__field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .serv-form__field--full {
   grid-column: 1 / -1;
 }
 
+/* Labels sin uppercase — más amigables para rellenar */
 .serv-form__field label {
   font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white-50);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--white-80);
+  letter-spacing: 0.01em;
 }
 
+.serv-form__req {
+  color: var(--red);
+  margin-left: 2px;
+}
+
+/* Inputs — border-radius consistente con las cards (12px → var(--radius)) */
 .serv-form__field input,
 .serv-form__field select,
 .serv-form__field textarea {
   background: var(--bg-2);
   border: var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
+  border-radius: var(--radius);
+  padding: 12px 16px;
   color: var(--white);
   font-size: 0.88rem;
+  font-size: max(0.88rem, 12px);
   transition: border-color 0.2s;
+  line-height: 1.5;
 }
 
 .serv-form__field input:focus,
@@ -157,18 +209,20 @@
 .serv-form__field textarea:focus {
   outline: none;
   border-color: rgba(0,170,255,0.4);
+  background: var(--bg-1);
 }
 
 .serv-form__field input::placeholder,
 .serv-form__field textarea::placeholder { color: var(--white-50); }
 .serv-form__field select option { background: var(--bg-1); }
-.serv-form__field textarea { resize: vertical; }
+.serv-form__field textarea { resize: vertical; min-height: 100px; }
 
 .serv-form__submit {
   grid-column: 1 / -1;
   justify-content: center;
   padding: 14px;
   font-size: 0.95rem;
+  margin-top: 4px;
 }
 
 @media (max-width: 900px) {
@@ -179,4 +233,5 @@
 @media (max-width: 480px) {
   .serv-grid { grid-template-columns: repeat(2, 1fr); }
   .serv-form { grid-template-columns: 1fr; }
+  .serv-page { padding-top: calc(68px + 32px); }
 }

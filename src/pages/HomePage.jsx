@@ -140,7 +140,21 @@ export default function HomePage() {
             </a>
           </div>
           <div className="home-cats__grid">
-            {CATEGORIAS_HOME.map(({ id, Icon, label, color }) => (
+            {CATEGORIAS_HOME.map(({ id, Icon, label, color, externalUrl }) => (
+              externalUrl ? (
+                <a
+                  key={id}
+                  href={externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="home-cat-card card"
+                  style={{ '--cat-color': color }}
+                >
+                  <span className="home-cat-card__icon" style={{ color }}><Icon /></span>
+                  <span className="home-cat-card__label">{label}</span>
+                  <svg className="home-cat-card__arrow" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              ) : (
               <Link
                 key={id}
                 to={`/catalogo?cat=${id}`}
@@ -155,6 +169,7 @@ export default function HomePage() {
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </Link>
+              )
             ))}
           </div>
         </div>

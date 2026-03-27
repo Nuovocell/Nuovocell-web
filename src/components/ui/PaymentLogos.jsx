@@ -56,11 +56,11 @@ export function DigitelLogo({ size = 'md' }) {
                                                                                                                                                                                   };
 
                                                                                                                                                                                   const CREDIT_URLS = {
-                                                                                                                                                                                    Cashea: 'https://cashea.app',
+                                                                                                                                                                                    Cashea: 'https://play.google.com/store/apps/details?id=com.cashea.app',
                                                                                                                                                                                       'Zona Naranja': 'https://tuzonanaranja.com',
                                                                                                                                                                                         Krece: 'https://www.krece.app',
-                                                                                                                                                                                          Chollo: 'https://chollo.app',
-                                                                                                                                                                                            Lysto: 'https://lysto.app',
+                                                                                                                                                                                          Chollo: 'https://play.google.com/store/apps/details?id=com.grupochollo.cholloapp',
+                                                                                                                                                                                            Lysto: 'https://play.google.com/store/apps/details?id=lysto.bvs.cdt.app',
                                                                                                                                                                                             };
 
                                                                                                                                                                                             const CREDIT_FALLBACK = {

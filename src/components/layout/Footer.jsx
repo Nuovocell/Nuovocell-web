@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { PAGOS, CREDITO, WA_URL, INSTAGRAM, FACEBOOK } from '../../lib/data';
+import { PAGOS, CREDITO, WA_URL, INSTAGRAM, FACEBOOK, DIGITEL_URL } from '../../lib/data';
 import { PaymentLogo, CreditBadge } from '../ui/PaymentLogos';
 import '../ui/PaymentLogos.css';
 import './Footer.css';
@@ -63,7 +63,7 @@ export default function Footer() {
           <ul className="footer__links">
             <li><Link to="/sucursales">{t('nav.sucursales')}</Link></li>
             <li><Link to="/servicio-tecnico">{t('nav.servicio')}</Link></li>
-            <li><Link to="/digitel">Planes Digitel</Link></li>
+            <li><a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer">Planes Digitel</a></li>
             <li><a href={WA_URL} target="_blank" rel="noopener noreferrer">{t('footer.contacto')}</a></li>
           </ul>
         </div>

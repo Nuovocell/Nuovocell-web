@@ -6,8 +6,14 @@ import { urlFor } from '../../lib/sanity';
 import './ProductCard.css';
 
 const CartIcon = () => (
-  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+  <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+  </svg>
+);
+
+const ArrowIcon = () => (
+  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
   </svg>
 );
 
@@ -82,11 +88,12 @@ export default function ProductCard({ product }) {
               className={`btn pcard__add${inCart ? ' pcard__add--added' : ' btn-primary'}`}
               onClick={() => addItem(product)}
             >
-              {inCart ? '✓ Agregado' : '+ Agregar'}
+              <CartIcon />
+              <span>{inCart ? 'Agregado' : 'Agregar'}</span>
             </button>
           )}
-          <Link to={`/catalogo/${_id}`} className="btn btn-outline pcard__detail">
-            Ver detalles
+          <Link to={`/catalogo/${_id}`} className="pcard__detail-btn" title="Ver detalles">
+            <ArrowIcon />
           </Link>
         </div>
       </div>

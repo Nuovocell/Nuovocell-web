@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCartStore, useUIStore } from '../../lib/store';
@@ -20,11 +20,28 @@ const CloseIcon = () => (
   </svg>
 );
 
+const ChevronIcon = () => (
+  <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+    <path d="M6 9l6 6 6-6"/>
+  </svg>
+);
+
+const CATALOG_ITEMS = [
+  { to: '/catalogo', label: 'Todos los productos' },
+  { to: '/catalogo?cat=smartphones', label: 'Smartphones' },
+  { to: '/catalogo?cat=laptops', label: 'Laptops' },
+  { to: '/catalogo?cat=accesorios', label: 'Accesorios' },
+  { to: '/catalogo?cat=internet', label: 'Internet Portátil' },
+  { to: '/catalogo?cat=usados', label: 'Usados Cert.' },
+];
+
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const { toggleCart } = useUIStore();
   const { mobileMenuOpen, toggleMenu, closeAll } = useUIStore();
   const count = useCartStore(s => s.items.reduce((n, i) => n + i.qty, 0));
@@ -35,15 +52,24 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { closeAll(); }, [location]);
+  useEffect(() => { closeAll(); setDropdownOpen(false); }, [location]);
+
+  // Cerrar dropdown al hacer click fuera
+  useEffect(() => {
+    const handler = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   const toggleLang = () => i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es');
 
+  const isCatalogActive = location.pathname === '/catalogo';
+
   const navLinks = [
-    { to: '/catalogo', label: t('nav.catalogo') },
-    { to: '/catalogo?cat=smartphones', label: t('nav.smartphones') },
-    { to: '/catalogo?cat=laptops', label: t('nav.laptops') },
-    { to: '/catalogo?cat=accesorios', label: t('nav.accesorios') },
     { to: '/sucursales', label: t('nav.sucursales') },
     { to: '/servicio-tecnico', label: t('nav.servicio') },
   ];
@@ -68,11 +94,40 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul className="navbar__links">
+
+          {/* Dropdown Catálogo */}
+          <li className="navbar__dropdown-wrap" ref={dropdownRef}>
+            <button
+              className={`navbar__link navbar__dropdown-trigger${isCatalogActive ? ' active' : ''}`}
+              onClick={() => setDropdownOpen(v => !v)}
+              aria-expanded={dropdownOpen}
+            >
+              {t('nav.catalogo')}
+              <span className={`navbar__chevron${dropdownOpen ? ' navbar__chevron--open' : ''}`}>
+                <ChevronIcon />
+              </span>
+            </button>
+            {dropdownOpen && (
+              <div className="navbar__dropdown">
+                {CATALOG_ITEMS.map(item => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    className="navbar__dropdown-item"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </li>
+
           {navLinks.map(link => (
             <li key={link.to}>
               <Link
                 to={link.to}
-                className={`navbar__link${location.pathname === link.to.split('?')[0] ? ' active' : ''}`}
+                className={`navbar__link${location.pathname === link.to ? ' active' : ''}`}
               >
                 {link.label}
               </Link>
@@ -104,6 +159,15 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="navbar__mobile">
+          {/* Catálogo expandido en móvil */}
+          <div className="navbar__mobile-section">
+            <span className="navbar__mobile-section-label">Catálogo</span>
+            {CATALOG_ITEMS.map(item => (
+              <Link key={item.to} to={item.to} className="navbar__mobile-link navbar__mobile-link--sub">
+                {item.label}
+              </Link>
+            ))}
+          </div>
           {navLinks.map(link => (
             <Link key={link.to} to={link.to} className="navbar__mobile-link">
               {link.label}

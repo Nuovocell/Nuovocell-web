@@ -223,3 +223,17 @@
   .hero__trust { justify-content: center; }
   .hero__badge { justify-content: center; }
 }
+
+.hero__trust-icon {
+  display: flex;
+  align-items: center;
+  color: var(--blue);
+  opacity: 0.8;
+}
+
+.hero__phone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-50);
+}

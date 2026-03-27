@@ -214,10 +214,10 @@ export default function HomePage() {
           <div className="home-digitel__content">
             {/* Logotema Agente Autorizado Digitel — sobre fondo claro */}
             <div className="home-digitel__logotema">
-              <span className="home-digitel__agente-text">Agente Autorizado</span>
+              <span className="home-digitel__agente-text">{t('digitel.badge')}</span>
               <DigitelLogo size="lg" />
             </div>
-            <p>Activa tu línea, recarga tu saldo o elige el plan ideal para ti.<br/>Atención personalizada en todas nuestras sucursales.</p>
+            <p>{t('digitel.sub')}</p>
             <div className="home-digitel__actions">
               <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
                 Tenemos planes a tu medida

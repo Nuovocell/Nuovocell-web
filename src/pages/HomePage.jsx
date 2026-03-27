@@ -183,15 +183,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Digitel banner */}
+      {/* Digitel banner — fondo claro segun guia de marca Agente Autorizado */}
       <section className="home-digitel">
         <div className="container home-digitel__inner">
+          {/* Visual humana — izquierda */}
+          <div className="home-digitel__visual">
+            <div className="home-digitel__human">
+              <svg viewBox="0 0 280 320" fill="none" xmlns="http://www.w3.org/2000/svg" width="280">
+                {/* Fondo circular morado Digitel */}
+                <circle cx="140" cy="160" r="130" fill="#7B2D8B" opacity="0.12"/>
+                <circle cx="140" cy="160" r="95" fill="#7B2D8B" opacity="0.1"/>
+                {/* Silueta persona */}
+                <circle cx="140" cy="90" r="38" fill="#7B2D8B" opacity="0.7"/>
+                <path d="M65 280 Q65 200 140 195 Q215 200 215 280" fill="#7B2D8B" opacity="0.7"/>
+                {/* Teléfono en mano */}
+                <rect x="118" y="105" width="44" height="72" rx="6" fill="white" opacity="0.9"/>
+                <rect x="122" y="110" width="36" height="58" rx="3" fill="#7B2D8B" opacity="0.3"/>
+                <circle cx="140" cy="172" r="3" fill="white" opacity="0.8"/>
+                {/* Señal Digitel */}
+                <path d="M168 85 Q180 72 168 60" stroke="#E30613" strokeWidth="3" strokeLinecap="round" fill="none"/>
+                <path d="M174 90 Q192 72 174 54" stroke="#E30613" strokeWidth="3" strokeLinecap="round" fill="none"/>
+                <path d="M180 95 Q204 72 180 48" stroke="#E30613" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* Contenido — derecha */}
           <div className="home-digitel__content">
-            <span className="badge badge-blue">✓ Agente Autorizado</span>
-            <DigitelLogo size="lg" />
-            <p>Activa tu línea, recarga tu saldo o elige el plan ideal para ti. Atención en todas nuestras sucursales.</p>
+            {/* Logotema Agente Autorizado Digitel — sobre fondo claro */}
+            <div className="home-digitel__logotema">
+              <span className="home-digitel__agente-text">Agente Autorizado</span>
+              <DigitelLogo size="lg" />
+            </div>
+            <p>Activa tu línea, recarga tu saldo o elige el plan ideal para ti.<br/>Atención personalizada en todas nuestras sucursales.</p>
             <div className="home-digitel__actions">
-              <a href={DIGITEL_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
                 Tenemos planes a tu medida
                 <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -207,23 +233,6 @@ export default function HomePage() {
                 </svg>
                 Consultar por WhatsApp
               </a>
-            </div>
-          </div>
-          <div className="home-digitel__visual">
-            <div className="home-digitel__digitel-icon">
-              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="180">
-                <circle cx="100" cy="100" r="90" fill="#E30613" opacity="0.08"/>
-                <circle cx="100" cy="100" r="60" fill="#E30613" opacity="0.12"/>
-                <circle cx="100" cy="100" r="30" fill="#E30613" opacity="0.2"/>
-                <circle cx="100" cy="100" r="10" fill="#E30613"/>
-                {[0,45,90,135,180,225,270,315].map((angle, i) => (
-                  <line key={i} x1="100" y1="100"
-                    x2={100 + 85 * Math.cos((angle * Math.PI) / 180)}
-                    y2={100 + 85 * Math.sin((angle * Math.PI) / 180)}
-                    stroke="#E30613" strokeWidth="1.5" opacity="0.3"
-                  />
-                ))}
-              </svg>
             </div>
           </div>
         </div>

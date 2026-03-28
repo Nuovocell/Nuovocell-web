@@ -197,3 +197,22 @@
 .pcard__nombre-link:hover .pcard__nombre {
   color: var(--blue);
 }
+/* ── Responsive ProductCard (Lai) ── */
+@media (max-width: 480px) {
+  .pcard__body { padding: 10px 10px 12px; }
+  .pcard__nombre { font-size: 0.85rem; }
+  .pcard__actions { gap: 6px; }
+  .pcard__add {
+    font-size: 0.72rem;
+    padding: 7px 8px;
+  }
+  .pcard__detail-btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .pcard__add span { display: none; }
+  .pcard__add { justify-content: center; }
+}

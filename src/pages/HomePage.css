@@ -265,3 +265,38 @@
   border: 4px solid rgba(123,45,139,0.2);
   display: block;
 }
+/* ── Sección Crédito independiente ── */
+.home-credito-section {
+  background: var(--bg-2);
+  border-top: var(--border);
+}
+
+.home-credito-section__sub,
+.home-pagos__sub {
+  color: var(--white-50);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+  max-width: 540px;
+}
+
+/* Logos de pago monocromáticos — color en hover */
+.payment-logo__img svg,
+.payment-logo__img img {
+  filter: grayscale(1) brightness(0.7);
+  transition: filter 0.2s;
+}
+.payment-logo:hover .payment-logo__img svg,
+.payment-logo:hover .payment-logo__img img,
+.payment-logo--link:hover .payment-logo__img svg,
+.payment-logo--link:hover .payment-logo__img img {
+  filter: grayscale(0) brightness(1) !important;
+}
+
+/* Crédito badges — mismo tratamiento monocromático */
+.credit-badge__img {
+  filter: grayscale(0.3);
+  transition: filter 0.2s;
+}
+.credit-badge:hover .credit-badge__img {
+  filter: grayscale(0);
+}

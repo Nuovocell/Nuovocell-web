@@ -300,3 +300,36 @@
 .credit-badge:hover .credit-badge__img {
   filter: grayscale(0);
 }
+
+/* Reducir espacio vacío entre secciones */
+.home-pagos {
+  padding-bottom: 40px !important;
+}
+
+/* Iconos de service cards más grandes (Lai: pequeños) */
+.home-service-card__icon {
+  width: 52px;
+  height: 52px;
+}
+.home-service-card__icon svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+/* Footer: logos pago también monocromáticos */
+.footer__pagos .payment-logo__img svg,
+.footer__pagos .payment-logo__img img {
+  filter: grayscale(1) brightness(0.6);
+  transition: filter 0.2s;
+}
+.footer__pagos .payment-logo:hover .payment-logo__img svg,
+.footer__pagos .payment-logo:hover .payment-logo__img img {
+  filter: grayscale(0) brightness(1);
+}
+.footer__credito .credit-badge__img {
+  filter: grayscale(0.5);
+  transition: filter 0.2s;
+}
+.footer__credito .credit-badge:hover .credit-badge__img {
+  filter: grayscale(0);
+}

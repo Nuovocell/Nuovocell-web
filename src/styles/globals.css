@@ -291,3 +291,60 @@ input, textarea, select {
 .home-cat-card:hover .home-cat-card__icon {
   background: rgba(255,255,255,0.1);
 }
+
+
+/* ── Tipografía: tamaños mínimos WCAG 12px (Lai p10) ── */
+.suc-card__horas,
+.suc-card__dias,
+.footer__tagline,
+.footer__bottom p,
+.footer__col-title,
+.serv-info-box__sub,
+.serv-item__label,
+.pcard__marca,
+.pcard__price-consult {
+  font-size: max(0.78rem, 12px);
+}
+
+/* ── Tipografía: line-height en cards de servicios (Lai p10) ── */
+.home-serv-card__title,
+.serv-item__label,
+.serv-info-box__title {
+  line-height: 1.4;
+}
+
+/* ── WCAG Contraste: textos secundarios mínimo 65% opacidad (Lai p10) ── */
+/* Blanco al 50% sobre fondo oscuro ≈ ratio ~3.5 — debajo del mínimo AA */
+/* Subimos a 70% mínimo en elementos de lectura crítica */
+.suc-card__horas,
+.suc-card__info-row {
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.footer__bottom p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: max(0.78rem, 12px);
+}
+
+.footer__tagline {
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.footer__links a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Contenedores azules: off-white en lugar de #FFF puro (Lai p10) ── */
+/* Blanco 100% sobre azul fatiga la vista — usar #F0F6FF */
+.home-digitel__content p,
+.home-digitel__content h2,
+.badge-blue {
+  color: #e8f4ff;
+}
+
+/* ── Hover consistente: todos oscurecen (Lai p10) ── */
+/* Garantizar que ningún hover aclare — solo oscurecer o saturar */
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+}

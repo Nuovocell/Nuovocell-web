@@ -252,3 +252,84 @@
   margin-top: 12px;
   margin-bottom: 8px;
 }
+
+/* ── Reestructura Servicio Técnico según Lai ── */
+
+/* Más espacio general en la página */
+.serv-page__header {
+  margin-bottom: 64px;
+}
+
+/* Diagnóstico gratis — más grande y llamativo */
+.serv-page__diag-badge {
+  font-size: 1rem !important;
+  padding: 10px 22px !important;
+  margin-top: 20px !important;
+  box-shadow: 0 0 24px rgba(0,230,118,0.15);
+}
+
+/* Título de sección más visible */
+.serv-page__section-title {
+  font-size: 0.88rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+  color: var(--blue) !important;
+  margin-bottom: 24px !important;
+}
+
+/* Grid de servicios con más espacio */
+.serv-grid {
+  gap: 16px !important;
+  margin-bottom: 40px !important;
+}
+
+/* Items de servicio más cómodos */
+.serv-item {
+  padding: 24px 14px !important;
+  gap: 14px !important;
+}
+
+/* Formulario con más espacio entre campos */
+.serv-form {
+  gap: 20px !important;
+}
+
+/* Inputs más definidos — borde más visible */
+.serv-form__field input,
+.serv-form__field select,
+.serv-form__field textarea {
+  border-color: rgba(255,255,255,0.15) !important;
+  padding: 13px 16px !important;
+  font-size: 0.9rem !important;
+}
+
+.serv-form__field input:focus,
+.serv-form__field select:focus,
+.serv-form__field textarea:focus {
+  border-color: rgba(0,170,255,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(0,170,255,0.08);
+}
+
+/* Labels más legibles */
+.serv-form__field label {
+  font-size: 0.82rem !important;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--white-80) !important;
+}
+
+/* Más separación entre secciones del layout */
+.serv-page__layout {
+  gap: 56px !important;
+}
+
+/* Info boxes con más aire */
+.serv-info-boxes {
+  gap: 16px !important;
+  margin-top: 8px;
+}
+
+/* Formulario con padding más generoso */
+.serv-page__form {
+  padding: 36px !important;
+}

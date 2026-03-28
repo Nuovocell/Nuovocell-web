@@ -369,3 +369,48 @@ input, textarea, select {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   outline-color: rgba(0, 170, 255, 0.18);
 }
+
+
+/* ── White Space: más respiración en secciones principales (Lai p12) ── */
+.section {
+  padding: clamp(72px, 9vw, 140px) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+}
+
+/* ── Microinteracciones: hover más expresivo en cards (Lai p12) ── */
+/* El borde azul y la elevación deben sentirse fluidos y claros */
+.card {
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  border-color: rgba(0, 170, 255, 0.40);
+  transform: translateY(-5px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 170, 255, 0.15);
+}
+
+/* ── Jerarquía botones: Agregar > Ver detalles (Lai p12) ── */
+/* Botón "Agregar" ya es azul sólido — reforzar que tenga más peso que el icono de flecha */
+.pcard__add.btn-primary {
+  font-size: 0.8rem;
+  padding: 9px 10px;
+  letter-spacing: 0.01em;
+}
+
+.pcard__detail-btn {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s, color 0.2s, border-color 0.2s, background 0.2s;
+}
+.pcard__detail-btn:hover {
+  opacity: 1;
+  color: var(--blue);
+  border-color: rgba(0, 170, 255, 0.4);
+  background: var(--blue-dim);
+}

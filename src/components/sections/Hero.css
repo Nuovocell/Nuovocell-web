@@ -237,3 +237,39 @@
   justify-content: center;
   color: var(--white-50);
 }
+/* ── Badge Agente Autorizado Digitel en Hero ── */
+.hero__digitel-badge {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 20px;
+  padding: 7px 14px;
+  background: white;
+  border-radius: 8px;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.hero__digitel-badge:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+.hero__digitel-logotema {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1;
+}
+.hero__digitel-agente {
+  font-family: Arial, sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #7B2D8B;
+  letter-spacing: 0.04em;
+}
+.hero__digitel-nombre {
+  font-family: Arial Black, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #E30613;
+  letter-spacing: -0.02em;
+}

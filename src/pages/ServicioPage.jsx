@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { SUCURSALES } from '../lib/data';
 import './ServicioPage.css';
 
-/* Iconos SVG consistentes */
 const IconScreen = () => (
   <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2.5"/>
@@ -104,7 +103,7 @@ export default function ServicioPage() {
             Reparamos smartphones y dispositivos de todas las marcas. Atención profesional en nuestras sucursales.
           </p>
           <div className="serv-page__diag-badge">
-            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
             {t('servicios.diag_gratis')}
@@ -112,38 +111,8 @@ export default function ServicioPage() {
         </div>
 
         <div className="serv-page__layout">
-          {/* Left — services + info */}
-          <div className="serv-page__left">
-            <p className="serv-page__section-title">¿Qué reparamos?</p>
-            <div className="serv-grid">
-              {SERVICIOS.map(({ id, Icon, label }) => (
-                <div
-                  key={id}
-                  className={`serv-item card${form.servicio === label ? ' serv-item--active' : ''}`}
-                  onClick={() => setForm(p => ({ ...p, servicio: label }))}
-                >
-                  <span className="serv-item__icon"><Icon /></span>
-                  <span className="serv-item__label">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Info boxes */}
-            <div className="serv-info-boxes">
-              {INFO_BOXES.map(({ Icon, title, sub }) => (
-                <div key={title} className="serv-info-box">
-                  <span className="serv-info-box__icon"><Icon /></span>
-                  <div>
-                    <p className="serv-info-box__title">{title}</p>
-                    <p className="serv-info-box__sub">{sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="serv-page__form card">
+          {/* Formulario — primero en móvil (order CSS), derecha en desktop */}
+          <div className="serv-page__form card serv-page__form--right">
             <p className="serv-page__form-title">{t('servicios.form_title')}</p>
 
             <div className="serv-form">
@@ -215,6 +184,36 @@ export default function ServicioPage() {
                 </svg>
                 Enviar por WhatsApp
               </button>
+            </div>
+          </div>
+
+          {/* Left — servicios + info */}
+          <div className="serv-page__left">
+            <p className="serv-page__section-title">¿Qué reparamos?</p>
+            <div className="serv-grid">
+              {SERVICIOS.map(({ id, Icon, label }) => (
+                <div
+                  key={id}
+                  className={`serv-item card${form.servicio === label ? ' serv-item--active' : ''}`}
+                  onClick={() => setForm(p => ({ ...p, servicio: label }))}
+                >
+                  <span className="serv-item__icon"><Icon /></span>
+                  <span className="serv-item__label">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Info boxes */}
+            <div className="serv-info-boxes">
+              {INFO_BOXES.map(({ Icon, title, sub }) => (
+                <div key={title} className="serv-info-box">
+                  <span className="serv-info-box__icon"><Icon /></span>
+                  <div>
+                    <p className="serv-info-box__title">{title}</p>
+                    <p className="serv-info-box__sub">{sub}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

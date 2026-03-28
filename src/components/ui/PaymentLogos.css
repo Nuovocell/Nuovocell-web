@@ -47,7 +47,7 @@
 .digitel-logo img { height: auto; display: block; }
 .digitel-logo--sm img { width: 80px; }
 .digitel-logo--md img { width: 110px; }
-.digitel-logo--lg img { width: 140px; }
+.digitel-logo--lg img { width: 190px; }
 
 /* Credit badge base */
 .credit-badge {
@@ -128,3 +128,4 @@
   filter: grayscale(0) !important;
   opacity: 1 !important;
 }
+

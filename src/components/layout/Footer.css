@@ -210,3 +210,63 @@
   color: rgba(255,255,255,0.6) !important;
   font-size: max(0.72rem, 11px) !important;
 }
+
+/* ── Logotema Digitel en footer ── */
+.footer__digitel-badge {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  padding: 8px 14px;
+  background: white;
+  border-radius: 8px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.footer__digitel-badge:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.footer__digitel-logotema {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1;
+}
+.footer__digitel-agente {
+  font-family: Arial, sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #7B2D8B;
+  letter-spacing: 0.03em;
+}
+.footer__digitel-nombre {
+  font-family: Arial Black, Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #E30613;
+  letter-spacing: -0.02em;
+}
+
+/* ── Contraste WCAG — textos del footer ── */
+/* Mejorar legibilidad textos secundarios de gris claro a blanco-60 */
+.footer__links a {
+  color: rgba(255,255,255,0.65) !important;
+  transition: color 0.2s;
+}
+.footer__links a:hover {
+  color: #fff !important;
+}
+.footer__tagline {
+  color: rgba(255,255,255,0.65) !important;
+  font-size: 0.88rem;
+}
+.footer__bottom p {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: max(0.78rem, 12px) !important;
+}
+/* Horarios en sucursales — mínimo 12px */
+.suc-card__schedule {
+  font-size: max(0.8rem, 12px) !important;
+  color: rgba(255,255,255,0.7) !important;
+}

@@ -114,3 +114,17 @@
     opacity: 0.88;
     transform: translateY(-2px);
 }
+/* Payment logo clickeable */
+.payment-logo--link {
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.payment-logo--link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,170,255,0.2);
+}
+.payment-logo--link .payment-logo__img {
+  filter: grayscale(0) !important;
+  opacity: 1 !important;
+}

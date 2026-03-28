@@ -186,7 +186,7 @@
   bottom: -20px;
   right: -10px;
   background: var(--blue);
-  color: var(--bg);
+  color: #FCFCFC;
   padding: 16px 20px;
   border-radius: var(--radius);
   display: flex;
@@ -296,3 +296,4 @@
   display: flex;
   align-items: center;
 }
+

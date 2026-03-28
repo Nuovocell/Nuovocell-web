@@ -361,3 +361,55 @@
     gap: 8px;
   }
 }
+
+
+/* ── Responsive: métodos de pago y crédito en móvil (Lai p11) ── */
+
+/* Pagos: grid uniforme en todos los breakpoints */
+.home-pagos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+  align-items: stretch;
+}
+
+@media (max-width: 640px) {
+  .home-pagos__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* Logos de pago: tamaño uniforme en móvil */
+  .home-pagos__grid .payment-logo__img {
+    width: 100%;
+    height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-pagos__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Crédito: badges uniformes en móvil */
+@media (max-width: 640px) {
+  .home-credito__tags {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  .home-credito__tags .credit-badge,
+  .home-credito__tags .credit-badge--svg svg {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .home-credito__tags .credit-badge--svg svg {
+    width: 100%;
+    height: 44px;
+  }
+}

@@ -15,10 +15,32 @@ const CloseIcon = () => (
   </svg>
 );
 
-const BotIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-    <rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V7"/><circle cx="12" cy="5" r="2"/>
-    <path d="M8 15h.01M12 15h.01M16 15h.01"/>
+const ChipAIIcon = ({ size = 22 }) => (
+  <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Chip body */}
+    <rect x="8" y="8" width="16" height="16" rx="3" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.5"/>
+    {/* Pins top */}
+    <line x1="12" y1="8" x2="12" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="12" cy="3.5" r="1.2" fill="currentColor"/>
+    <line x1="20" y1="8" x2="20" y2="4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="20" cy="3.5" r="1.2" fill="currentColor"/>
+    {/* Pins bottom */}
+    <line x1="12" y1="24" x2="12" y2="28" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="12" cy="28.5" r="1.2" fill="currentColor"/>
+    <line x1="20" y1="24" x2="20" y2="28" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="20" cy="28.5" r="1.2" fill="currentColor"/>
+    {/* Pins left */}
+    <line x1="8" y1="12" x2="4" y2="12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="3.5" cy="12" r="1.2" fill="currentColor"/>
+    <line x1="8" y1="20" x2="4" y2="20" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="3.5" cy="20" r="1.2" fill="currentColor"/>
+    {/* Pins right */}
+    <line x1="24" y1="12" x2="28" y2="12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="28.5" cy="12" r="1.2" fill="currentColor"/>
+    <line x1="24" y1="20" x2="28" y2="20" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="28.5" cy="20" r="1.2" fill="currentColor"/>
+    {/* AI label */}
+    <text x="16" y="20.5" textAnchor="middle" fontSize="8" fontWeight="700" fill="currentColor" fontFamily="sans-serif" letterSpacing="0.5">AI</text>
   </svg>
 );
 
@@ -95,11 +117,11 @@ export default function AIAssistant() {
     <>
       {/* Floating button */}
       {!aiOpen && (
-              <button className="ai-fab" onClick={toggleAI} aria-label="Asistente IA">
-        <BotIcon />
-        <span className="ai-fab__label">Asistente IA</span>
-        <span className="ai-fab__dot" />
-      </button>
+        <button className="ai-fab" onClick={toggleAI} aria-label="Asistente AI">
+          <ChipAIIcon size={22} />
+          <span className="ai-fab__label">Asistente AI</span>
+          <span className="ai-fab__dot" />
+        </button>
       )}
 
       {/* Chat panel */}
@@ -108,7 +130,7 @@ export default function AIAssistant() {
         <div className="ai-panel__header">
           <div className="ai-panel__header-info">
             <div className="ai-panel__avatar">
-              <BotIcon />
+              <ChipAIIcon size={18} />
             </div>
             <div>
               <p className="ai-panel__title">{t('ai.title')}</p>
@@ -126,7 +148,7 @@ export default function AIAssistant() {
           {messages.map((msg, i) => (
             <div key={i} className={`ai-msg ai-msg--${msg.role}`}>
               {msg.role === 'assistant' && (
-                <div className="ai-msg__avatar"><BotIcon /></div>
+                <div className="ai-msg__avatar"><ChipAIIcon size={16} /></div>
               )}
               <div className="ai-msg__bubble">{msg.content}</div>
             </div>
@@ -134,7 +156,7 @@ export default function AIAssistant() {
 
           {loading && (
             <div className="ai-msg ai-msg--assistant">
-              <div className="ai-msg__avatar"><BotIcon /></div>
+              <div className="ai-msg__avatar"><ChipAIIcon size={16} /></div>
               <div className="ai-msg__bubble ai-msg__bubble--typing">
                 <span /><span /><span />
               </div>

@@ -24,9 +24,12 @@ export default function Footer() {
         <div className="footer__brand">
           <p className="footer__logo">nuovo<span>cell</span></p>
           <p className="footer__tagline">{t('footer.tagline')}</p>
-          {/* Badge Digitel — colores oficiales de marca Digitel */}
+          {/* Logotema Agente Autorizado Digitel — colores oficiales Pantone */}
           <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="footer__digitel-badge">
-            <img src="/logos/digitel.svg" alt="Agente Autorizado Digitel" className="footer__digitel-logo" />
+            <div className="footer__digitel-logotema">
+              <span className="footer__digitel-agente">Agente Autorizado</span>
+              <span className="footer__digitel-nombre">DIGITEL</span>
+            </div>
           </a>
           <div className="footer__socials">
             <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="footer__social footer__social--wa" aria-label="WhatsApp">

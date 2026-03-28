@@ -162,7 +162,7 @@ input, textarea, select { font-family: inherit; }
 /* Hover = tono más oscuro del color base — consistente en todos los botones */
 .btn-primary {
   background: var(--blue);
-  color: var(--bg);
+  color: #FCFCFC;
 }
 .btn-primary:hover {
   background: var(--blue-dark);

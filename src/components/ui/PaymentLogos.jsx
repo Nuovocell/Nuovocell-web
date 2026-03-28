@@ -55,7 +55,17 @@ export function DigitelLogo({ size = 'md' }) {
                                                                                                                                                                                   Listo: '/logos/lysto.webp',
                                                                                                                                                                                   };
 
-                                                                                                                                                                                  const CREDIT_URLS = {
+                                                                                                                                                                                  const WA_BASE = 'https://wa.me/584123621133?text=';
+
+const PAYMENT_WA_MSGS = {
+  cash:      encodeURIComponent('Hola! Quiero pagar en efectivo USD. ¿Cómo procedo?'),
+  zelle:     encodeURIComponent('Hola! Quiero pagar por Zelle. ¿Cuál es el correo/número?'),
+  pagomovil: encodeURIComponent('Hola! Quiero pagar por Pago Móvil. ¿Cuáles son los datos?'),
+  binance:   encodeURIComponent('Hola! Quiero pagar por Binance Pay. ¿Cuál es el ID?'),
+  card:      encodeURIComponent('Hola! Quiero pagar con tarjeta débito/crédito. ¿En qué sucursal puedo hacerlo?'),
+};
+
+const CREDIT_URLS = {
                                                                                                                                                                                     Cashea: 'https://play.google.com/store/apps/details?id=com.cashea.app',
                                                                                                                                                                                       'Zona Naranja': 'https://tuzonanaranja.com',
                                                                                                                                                                                         Krece: 'https://www.krece.app',

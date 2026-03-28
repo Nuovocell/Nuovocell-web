@@ -6,7 +6,7 @@
   height: 48px;
   padding: 0 18px 0 14px;
   background: var(--blue);
-  color: var(--bg);
+  color: #FCFCFC;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -293,4 +293,5 @@
 .ai-fab:not(:hover) {
   animation: ai-pulse 3s ease-in-out infinite;
 }
+
 

@@ -31,9 +31,20 @@
 }
 
 .footer__digitel-badge {
+  display: block;
   margin-bottom: 20px;
   width: fit-content;
-  font-size: 0.7rem;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+.footer__digitel-badge:hover {
+  opacity: 1;
+}
+.footer__digitel-logo {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .footer__socials {
@@ -178,4 +189,24 @@
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* WCAG — contraste mínimo 4.5:1 en textos secundarios del footer */
+.footer__tagline {
+  color: rgba(255,255,255,0.75) !important;
+}
+.footer__links a,
+.footer__links li {
+  color: rgba(255,255,255,0.72) !important;
+}
+.footer__links a:hover {
+  color: #ffffff !important;
+}
+.payment-logo__label {
+  color: rgba(255,255,255,0.72) !important;
+  font-size: max(0.7rem, 11px) !important;
+}
+.footer__rights {
+  color: rgba(255,255,255,0.6) !important;
+  font-size: max(0.72rem, 11px) !important;
 }

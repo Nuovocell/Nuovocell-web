@@ -201,8 +201,11 @@
 }
 
 .navbar__wa {
-  font-size: 0.8rem;
-  padding: 8px 16px;
+  font-size: 0.82rem;
+  padding: 6px 16px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .navbar__mobile-toggle {

@@ -333,3 +333,31 @@
 .footer__credito .credit-badge:hover .credit-badge__img {
   filter: grayscale(0);
 }
+
+/* ── Responsive Productos Populares (Lai) ── */
+@media (max-width: 768px) {
+  .home-featured__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .home-featured__header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-featured__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .home-services__grid {
+    grid-template-columns: 1fr;
+  }
+  /* Crédito en móvil */
+  .home-credito__tags {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+}

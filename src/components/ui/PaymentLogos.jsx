@@ -82,21 +82,40 @@ const CREDIT_URLS = {
                                                                                                                                                                                                       };
 
                                                                                                                                                                                                       export function PaymentLogo({ icon, label }) {
-                                                                                                                                                                                                        const src = icon === 'pagomovil' ? '/logos/pagomovil.jpg' : null;
-                                                                                                                                                                                                          return (
-                                                                                                                                                                                                              <div className="payment-logo">
-                                                                                                                                                                                                                    <div className="payment-logo__img">
-                                                                                                                                                                                                                            {src
-                                                                                                                                                                                                                                      ? <img src={src} alt={label} onError={e => { e.target.style.display = 'none'; }} />
-                                                                                                                                                                                                                                                : SVG_LOGOS[icon] || <span>{label[0]}</span>
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                                                                    <span className="payment-logo__label">{label}</span>
-                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                          );
-                                                                                                                                                                                                                                                                          }
+  const src = icon === 'pagomovil' ? '/logos/pagomovil.jpg' : null;
+  const waMsg = PAYMENT_WA_MSGS[icon];
+  const href = waMsg ? WA_BASE + waMsg : null;
 
-                                                                                                                                                                                                                                                                          export function CreditBadge({ nombre, url }) {
+  const inner = (
+    <>
+      <div className="payment-logo__img">
+        {src
+          ? <img src={src} alt={label} onError={e => { e.target.style.display = 'none'; }} />
+          : SVG_LOGOS[icon] || <span>{label[0]}</span>
+        }
+      </div>
+      <span className="payment-logo__label">{label}</span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="payment-logo payment-logo--link"
+        title={`Consultar pago con ${label}`}
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  return <div className="payment-logo">{inner}</div>;
+}
+
+export function CreditBadge({ nombre, url }) {
                                                                                                                                                                                                                                                                             const src = CREDIT_IMG_MAP[nombre];
                                                                                                                                                                                                                                                                               const href = CREDIT_URLS[nombre] || url || '#';
                                                                                                                                                                                                                                                                                 const fallback = CREDIT_FALLBACK[nombre] || { bg: '#333', color: '#fff' };

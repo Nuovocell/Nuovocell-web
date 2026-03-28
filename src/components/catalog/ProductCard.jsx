@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useCartStore } from '../../lib/store';
+import { useCartStore, useUIStore } from '../../lib/store';
 import { urlFor } from '../../lib/sanity';
 import './ProductCard.css';
 
 const CartIcon = () => (
   <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+    <polyline points="20 6 9 17 4 12"/>
   </svg>
 );
 
@@ -21,15 +27,26 @@ export default function ProductCard({ product }) {
   const { t } = useTranslation();
   const addItem = useCartStore(s => s.addItem);
   const items = useCartStore(s => s.items);
+  const toggleCart = useUIStore(s => s.toggleCart);
   const inCart = items.some(i => i._id === product._id);
+  const [justAdded, setJustAdded] = useState(false);
 
   const { _id, nombre, categoria, imagen, precio, precioAnterior, precioMin,
           disponible, esNuevo, esOferta, marca } = product;
 
   const displayPrice = precio ?? precioMin;
-  const waMsg = encodeURIComponent(`Hola! Me interesa el ${nombre} ¿está disponible?`);
-
   const imgSrc = imagen ? urlFor(imagen).width(400).height(400).fit('crop').url() : null;
+
+  const handleAdd = () => {
+    if (inCart) {
+      // Ya está en carrito — abrir carrito directamente
+      toggleCart();
+      return;
+    }
+    addItem(product);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1800);
+  };
 
   return (
     <div className={`pcard card${!disponible ? ' pcard--sold' : ''}`}>
@@ -45,7 +62,14 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
-      {/* Imagen — link a detalle */}
+      {/* Toast feedback */}
+      {justAdded && (
+        <div className="pcard__toast">
+          <CheckIcon /> Agregado al carrito
+        </div>
+      )}
+
+      {/* Imagen */}
       <Link to={`/catalogo/${_id}`} className="pcard__img-wrap">
         {imgSrc
           ? <img src={imgSrc} alt={nombre} className="pcard__img" />
@@ -63,7 +87,6 @@ export default function ProductCard({ product }) {
       <div className="pcard__body">
         {marca && <div className="pcard__marca">{marca}</div>}
 
-        {/* Nombre — link a detalle */}
         <Link to={`/catalogo/${_id}`} className="pcard__nombre-link">
           <h3 className="pcard__nombre">{nombre}</h3>
         </Link>
@@ -86,10 +109,11 @@ export default function ProductCard({ product }) {
           {disponible && (
             <button
               className={`btn pcard__add${inCart ? ' pcard__add--added' : ' btn-primary'}`}
-              onClick={() => addItem(product)}
+              onClick={handleAdd}
+              title={inCart ? 'Ver en carrito' : 'Agregar al carrito'}
             >
-              <CartIcon />
-              <span>{inCart ? 'Agregado' : 'Agregar'}</span>
+              {inCart ? <CheckIcon /> : <CartIcon />}
+              <span>{inCart ? 'Ver carrito' : 'Agregar'}</span>
             </button>
           )}
           <Link to={`/catalogo/${_id}`} className="pcard__detail-btn" title="Ver detalles">

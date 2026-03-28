@@ -5,7 +5,7 @@
 }
 
 .serv-page__header {
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
 
 .serv-page__sub {
@@ -16,25 +16,30 @@
   line-height: 1.7;
 }
 
-.serv-page__sub--highlight {
-  color: var(--green);
-  font-weight: 600;
-}
-
+/* Layout: formulario a la derecha en desktop, primero en móvil */
 .serv-page__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 56px;
   align-items: start;
 }
 
-/* Section title — sin uppercase para evitar choque visual */
+/* Formulario — columna derecha en desktop */
+.serv-page__form--right {
+  order: 2;
+}
+
+.serv-page__left {
+  order: 1;
+}
+
+/* Section title — sentence case, sin uppercase */
 .serv-page__section-title {
   font-family: var(--font-display);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--white-80);
-  margin-bottom: 20px;
+  color: var(--blue);
+  margin-bottom: 24px;
   letter-spacing: 0.02em;
 }
 
@@ -42,18 +47,18 @@
 .serv-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 32px;
+  gap: 16px;
+  margin-bottom: 40px;
 }
 
 .serv-item {
-  padding: 22px 12px;
+  padding: 24px 14px;
   text-align: center;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   transition: all 0.2s;
 }
 
@@ -67,7 +72,6 @@
   background: var(--blue-dim) !important;
 }
 
-/* Icono SVG en item — color dinámico */
 .serv-item__icon {
   display: flex;
   align-items: center;
@@ -99,7 +103,8 @@
 .serv-info-boxes {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .serv-info-box {
@@ -113,11 +118,25 @@
   transition: border-color 0.2s;
 }
 
+/* Diagnóstico gratuito — primer info box destacado (Lai) */
+.serv-info-boxes .serv-info-box:first-child {
+  border-color: rgba(0, 230, 118, 0.35);
+  background: rgba(0, 230, 118, 0.06);
+}
+
+.serv-info-boxes .serv-info-box:first-child .serv-info-box__icon {
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--green);
+}
+
+.serv-info-boxes .serv-info-box:first-child .serv-info-box__title {
+  color: var(--green);
+}
+
 .serv-info-box:hover {
   border-color: rgba(0,170,255,0.2);
 }
 
-/* Icono info box */
 .serv-info-box__icon {
   display: flex;
   align-items: center;
@@ -146,7 +165,7 @@
 
 /* Form */
 .serv-page__form {
-  padding: 32px;
+  padding: 36px;
   position: sticky;
   top: calc(68px + 24px);
 }
@@ -162,7 +181,7 @@
 .serv-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 20px;
 }
 
 .serv-form__field {
@@ -175,13 +194,13 @@
   grid-column: 1 / -1;
 }
 
-/* Labels sin uppercase — más amigables para rellenar */
 .serv-form__field label {
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--white-80);
   letter-spacing: 0.01em;
+  display: block;
 }
 
 .serv-form__req {
@@ -189,18 +208,16 @@
   margin-left: 2px;
 }
 
-/* Inputs — border-radius consistente con las cards (12px → var(--radius)) */
 .serv-form__field input,
 .serv-form__field select,
 .serv-form__field textarea {
   background: var(--bg-2);
-  border: var(--border);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: var(--radius);
-  padding: 12px 16px;
+  padding: 13px 16px;
   color: var(--white);
-  font-size: 0.88rem;
-  font-size: max(0.88rem, 12px);
-  transition: border-color 0.2s;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
   line-height: 1.5;
 }
 
@@ -208,8 +225,9 @@
 .serv-form__field select:focus,
 .serv-form__field textarea:focus {
   outline: none;
-  border-color: rgba(0,170,255,0.4);
+  border-color: rgba(0,170,255,0.5);
   background: var(--bg-1);
+  box-shadow: 0 0 0 3px rgba(0,170,255,0.08);
 }
 
 .serv-form__field input::placeholder,
@@ -225,111 +243,36 @@
   margin-top: 4px;
 }
 
-@media (max-width: 900px) {
-  .serv-page__layout { grid-template-columns: 1fr; }
-  .serv-page__form { position: static; }
-}
-
-@media (max-width: 480px) {
-  .serv-grid { grid-template-columns: repeat(2, 1fr); }
-  .serv-form { grid-template-columns: 1fr; }
-  .serv-page { padding-top: calc(68px + 32px); }
-}
-
-/* Badge "Diagnóstico gratis" — destacado según Lai */
+/* Badge Diagnóstico gratis — header */
 .serv-page__diag-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: rgba(0, 230, 118, 0.12);
   color: var(--green);
-  border: 1px solid rgba(0, 230, 118, 0.3);
+  border: 1px solid rgba(0, 230, 118, 0.35);
   border-radius: 24px;
-  padding: 8px 18px;
+  padding: 10px 22px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.9rem;
-  margin-top: 12px;
-  margin-bottom: 8px;
-}
-
-/* ── Reestructura Servicio Técnico según Lai ── */
-
-/* Más espacio general en la página */
-.serv-page__header {
-  margin-bottom: 64px;
-}
-
-/* Diagnóstico gratis — más grande y llamativo */
-.serv-page__diag-badge {
-  font-size: 1rem !important;
-  padding: 10px 22px !important;
-  margin-top: 20px !important;
+  font-size: 1rem;
+  margin-top: 20px;
   box-shadow: 0 0 24px rgba(0,230,118,0.15);
 }
 
-/* Título de sección más visible */
-.serv-page__section-title {
-  font-size: 0.88rem !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase;
-  color: var(--blue) !important;
-  margin-bottom: 24px !important;
+@media (max-width: 900px) {
+  .serv-page__layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  /* Formulario primero en móvil (Lai: flujo de lectura) */
+  .serv-page__form--right { order: 1; position: static; }
+  .serv-page__left { order: 2; }
 }
 
-/* Grid de servicios con más espacio */
-.serv-grid {
-  gap: 16px !important;
-  margin-bottom: 40px !important;
-}
-
-/* Items de servicio más cómodos */
-.serv-item {
-  padding: 24px 14px !important;
-  gap: 14px !important;
-}
-
-/* Formulario con más espacio entre campos */
-.serv-form {
-  gap: 20px !important;
-}
-
-/* Inputs más definidos — borde más visible */
-.serv-form__field input,
-.serv-form__field select,
-.serv-form__field textarea {
-  border-color: rgba(255,255,255,0.15) !important;
-  padding: 13px 16px !important;
-  font-size: 0.9rem !important;
-}
-
-.serv-form__field input:focus,
-.serv-form__field select:focus,
-.serv-form__field textarea:focus {
-  border-color: rgba(0,170,255,0.5) !important;
-  box-shadow: 0 0 0 3px rgba(0,170,255,0.08);
-}
-
-/* Labels más legibles */
-.serv-form__field label {
-  font-size: 0.82rem !important;
-  margin-bottom: 8px;
-  display: block;
-  color: var(--white-80) !important;
-}
-
-/* Más separación entre secciones del layout */
-.serv-page__layout {
-  gap: 56px !important;
-}
-
-/* Info boxes con más aire */
-.serv-info-boxes {
-  gap: 16px !important;
-  margin-top: 8px;
-}
-
-/* Formulario con padding más generoso */
-.serv-page__form {
-  padding: 36px !important;
+@media (max-width: 480px) {
+  .serv-grid { grid-template-columns: repeat(2, 1fr); }
+  .serv-form { grid-template-columns: 1fr; }
+  .serv-page { padding-top: calc(68px + 32px); }
+  .serv-page__form { padding: 24px; }
 }

@@ -277,10 +277,12 @@
   z-index: 1001;
 }
 
-.ai-window {
-  box-shadow: 0 8px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,170,255,0.2) !important;
-  /* Ilusión de estar "por encima" de la página */
-  backdrop-filter: none;
+/* Panel: elevación fuerte para ilusión de estar por encima (Lai p9) */
+.ai-panel {
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.75),
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 170, 255, 0.18);
 }
 
 /* Pulse sutil en el FAB para llamar atención */
@@ -291,3 +293,4 @@
 .ai-fab:not(:hover) {
   animation: ai-pulse 3s ease-in-out infinite;
 }
+

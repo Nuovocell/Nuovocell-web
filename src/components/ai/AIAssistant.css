@@ -271,3 +271,23 @@
   border-color: var(--blue);
 }
 .ai-panel__send:disabled { cursor: not-allowed; }
+/* Elevación para que el bot resalte sobre el contenido — Lai */
+.ai-fab {
+  box-shadow: 0 4px 24px rgba(0,170,255,0.35), 0 2px 8px rgba(0,0,0,0.4) !important;
+  z-index: 1001;
+}
+
+.ai-window {
+  box-shadow: 0 8px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,170,255,0.2) !important;
+  /* Ilusión de estar "por encima" de la página */
+  backdrop-filter: none;
+}
+
+/* Pulse sutil en el FAB para llamar atención */
+@keyframes ai-pulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(0,170,255,0.35), 0 2px 8px rgba(0,0,0,0.4); }
+  50%       { box-shadow: 0 4px 32px rgba(0,170,255,0.55), 0 2px 8px rgba(0,0,0,0.4); }
+}
+.ai-fab:not(:hover) {
+  animation: ai-pulse 3s ease-in-out infinite;
+}

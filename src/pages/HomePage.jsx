@@ -36,7 +36,7 @@ const IconBadgeCheck = () => (
   </svg>
 );
 const IconDigitel4G = () => (
-  <img src="/logos/4g-lte.png" alt="4G LTE Digitel" style={{ width: 38, height: 38, objectFit: "contain" }} />
+  <img src="/logos/4g-lte.png" alt="4G LTE Digitel" style={{ width: 58, height: 58, objectFit: "contain", background: 'transparent' }} />
 );
 const IconWrench = () => (
   <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ export default function HomePage() {
                   className="home-cat-card card"
                   style={{ '--cat-color': color }}
                 >
-                  <span className="home-cat-card__icon" style={{ color }}><Icon /></span>
+                  <span className="home-cat-card__icon" style={{ color, background: id === 'digitel' ? 'transparent' : undefined }}><Icon /></span>
                   <span className="home-cat-card__label">{label}</span>
                   <svg className="home-cat-card__arrow" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -277,3 +277,4 @@ export default function HomePage() {
     </main>
   );
 }
+

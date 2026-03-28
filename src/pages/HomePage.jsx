@@ -104,10 +104,10 @@ const TRUST_ITEMS = [
 ];
 
 const SERVICES = [
-  { Icon: IconWrench,  title: 'Servicio técnico',  desc: 'Reparación de pantallas, baterías, software y más. Diagnóstico gratis.', link: '/servicio-tecnico' },
-  { Icon: IconTruck,   title: 'Delivery nacional', desc: 'Enviamos tu pedido a cualquier parte de Venezuela de forma segura.',      link: '/sucursales' },
-  { Icon: IconShield,  title: 'Calidad garantizada', desc: 'Productos originales con garantía oficial. Servicio al cliente confiable.', link: null },
-  { Icon: IconBot,     title: 'Asistente IA',      desc: 'Consulta disponibilidad, precios y más con nuestro asistente virtual 24/7.', link: null },
+  { Icon: IconWrench,  title: 'Servicio técnico',    desc: 'Reparación de pantallas, baterías, software y más. Diagnóstico gratis.', link: '/servicio-tecnico' },
+  { Icon: IconTruck,   title: 'Delivery nacional',   desc: 'Enviamos tu pedido a cualquier parte de Venezuela de forma segura.',      link: '/sucursales' },
+  { Icon: IconShield,  title: 'Calidad garantizada', desc: 'Productos originales con garantía oficial. Servicio al cliente confiable.', link: '/sucursales' },
+  { Icon: IconBot,     title: 'Asistente IA',        desc: 'Consulta disponibilidad, precios y más con nuestro asistente virtual 24/7.', link: '/servicio-tecnico' },
 ];
 
 export default function HomePage() {

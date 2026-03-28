@@ -92,7 +92,7 @@
   background: #f8f8f8;
   border-top: 3px solid #7B2D8B;
   border-bottom: 1px solid rgba(123,45,139,0.15);
-  padding: var(--section-py) 0;
+  padding: 48px 0;
 }
 
 .home-digitel__inner {
@@ -419,4 +419,5 @@
     height: 44px;
   }
 }
+
 

@@ -76,8 +76,8 @@
 .suc-card__info-row {
   display: flex;
   gap: 10px;
-  color: var(--white-50);
-  font-size: 0.85rem;
+  color: rgba(255,255,255,0.70);
+  font-size: max(0.85rem, 12px);
   line-height: 1.5;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .suc-card__dias { color: var(--white-80); font-weight: 500; }
-.suc-card__horas { color: var(--white-50); }
+.suc-card__horas { color: rgba(255,255,255,0.70); }
 
 /* Actions — botones compactos con gap visible (Lai) */
 .suc-card__actions {
@@ -170,3 +170,4 @@
   .suc-card__btn-wa,
   .suc-card__btn-map { flex: unset; width: 100%; }
 }
+

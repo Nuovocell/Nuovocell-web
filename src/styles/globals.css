@@ -272,3 +272,22 @@ input, textarea, select {
 .home-credito__label {
   font-size: max(0.78rem, 12px);
 }
+/* ── Border-radius unificado en inputs (Lai) ── */
+input, textarea, select {
+  border-radius: var(--radius);
+}
+
+/* ── Hovers consistentes en categorías (Lai) ── */
+/* Todos los cards con hover: tono más oscuro del color base */
+.home-cat-card {
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+.home-cat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--cat-color-rgb, 0,170,255), 0.4);
+  background: rgba(var(--cat-color-rgb, 0,170,255), 0.06);
+}
+/* El color de hover lo controla --cat-color como CSS variable */
+.home-cat-card:hover .home-cat-card__icon {
+  background: rgba(255,255,255,0.1);
+}

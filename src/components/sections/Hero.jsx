@@ -98,10 +98,10 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trust bar — iconos SVG */}
+          {/* Trust bar — chips/etiquetas con iconos SVG (Lai) */}
           <div className="hero__trust">
             {TRUST_ITEMS.map(item => (
-              <div key={item.key} className="hero__trust-item">
+              <div key={item.key} className="hero__trust-chip">
                 <span className="hero__trust-icon">{item.icon}</span>
                 <span>{t(`trust.${item.key}`)}</span>
               </div>
@@ -125,7 +125,7 @@ export default function Hero() {
           </div>
           <div className="hero__sucursales-badge">
             <span className="hero__suc-num">8</span>
-            <span className="hero__suc-label">sucursales<br/>en Venezuela</span>
+            <span className="hero__suc-label" style={{color:'#FCFCFC'}}>SUCURSALES<br/>EN VENEZUELA</span>
           </div>
         </div>
       </div>

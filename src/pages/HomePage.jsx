@@ -105,8 +105,8 @@ const TRUST_ITEMS = [
 
 const SERVICES = [
   { Icon: IconWrench,  title: 'Servicio técnico',  desc: 'Reparación de pantallas, baterías, software y más. Diagnóstico gratis.', link: '/servicio-tecnico' },
-  { Icon: IconTruck,   title: 'Delivery nacional', desc: 'Enviamos tu pedido a cualquier parte de Venezuela de forma segura.',      link: null },
-  { Icon: IconMapPin,  title: '8 sucursales',      desc: 'Valencia, Naguanagua, Morón, Yaracal y Mirimire. Siempre cerca de ti.',  link: '/sucursales' },
+  { Icon: IconTruck,   title: 'Delivery nacional', desc: 'Enviamos tu pedido a cualquier parte de Venezuela de forma segura.',      link: '/sucursales' },
+  { Icon: IconShield,  title: 'Calidad garantizada', desc: 'Productos originales con garantía oficial. Servicio al cliente confiable.', link: null },
   { Icon: IconBot,     title: 'Asistente IA',      desc: 'Consulta disponibilidad, precios y más con nuestro asistente virtual 24/7.', link: null },
 ];
 
@@ -240,19 +240,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Payments & Credit */}
+      {/* Métodos de pago */}
       <section className="section home-pagos">
         <div className="container">
           <div className="section-label">Facilidades</div>
-          <h2 className="section-title">Métodos de <span>pago y crédito</span></h2>
+          <h2 className="section-title">Métodos de <span>pago</span></h2>
+          <p className="home-pagos__sub">Haz click en cualquier método para consultar los datos de pago por WhatsApp.</p>
           <div className="home-pagos__grid">
             {PAGOS.map(p => <PaymentLogo key={p.label} icon={p.icon} label={p.label} />)}
           </div>
-          <div className="home-credito">
-            <p className="home-credito__label">Crédito disponible con:</p>
-            <div className="home-credito__tags">
-              {CREDITO.map(c => <CreditBadge key={c.nombre} {...c} />)}
-            </div>
+        </div>
+      </section>
+
+      {/* Crédito disponible */}
+      <section className="section home-credito-section">
+        <div className="container">
+          <div className="section-label">Financiamiento</div>
+          <h2 className="section-title">Crédito <span>disponible</span></h2>
+          <p className="home-credito-section__sub">Lleva tu equipo hoy y págalo en cuotas sin intereses con nuestras alianzas.</p>
+          <div className="home-credito__tags">
+            {CREDITO.map(c => <CreditBadge key={c.nombre} {...c} />)}
           </div>
         </div>
       </section>

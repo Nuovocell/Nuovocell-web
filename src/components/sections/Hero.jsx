@@ -67,11 +67,13 @@ export default function Hero() {
 
       <div className="hero__inner container">
         <div className="hero__content">
-          {/* Badge */}
-          <div className="badge badge-blue hero__badge">
-            <span className="hero__badge-dot" />
-            {t('hero.badge')}
-          </div>
+          {/* Badge Agente Autorizado — con logotema Digitel segun guia de marca */}
+          <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="hero__digitel-badge">
+            <div className="hero__digitel-logotema">
+              <span className="hero__digitel-agente">Agente Autorizado</span>
+              <span className="hero__digitel-nombre">DIGITEL</span>
+            </div>
+          </a>
 
           {/* Title */}
           <h1 className="hero__title">

@@ -105,27 +105,26 @@
 .suc-card__dias { color: var(--white-80); font-weight: 500; }
 .suc-card__horas { color: var(--white-50); }
 
-/* Actions — botones con tamaño equilibrado y jerarquía visual clara */
+/* Actions — botones compactos con gap visible (Lai) */
 .suc-card__actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-top: auto;
 }
 
-/* WhatsApp — botón compacto */
 .suc-card__btn-wa {
   flex: 1;
   justify-content: center;
-  font-size: 0.78rem;
-  padding: 8px 12px;
+  font-size: 0.75rem;
+  padding: 7px 10px;
 }
 
-/* Cómo llegar — azul sólido para equiparar peso visual con WhatsApp (Lai) */
+/* Cómo llegar — azul sólido */
 .suc-card__btn-map {
   flex: 1;
   justify-content: center;
-  font-size: 0.78rem;
-  padding: 8px 12px;
+  font-size: 0.75rem;
+  padding: 7px 10px;
   background: var(--blue);
   color: #fff;
   border: none;
@@ -135,8 +134,9 @@
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 .suc-card__btn-map:hover {
   background: var(--blue-dark);

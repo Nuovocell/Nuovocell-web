@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { WA_URL } from '../../lib/data';
+import { WA_URL, DIGITEL_URL } from '../../lib/data';
 import './Hero.css';
 
 const WAIcon = () => (

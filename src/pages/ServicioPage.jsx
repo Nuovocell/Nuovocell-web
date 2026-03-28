@@ -101,9 +101,14 @@ export default function ServicioPage() {
             {t('servicios.title')} <span>{t('servicios.subtitle')}</span>
           </h1>
           <p className="serv-page__sub">
-            Reparamos smartphones y dispositivos de todas las marcas.{' '}
-            <strong className="serv-page__sub--highlight">{t('servicios.diag_gratis')}</strong>
+            Reparamos smartphones y dispositivos de todas las marcas.
           </p>
+          <div className="serv-page__diag-badge">
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            {t('servicios.diag_gratis')}
+          </div>
         </div>
 
         <div className="serv-page__layout">

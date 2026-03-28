@@ -101,7 +101,7 @@ export default function ServicioPage() {
             {t('servicios.title')} <span>{t('servicios.subtitle')}</span>
           </h1>
           <p className="serv-page__sub">
-            Reparamos smartphones y dispositivos de todas las marcas.
+            Reparamos smartphones y dispositivos de todas las marcas. Atención profesional en nuestras sucursales.
           </p>
           <div className="serv-page__diag-badge">
             <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

@@ -216,3 +216,35 @@
   .pcard__add span { display: none; }
   .pcard__add { justify-content: center; }
 }
+
+
+/* Toast feedback al agregar al carrito */
+.pcard__toast {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #0a1628;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+  white-space: nowrap;
+  animation: toastIn 0.2s ease, toastOut 0.3s ease 1.5s forwards;
+  pointer-events: none;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes toastOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

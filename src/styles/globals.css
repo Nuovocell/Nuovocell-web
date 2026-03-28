@@ -348,3 +348,24 @@ input, textarea, select {
   background: rgba(255, 255, 255, 0.15);
   color: var(--white);
 }
+
+
+/* ── Cards: sombra base consistente — eliminar inconsistencia visual (Lai p11) ── */
+/* Todas las cards tienen la misma sombra sutil en reposo y más pronunciada en hover */
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 170, 255, 0.10);
+}
+
+/* Cards en catálogo: overflow:hidden no debe cortar sombra — usar outline trick */
+.pcard {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  outline: 1px solid transparent;
+  outline-offset: 0;
+}
+.pcard:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  outline-color: rgba(0, 170, 255, 0.18);
+}

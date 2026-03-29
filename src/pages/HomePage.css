@@ -219,7 +219,7 @@
   .home-cats__grid { grid-template-columns: repeat(3, 1fr); }
   .home-digitel__inner { grid-template-columns: 1fr; }
   .home-digitel__visual { display: none; }
-  .home-digitel__content p { color: #555; }
+  .home-digitel__content p { color: #333 !important; }
   .home-featured__header { flex-direction: column; align-items: flex-start; }
 }
 
@@ -255,7 +255,7 @@
 .home-digitel__btn-primary { background: #7B2D8B; color: white; display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; transition: all 0.2s; width: fit-content; text-decoration: none; }
 .home-digitel__btn-primary:hover { background: #5e1f6e; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(123,45,139,0.35); }
 .home-digitel__inner { grid-template-columns: auto 1fr; }
-.home-digitel__content p { color: #444; }
+.home-digitel__content p { color: #333 !important; }
 /* Imagen persona Digitel — circular */
 .home-digitel__persona-img {
   width: 320px;
@@ -419,5 +419,6 @@
     height: 44px;
   }
 }
+
 
 

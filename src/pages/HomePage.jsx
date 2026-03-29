@@ -36,7 +36,12 @@ const IconBadgeCheck = () => (
   </svg>
 );
 const IconDigitel4G = () => (
-  <img src="/logos/4g-lte.png" alt="4G LTE Digitel" style={{ width: 58, height: 58, objectFit: "contain", background: 'transparent' }} />
+  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 8 L6 24 L2 24 L2 30 L6 30 L6 40 L13 40 L13 30 L26 30 L26 24 L13 24 L13 15 L20 8 Z" fill="#6B21A8"/>
+    <path d="M34 8 C24 8 17 15 17 24 C17 33 24 40 34 40 C41 40 47 36 50 30 L50 22 L36 22 L36 28 L44 28 C42 32 38 35 34 35 C27 35 23 30 23 24 C23 18 27 13 34 13 C38 13 41 15 43 18 L49 14 C46 10 40 8 34 8 Z" fill="#6B21A8"/>
+    <path d="M50 30 C50 36 47 43 43 47 C40 50 36 52 33 51" fill="none" stroke="#5B1A9B" stroke-width="6" stroke-linecap="round"/>
+    <text x="3" y="54" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="13" font-style="italic" fill="#E30613">LTE</text>
+  </svg>
 );
 const IconWrench = () => (
   <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -277,4 +282,5 @@ export default function HomePage() {
     </main>
   );
 }
+
 

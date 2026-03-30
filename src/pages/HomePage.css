@@ -89,7 +89,7 @@
 
 /* Digitel banner */
 .home-digitel {
-  background: linear-gradient(135deg, #4A0072 0%, #7B2D8B 50%, #9C27B0 100%);
+  background: linear-gradient(135deg, #4A0072 0%, #7B2D8B 55%, #9C27B0 100%) !important;
   padding: 56px 0;
   overflow: hidden;
 }
@@ -113,7 +113,8 @@
   height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.2));
+  border-radius: 16px;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
 }
 
 .home-digitel__content {
@@ -123,8 +124,8 @@
 }
 
 .home-digitel__isotipo {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
@@ -477,6 +478,7 @@
     height: 44px;
   }
 }
+
 
 
 

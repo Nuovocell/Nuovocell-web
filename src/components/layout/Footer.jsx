@@ -31,6 +31,7 @@ export default function Footer() {
               <span className="footer__digitel-nombre">DIGITEL</span>
             </div>
           </a>
+          <p className="footer__siguenos">Síguenos</p>
           <div className="footer__socials">
             <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="footer__social footer__social--wa" aria-label="WhatsApp">
               <WAIcon />
@@ -102,3 +103,4 @@ export default function Footer() {
     </footer>
   );
 }
+

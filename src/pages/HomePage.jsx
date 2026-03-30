@@ -203,8 +203,8 @@ export default function HomePage() {
           <div className="home-digitel__visual">
             <div className="home-digitel__human">
               <img
-                src="/images/digitel-persona.png"
-                alt="Cliente Digitel"
+                src="/images/digitel-familia.png"
+                alt="Familia Digitel"
                 className="home-digitel__persona-img"
               />
             </div>
@@ -276,6 +276,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

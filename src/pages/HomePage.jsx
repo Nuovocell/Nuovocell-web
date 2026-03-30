@@ -199,21 +199,10 @@ export default function HomePage() {
       {/* Digitel banner */}
       <section className="home-digitel">
         <div className="container home-digitel__inner">
-          {/* Visual izquierda */}
-          <div className="home-digitel__visual">
-            <img
-              src="/images/digitel-familia.png"
-              alt="Familia Digitel"
-              className="home-digitel__persona-img"
-            />
-          </div>
-
-          {/* Contenido derecha */}
+          {/* Contenido izquierda */}
           <div className="home-digitel__content">
-            <div className="home-digitel__logos-row">
-              <img src="/logos/digitel-g.png" alt="Digitel" className="home-digitel__4g" />
-              <DigitelLogo size="lg" />
-            </div>
+            {/* Isotipo g arriba izquierda */}
+            <img src="/logos/digitel-g.png" alt="Digitel" className="home-digitel__isotipo" />
             <p className="home-digitel__sub">{t('digitel.sub')}</p>
             <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
               {t('digitel.cta')}
@@ -221,6 +210,15 @@ export default function HomePage() {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
+          </div>
+
+          {/* Visual derecha */}
+          <div className="home-digitel__visual">
+            <img
+              src="/images/digitel-familia.png"
+              alt="Familia Digitel"
+              className="home-digitel__persona-img"
+            />
           </div>
         </div>
       </section>
@@ -271,6 +269,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

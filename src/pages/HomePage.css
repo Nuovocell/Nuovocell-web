@@ -87,76 +87,68 @@
   gap: 16px;
 }
 
-/* Digitel — banner con imagen de fondo */
+/* Digitel banner */
 .home-digitel {
-  position: relative;
-  overflow: hidden;
-  background: #f0f0f0;
-  min-height: 380px;
-  display: flex;
-  align-items: stretch;
+  background: #f8f8f8;
   border-top: 3px solid #7B2D8B;
   border-bottom: 1px solid rgba(123,45,139,0.15);
+  padding: 48px 0;
+  overflow: hidden;
 }
 
-.home-digitel__bg {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: auto;
-  max-width: 55%;
-  object-fit: contain;
-  object-position: bottom right;
-  pointer-events: none;
-}
-
-.home-digitel__overlay {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  gap: 24px;
-  width: 100%;
-}
-
-.home-digitel__top {
-  display: flex;
+.home-digitel__inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 60px;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
-.home-digitel__4g {
-  width: 72px;
-  height: 72px;
+.home-digitel__visual {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.home-digitel__persona-img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
   object-fit: contain;
+  display: block;
 }
 
 .home-digitel__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 480px;
+  gap: 20px;
 }
 
-.home-digitel__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 800;
-  color: #1a1a1a;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+.home-digitel__logos-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.home-digitel__4g {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
 }
 
 .home-digitel__sub {
   font-size: 1rem;
   color: #333 !important;
-  max-width: 400px;
-  line-height: 1.6;
+  max-width: 420px;
+  line-height: 1.7;
+}
+
+.home-digitel__agente-text {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7B2D8B;
+  letter-spacing: 0.05em;
+  font-style: italic;
 }
 
 .home-digitel__btn-primary {
@@ -180,20 +172,9 @@
   box-shadow: 0 8px 24px rgba(123,45,139,0.35);
 }
 
-.home-digitel__inner { display: none; }
-.home-digitel__visual { display: none; }
-.home-digitel__persona-img { display: none; }
-.home-digitel__logotema { display: none; }
-.home-digitel__agente-text { display: none; }
-
 @media (max-width: 768px) {
-  .home-digitel { min-height: 300px; }
-  .home-digitel__bg {
-    opacity: 0.25;
-    max-width: 100%;
-    width: 100%;
-  }
-  .home-digitel__title { font-size: 1.8rem; }
+  .home-digitel__inner { grid-template-columns: 1fr; gap: 32px; }
+  .home-digitel__visual { display: none; }
 }
 
 
@@ -502,6 +483,7 @@
     height: 44px;
   }
 }
+
 
 
 

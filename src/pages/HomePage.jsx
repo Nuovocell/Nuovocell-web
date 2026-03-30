@@ -214,7 +214,6 @@ export default function HomePage() {
           <div className="home-digitel__content">
             {/* Logotema Agente Autorizado Digitel — sobre fondo claro */}
             <div className="home-digitel__logotema">
-              <span className="home-digitel__agente-text">{t('digitel.badge')}</span>
               <DigitelLogo size="lg" />
             </div>
             <p>{t('digitel.sub')}</p>
@@ -277,6 +276,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

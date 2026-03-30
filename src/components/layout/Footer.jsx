@@ -22,7 +22,7 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer__brand">
-          <p className="footer__logo">nuovo<span>cell</span></p>
+          <img src="/logos/nuovocell-logo.png" alt="Nuovocell" className="footer__logo-img" />
           <p className="footer__tagline">{t('footer.tagline')}</p>
           {/* Logotema Agente Autorizado Digitel — colores oficiales Pantone */}
           <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="footer__digitel-badge">

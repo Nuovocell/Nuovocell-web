@@ -196,36 +196,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Digitel banner — fondo claro segun guia de marca Agente Autorizado */}
+      {/* Digitel banner — layout tipo banner con imagen de fondo */}
       <section className="home-digitel">
-        <div className="container home-digitel__inner">
-          {/* Visual humana — izquierda */}
-          <div className="home-digitel__visual">
-            <div className="home-digitel__human">
-              <img
-                src="/images/digitel-familia.png"
-                alt="Familia Digitel"
-                className="home-digitel__persona-img"
-              />
-            </div>
+        {/* Imagen de fondo — familia */}
+        <img src="/images/digitel-familia.png" alt="Familia Digitel" className="home-digitel__bg" />
+
+        {/* Overlay con contenido */}
+        <div className="container home-digitel__overlay">
+          {/* Top row: 4G LTE logo izquierda + Digitel logo derecha */}
+          <div className="home-digitel__top">
+            <img src="/logos/digitel-g.png" alt="Digitel 4G" className="home-digitel__4g" />
+            <DigitelLogo size="lg" />
           </div>
 
-          {/* Contenido — derecha */}
+          {/* Contenido izquierda */}
           <div className="home-digitel__content">
-            {/* Logotema Agente Autorizado Digitel — sobre fondo claro */}
-            <div className="home-digitel__logotema">
-              <DigitelLogo size="lg" />
-            </div>
-            <p>{t('digitel.sub')}</p>
-            <div className="home-digitel__actions">
-              <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
-                {t('digitel.cta')}
-                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </a>
-
-            </div>
+            <h2 className="home-digitel__title">{t('digitel.title')}</h2>
+            <p className="home-digitel__sub">{t('digitel.sub')}</p>
+            <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
+              {t('digitel.cta')}
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
@@ -276,6 +269,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

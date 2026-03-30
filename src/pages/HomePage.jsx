@@ -199,26 +199,29 @@ export default function HomePage() {
       {/* Digitel banner */}
       <section className="home-digitel">
         <div className="container home-digitel__inner">
-          {/* Contenido izquierda */}
-          <div className="home-digitel__content">
-            {/* Logo 4G LTE */}
-            <img src="/logos/4g-lte.png" alt="Digitel 4G LTE" className="home-digitel__isotipo" />
-            <p className="home-digitel__sub">{t('digitel.sub')}</p>
-            <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
-              {t('digitel.cta')}
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-
-          {/* Visual derecha */}
+          {/* Visual izquierda */}
           <div className="home-digitel__visual">
             <img
-              src="/images/digitel-familia.png"
-              alt="Familia Digitel"
+              src="/images/digitel-persona.png"
+              alt="Cliente Digitel"
               className="home-digitel__persona-img"
             />
+          </div>
+
+          {/* Contenido derecha */}
+          <div className="home-digitel__content">
+            <div className="home-digitel__logotema">
+              <DigitelLogo size="lg" />
+            </div>
+            <p>{t('digitel.sub')}</p>
+            <div className="home-digitel__actions">
+              <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
+                {t('digitel.cta')}
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -269,6 +272,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

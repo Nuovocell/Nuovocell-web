@@ -256,14 +256,15 @@
 .home-digitel__btn-primary:hover { background: #5e1f6e; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(123,45,139,0.35); }
 .home-digitel__inner { grid-template-columns: auto 1fr; }
 .home-digitel__content p { color: #333 !important; }
-/* Imagen persona Digitel — circular */
+/* Imagen familia Digitel — sin recorte circular */
 .home-digitel__persona-img {
-  width: 320px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid rgba(123,45,139,0.2);
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
   display: block;
+  border-radius: 0;
+  border: none;
 }
 
 @media (max-width: 768px) {
@@ -419,6 +420,7 @@
     height: 44px;
   }
 }
+
 
 
 

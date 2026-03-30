@@ -222,6 +222,11 @@
   .hero__ctas { justify-content: center; }
   .hero__trust { justify-content: center; }
   .hero__badge { justify-content: center; }
+  .hero__title { font-size: 11vw; }
+}
+
+@media (max-width: 480px) {
+  .hero__title { font-size: 10vw; }
 }
 
 .hero__trust-icon {
@@ -296,4 +301,5 @@
   display: flex;
   align-items: center;
 }
+
 

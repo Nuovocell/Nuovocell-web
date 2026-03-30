@@ -271,3 +271,11 @@
   color: rgba(255,255,255,0.7) !important;
 }
 
+
+.footer__logo-img {
+  width: 160px;
+  height: auto;
+  display: block;
+  margin-bottom: 12px;
+}
+

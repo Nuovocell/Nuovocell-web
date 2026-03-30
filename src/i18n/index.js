@@ -86,7 +86,7 @@ const resources = {
       },
       digitel: {
         badge: 'Agente Autorizado',
-        title: 'Planes Digitel',
+        title: 'Conecta sin límites',
         sub: 'Activa tu línea, recarga tu saldo o elige el plan prepago o pospago ideal para ti.',
         cta: 'Consultar planes',
         planes: 'Planes Digitel',
@@ -203,7 +203,7 @@ const resources = {
       },
       digitel: {
         badge: 'Authorized Agent',
-        title: 'Digitel Plans',
+        title: 'Connect without limits',
         sub: 'Activate your line, recharge your balance or choose the ideal prepaid or postpaid plan.',
         cta: 'Check plans',
         planes: 'Digitel Plans',
@@ -246,3 +246,4 @@ i18n.use(initReactI18next).init({
 });
 
 export default i18n;
+

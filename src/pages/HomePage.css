@@ -288,7 +288,7 @@
 /* Logos de pago monocromáticos — color en hover */
 .payment-logo__img svg,
 .payment-logo__img img {
-  filter: grayscale(1) brightness(0.7);
+  filter: none;
   transition: filter 0.2s;
 }
 .payment-logo:hover .payment-logo__img svg,
@@ -325,7 +325,7 @@
 /* Footer: logos pago también monocromáticos */
 .footer__pagos .payment-logo__img svg,
 .footer__pagos .payment-logo__img img {
-  filter: grayscale(1) brightness(0.6);
+  filter: none;
   transition: filter 0.2s;
 }
 .footer__pagos .payment-logo:hover .payment-logo__img svg,
@@ -419,6 +419,7 @@
     height: 44px;
   }
 }
+
 
 
 

@@ -196,22 +196,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Digitel banner — layout tipo banner con imagen de fondo */}
+      {/* Digitel banner */}
       <section className="home-digitel">
-        {/* Imagen de fondo — familia */}
-        <img src="/images/digitel-familia.png" alt="Familia Digitel" className="home-digitel__bg" />
-
-        {/* Overlay con contenido */}
-        <div className="container home-digitel__overlay">
-          {/* Top row: 4G LTE logo izquierda + Digitel logo derecha */}
-          <div className="home-digitel__top">
-            <img src="/logos/digitel-g.png" alt="Digitel 4G" className="home-digitel__4g" />
-            <DigitelLogo size="lg" />
+        <div className="container home-digitel__inner">
+          {/* Visual izquierda */}
+          <div className="home-digitel__visual">
+            <img
+              src="/images/digitel-familia.png"
+              alt="Familia Digitel"
+              className="home-digitel__persona-img"
+            />
           </div>
 
-          {/* Contenido izquierda */}
+          {/* Contenido derecha */}
           <div className="home-digitel__content">
-            <h2 className="home-digitel__title">{t('digitel.title')}</h2>
+            <div className="home-digitel__logos-row">
+              <img src="/logos/digitel-g.png" alt="Digitel" className="home-digitel__4g" />
+              <DigitelLogo size="lg" />
+            </div>
             <p className="home-digitel__sub">{t('digitel.sub')}</p>
             <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
               {t('digitel.cta')}
@@ -269,6 +271,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

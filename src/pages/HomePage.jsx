@@ -201,8 +201,8 @@ export default function HomePage() {
         <div className="container home-digitel__inner">
           {/* Contenido izquierda */}
           <div className="home-digitel__content">
-            {/* Isotipo g arriba izquierda */}
-            <img src="/logos/digitel-g.png" alt="Digitel" className="home-digitel__isotipo" />
+            {/* Logo 4G LTE */}
+            <img src="/logos/4g-lte.png" alt="Digitel 4G LTE" className="home-digitel__isotipo" />
             <p className="home-digitel__sub">{t('digitel.sub')}</p>
             <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
               {t('digitel.cta')}
@@ -269,6 +269,7 @@ export default function HomePage() {
     </main>
   );
 }
+
 
 
 

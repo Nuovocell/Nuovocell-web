@@ -129,16 +129,12 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="navbar__logo">
-          {!imgError ? (
-            <img
-              src="/Recurso%203.png"
-              alt="Nuovocell"
-              className="navbar__logo-img"
-              onError={() => setImgError(true)}
-            />
-          ) : (
-            <span className="navbar__logo-text">nuovo<span>cell</span></span>
-          )}
+          <img
+            src="/logos/nuovocell-logo.png"
+            alt="Nuovocell"
+            className="navbar__logo-img"
+            onError={() => setImgError(true)}
+          />
         </Link>
 
         {/* Desktop links */}
@@ -238,3 +234,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

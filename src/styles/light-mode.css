@@ -1,0 +1,117 @@
+/* ── Light mode: component overrides ── */
+[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--white);
+}
+
+[data-theme="light"] .navbar {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .navbar__logo,
+[data-theme="light"] .nav-link,
+[data-theme="light"] .nav-dropdown__toggle {
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-dropdown__toggle:hover {
+  color: var(--blue);
+}
+
+[data-theme="light"] .card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+[data-theme="light"] .card:hover {
+  border-color: rgba(0,136,204,0.3);
+}
+
+[data-theme="light"] .section-title { color: #1a1a2e; }
+[data-theme="light"] .section-label { color: var(--blue); }
+
+[data-theme="light"] .hero__trust-chip {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.12);
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .payment-logo__img {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.10);
+}
+[data-theme="light"] .payment-logo__img svg,
+[data-theme="light"] .payment-logo__img img {
+  filter: none !important;
+}
+
+[data-theme="light"] .footer {
+  background: #1a1a2e;
+}
+
+[data-theme="light"] .home-credito-section {
+  background: #eef1f8;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .catalog-page__search,
+[data-theme="light"] .catalog-page__select {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .catalog-page__cat {
+  color: #4a4a6a;
+  border-color: rgba(0,0,0,0.12);
+}
+[data-theme="light"] .catalog-page__cat:hover {
+  background: rgba(0,136,204,0.08);
+  color: var(--blue);
+}
+[data-theme="light"] .catalog-page__cat.active {
+  background: var(--blue);
+  color: #ffffff;
+}
+
+[data-theme="light"] .navbar__lang {
+  color: #4a4a6a;
+  border-color: rgba(0,0,0,0.12);
+}
+[data-theme="light"] .navbar__theme {
+  color: #4a4a6a;
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.12);
+}
+[data-theme="light"] .navbar__theme:hover {
+  background: rgba(0,136,204,0.08);
+  color: var(--blue);
+}
+[data-theme="light"] .nav-dropdown__menu {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.10);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+}
+[data-theme="light"] .nav-dropdown__item {
+  color: #1a1a2e;
+}
+[data-theme="light"] .nav-dropdown__item:hover {
+  background: rgba(0,136,204,0.06);
+  color: var(--blue);
+}
+[data-theme="light"] .navbar__mobile-menu {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+[data-theme="light"] .navbar__mobile-link {
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .pcard__nombre { color: #1a1a2e; }
+[data-theme="light"] .pcard__marca { color: var(--blue); }
+[data-theme="light"] .pcard__price { color: #1a1a2e; }
+[data-theme="light"] .home-cat-card__label { color: #1a1a2e; }

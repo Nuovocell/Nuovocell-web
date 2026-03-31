@@ -62,9 +62,11 @@
     letter-spacing: 0.01em;
     text-decoration: none;
     transition: opacity 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     min-width: 120px;
     min-height: 48px;
+    background: #ffffff !important;
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 /* Credit badge con SVG integrado */
@@ -94,11 +96,12 @@
 /* Badges con imagen legacy */
 .credit-badge--img {
     background: #ffffff !important;
-    border: 1px solid rgba(0,0,0,0.10);
-    padding: 6px 12px;
-    min-width: 110px;
-    min-height: 48px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 8px 16px;
+    min-width: 120px;
+    min-height: 52px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border-radius: 10px;
 }
 
 .credit-badge__img {
@@ -129,5 +132,6 @@
   filter: grayscale(0) !important;
   opacity: 1 !important;
 }
+
 
 

@@ -210,8 +210,9 @@
 
 .home-credito__tags {
   display: flex;
-  gap: 8px;
+  gap: 16px;
   flex-wrap: wrap;
+  margin-top: 8px;
 }
 
 /* Services */
@@ -490,6 +491,7 @@
     height: 44px;
   }
 }
+
 
 
 

@@ -49,6 +49,39 @@
   --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
 }
 
+/* ─── Light theme ─── */
+[data-theme="light"] {
+  --bg: #f4f6fb;
+  --bg-1: #ffffff;
+  --bg-2: #eef1f8;
+  --bg-card: #ffffff;
+  --bg-hover: #e8ecf5;
+
+  --blue: #0088cc;
+  --blue-dark: #006fa8;
+  --blue-darker: #005585;
+  --blue-dim: rgba(0, 136, 204, 0.10);
+  --blue-glow: rgba(0, 136, 204, 0.20);
+  --blue-mid: #0088cc;
+
+  --white: #1a1a2e;
+  --white-80: rgba(26,26,46,0.85);
+  --white-50: rgba(26,26,46,0.55);
+  --white-20: rgba(26,26,46,0.20);
+  --white-08: rgba(26,26,46,0.06);
+
+  --green: #00b85d;
+  --green-dark: #008f47;
+  --amber: #d48a00;
+  --red: #d42b40;
+
+  --border: 1px solid rgba(26,26,46,0.10);
+  --border-blue: 1px solid rgba(0,136,204,0.30);
+
+  --shadow-blue: 0 0 40px rgba(0,136,204,0.12);
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.08);
+}
+
 /* ─── Reset & base ─── */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -414,3 +447,4 @@ input, textarea, select {
   border-color: rgba(0, 170, 255, 0.4);
   background: var(--blue-dim);
 }
+

@@ -127,13 +127,12 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
 
-        {/* Logo */}
+        {/* Logo — azul en modo oscuro, negro en modo claro */}
         <Link to="/" className="navbar__logo">
           <img
-            src="/logos/nuovocell-logo.png"
+            src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-dark.png'}
             alt="Nuovocell"
             className="navbar__logo-img"
-            onError={() => setImgError(true)}
           />
         </Link>
 
@@ -234,4 +233,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
 

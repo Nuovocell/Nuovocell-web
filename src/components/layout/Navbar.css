@@ -292,3 +292,24 @@
   .navbar__lang { display: none; }
   .navbar__logo-img { height: 26px; }
 }
+
+/* ── Theme toggle button ── */
+.navbar__theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--white-80);
+  background: var(--white-08);
+  border: var(--border);
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.navbar__theme:hover {
+  background: var(--blue-dim);
+  color: var(--blue);
+  border-color: rgba(0,170,255,0.3);
+}
+

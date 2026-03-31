@@ -130,7 +130,7 @@ export default function Navbar() {
         {/* Logo — azul en modo oscuro, negro en modo claro */}
         <Link to="/" className="navbar__logo">
           <img
-            src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-dark.png'}
+            src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-black.png'}
             alt="Nuovocell"
             className="navbar__logo-img"
           />
@@ -233,5 +233,6 @@ export default function Navbar() {
     </nav>
   );
 }
+
 
 

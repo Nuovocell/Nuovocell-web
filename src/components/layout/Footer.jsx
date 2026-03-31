@@ -35,7 +35,7 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer__brand">
-          <img src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-dark.png'} alt="Nuovocell" className="footer__logo-img" />
+          <img src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-black.png'} alt="Nuovocell" className="footer__logo-img" />
           <p className="footer__tagline">{t('footer.tagline')}</p>
           {/* Logotema Agente Autorizado Digitel — colores oficiales Pantone */}
           <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="footer__digitel-badge">
@@ -116,5 +116,6 @@ export default function Footer() {
     </footer>
   );
 }
+
 
 

@@ -48,11 +48,11 @@ export function DigitelLogo({ size = 'md' }) {
                                                                                                                                                                         };
 
                                                                                                                                                                         const CREDIT_IMG_MAP = {
-                                                                                                                                                                          Cashea: '/logos/cashea.webp',
+                                                                                                                                                                          Cashea: '/logos/cashea.png',
                                                                                                                                                                             'Zona Naranja': '/logos/zona-naranja.svg',
                                                                                                                                                                               Krece: '/logos/krece.svg',
                                                                                                                                                                                 Chollo: '/logos/chollo.webp',
-                                                                                                                                                                                  Listo: '/logos/lysto.webp',
+                                                                                                                                                                                  Lysto: '/logos/lysto.webp',
                                                                                                                                                                                   };
 
                                                                                                                                                                                   const WA_BASE = 'https://wa.me/584123621133?text=';
@@ -78,7 +78,7 @@ const CREDIT_URLS = {
                                                                                                                                                                                                 'Zona Naranja': { bg: '#FF6B00', color: '#fff' },
                                                                                                                                                                                                   Krece: { bg: '#29C5CC', color: '#fff' },
                                                                                                                                                                                                     Chollo: { bg: '#111', color: '#fff' },
-                                                                                                                                                                                                      Listo: { bg: '#0057FF', color: '#fff' },
+                                                                                                                                                                                                      Lysto: { bg: '#0057FF', color: '#fff' },
                                                                                                                                                                                                       };
 
                                                                                                                                                                                                       export function PaymentLogo({ icon, label }) {

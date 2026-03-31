@@ -15,6 +15,7 @@ import SucursalesPage from './pages/SucursalesPage';
 import ServicioPage from './pages/ServicioPage';
 
 import './styles/globals.css';
+import './styles/light-mode.css';
 import './i18n';
 
 function ScrollToTop() {
@@ -90,3 +91,4 @@ function NotFound() {
     </div>
   );
 }
+

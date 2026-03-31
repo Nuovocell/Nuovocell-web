@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PAGOS, CREDITO, WA_URL, INSTAGRAM, FACEBOOK, DIGITEL_URL } from '../../lib/data';
@@ -12,7 +12,20 @@ const WAIcon = () => (
   </svg>
 );
 
+function useCurrentTheme() {
+  const [theme, setTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'dark');
+  useEffect(() => {
+    const obs = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+    });
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
+  return theme;
+}
+
 export default function Footer() {
+  const theme = useCurrentTheme();
   const { t } = useTranslation();
   const year = new Date().getFullYear();
 
@@ -22,7 +35,7 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer__brand">
-          <img src="/logos/nuovocell-logo.png" alt="Nuovocell" className="footer__logo-img" />
+          <img src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-dark.png'} alt="Nuovocell" className="footer__logo-img" />
           <p className="footer__tagline">{t('footer.tagline')}</p>
           {/* Logotema Agente Autorizado Digitel — colores oficiales Pantone */}
           <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="footer__digitel-badge">
@@ -103,4 +116,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

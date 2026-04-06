@@ -49,17 +49,13 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className={`pcard card${!disponible ? ' pcard--sold' : ''}`}>
+    <div className="pcard card">
       {/* Badges */}
       <div className="pcard__badges">
         {esNuevo && <span className="badge badge-blue">{t('catalog.new')}</span>}
         {esOferta && <span className="badge badge-amber">{t('catalog.offer')}</span>}
         {categoria === 'usados' && <span className="badge badge-green">{t('catalog.used')}</span>}
-        {!disponible && (
-          <span className="badge" style={{ background: 'rgba(255,61,87,0.1)', color: 'var(--red)', border: '1px solid rgba(255,61,87,0.25)' }}>
-            {t('catalog.sold_out')}
-          </span>
-        )}
+
       </div>
 
       {/* Toast feedback */}

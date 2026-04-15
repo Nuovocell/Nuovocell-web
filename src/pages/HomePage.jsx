@@ -199,30 +199,17 @@ export default function HomePage() {
       {/* Digitel banner */}
       <section className="home-digitel">
         <div className="container home-digitel__inner">
-          {/* Visual izquierda */}
-          <div className="home-digitel__visual">
-            <img
-              src="/images/digitel-persona.png"
-              alt="Cliente Digitel"
-              className="home-digitel__persona-img"
-            />
-          </div>
-
-          {/* Contenido derecha */}
-          <div className="home-digitel__content">
-            <div className="home-digitel__logotema">
-              <DigitelLogo size="lg" />
-            </div>
-            <p>{t('digitel.sub')}</p>
-            <div className="home-digitel__actions">
-              <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
-                {t('digitel.cta')}
-                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </a>
-            </div>
-          </div>
+          <img
+            src="https://cdn.sanity.io/images/wwy5bykm/production/7e5fe0fc383dc7dca43bfa0efa56e192e1af16ad-600x600.jpg"
+            alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
+            className="home-digitel__banner-img"
+          />
+          <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
+            Consultar planes
+            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </section>
 

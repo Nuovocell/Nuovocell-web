@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 function useTheme() {
   const getInitial = () => {
     const saved = localStorage.getItem('nuovocell-theme');
@@ -7,12 +6,10 @@ function useTheme() {
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   };
   const [theme, setTheme] = useState(getInitial);
-
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('nuovocell-theme', theme);
   }, [theme]);
-
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: light)');
     const handler = (e) => {
@@ -23,7 +20,6 @@ function useTheme() {
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
   }, []);
-
   const toggle = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
   return { theme, toggle };
 }
@@ -31,7 +27,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCartStore, useUIStore } from '../../lib/store';
 import './Navbar.css';
-
 const SunIcon = () => (
   <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="5"/>
@@ -41,13 +36,11 @@ const SunIcon = () => (
     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
   </svg>
 );
-
 const MoonIcon = () => (
   <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
   </svg>
 );
-
 const ShoppingBagIcon = () => (
   <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
@@ -55,34 +48,31 @@ const ShoppingBagIcon = () => (
     <path d="M16 10a4 4 0 01-8 0"/>
   </svg>
 );
-
 const MenuIcon = () => (
   <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
   </svg>
 );
-
 const CloseIcon = () => (
   <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
 );
-
 const ChevronIcon = () => (
   <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
     <path d="M6 9l6 6 6-6"/>
   </svg>
 );
-
 const CATALOG_ITEMS = [
   { to: '/catalogo', label: 'Todos los productos' },
   { to: '/catalogo?cat=smartphones', label: 'Smartphones' },
   { to: '/catalogo?cat=laptops', label: 'Laptops' },
+  { to: '/catalogo?cat=filamentos', label: 'Filamentos' },
+  { to: '/catalogo?cat=repuestos', label: 'Repuestos' },
   { to: '/catalogo?cat=accesorios', label: 'Accesorios' },
   { to: '/catalogo?cat=internet', label: 'Internet Portátil' },
   { to: '/catalogo?cat=usados', label: 'Usados Cert.' },
 ];
-
 export default function Navbar() {
   const { theme, toggle: toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
@@ -94,16 +84,15 @@ export default function Navbar() {
   const { toggleCart } = useUIStore();
   const { mobileMenuOpen, toggleMenu, closeAll } = useUIStore();
   const count = useCartStore(s => s.items.reduce((n, i) => n + i.qty, 0));
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  useEffect(() => { closeAll(); setDropdownOpen(false); }, [location]);
-
-  // Cerrar dropdown al hacer click fuera
+  useEffect(() => {
+    closeAll();
+    setDropdownOpen(false);
+  }, [location]);
   useEffect(() => {
     const handler = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -113,21 +102,15 @@ export default function Navbar() {
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
-
   const toggleLang = () => i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es');
-
   const isCatalogActive = location.pathname === '/catalogo';
-
   const navLinks = [
     { to: '/sucursales', label: t('nav.sucursales') },
     { to: '/servicio-tecnico', label: t('nav.servicio') },
   ];
-
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
-
-        {/* Logo — azul en modo oscuro, negro en modo claro */}
         <Link to="/" className="navbar__logo">
           <img
             src={theme === 'dark' ? '/logos/nuovocell-logo.png' : '/logos/nuovocell-logo-black.png'}
@@ -135,11 +118,7 @@ export default function Navbar() {
             className="navbar__logo-img"
           />
         </Link>
-
-        {/* Desktop links */}
         <ul className="navbar__links">
-
-          {/* Dropdown Catálogo */}
           <li className="navbar__dropdown-wrap" ref={dropdownRef}>
             <button
               className={`navbar__link navbar__dropdown-trigger${isCatalogActive ? ' active' : ''}`}
@@ -166,7 +145,6 @@ export default function Navbar() {
               </div>
             )}
           </li>
-
           {navLinks.map(link => (
             <li key={link.to}>
               <Link
@@ -178,8 +156,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
-        {/* Actions */}
         <div className="navbar__actions">
           <button className="navbar__theme" onClick={toggleTheme} aria-label="Cambiar tema" title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}>
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
@@ -202,15 +178,16 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="navbar__mobile">
-          {/* Catálogo expandido en móvil */}
           <div className="navbar__mobile-section">
             <span className="navbar__mobile-section-label">Catálogo</span>
             {CATALOG_ITEMS.map(item => (
-              <Link key={item.to} to={item.to} className="navbar__mobile-link navbar__mobile-link--sub">
+              <Link
+                key={item.to}
+                to={item.to}
+                className="navbar__mobile-link navbar__mobile-link--sub"
+              >
                 {item.label}
               </Link>
             ))}
@@ -232,7 +209,4 @@ export default function Navbar() {
       )}
     </nav>
   );
-}
-
-
-
+  }

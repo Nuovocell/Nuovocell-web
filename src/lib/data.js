@@ -112,6 +112,8 @@ export const CATEGORIAS = [
   { id: 'todos', label: 'Todos', labelEn: 'All' },
   { id: 'smartphones', label: 'Smartphones', labelEn: 'Smartphones' },
   { id: 'laptops', label: 'Laptops', labelEn: 'Laptops' },
+  { id: 'filamentos', label: 'Filamentos', labelEn: 'Filaments' },
+  { id: 'repuestos', label: 'Repuestos', labelEn: 'Parts' },
   { id: 'accesorios', label: 'Accesorios', labelEn: 'Accessories' },
   { id: 'internet', label: 'Internet Portátil', labelEn: 'Portable Internet' },
   { id: 'usados', label: 'Usados Cert.', labelEn: 'Certified Used' },

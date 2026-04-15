@@ -13,35 +13,69 @@ export const urlFor = (source) => builder.image(source);
 
 // Queries
 export const queries = {
-  // Todos los productos
+  // Todos los productos — ordenados por campo 'orden' (ascendente)
   allProducts: `
-    *[_type == "producto"] | order(destacado desc, categoria asc) {
-      _id, nombre, slug, categoria, marca, descripcion,
-      destacado, imagen, disponible, esNuevo, esOferta,
-      precio, precioAnterior,
+    *[_type == "producto"] | order(orden asc) {
+      _id,
+      nombre,
+      slug,
+      categoria,
+      marca,
+      descripcion,
+      destacado,
+      imagen,
+      disponible,
+      esNuevo,
+      esOferta,
+      precio,
+      precioAnterior,
+      orden,
     }
   `,
 
   // Producto por ID (página de detalle)
   productById: `
     *[_type == "producto" && _id == $id][0] {
-      _id, nombre, slug, categoria, marca, descripcion,
-      destacado, imagen, disponible, esNuevo, esOferta,
-      precio, precioAnterior, precioMin,
+      _id,
+      nombre,
+      slug,
+      categoria,
+      marca,
+      descripcion,
+      destacado,
+      imagen,
+      disponible,
+      esNuevo,
+      esOferta,
+      precio,
+      precioAnterior,
+      precioMin,
     }
   `,
 
   // Productos relacionados (misma categoría, excluyendo el actual)
   related: `
     *[_type == "producto" && categoria == $categoria && _id != $id][0...4] {
-      _id, nombre, marca, imagen, precio, precioMin, disponible,
+      _id,
+      nombre,
+      marca,
+      imagen,
+      precio,
+      precioMin,
+      disponible,
     }
   `,
 
   // Sucursales
   allSucursales: `
     *[_type == "sucursal"] | order(nombre asc) {
-      _id, nombre, direccion, ciudad, horario, activa, esDigitel,
+      _id,
+      nombre,
+      direccion,
+      ciudad,
+      horario,
+      activa,
+      esDigitel,
       "lat": coordenadas.lat,
       "lng": coordenadas.lng,
     }
@@ -50,8 +84,17 @@ export const queries = {
   // Productos destacados homepage
   destacados: `
     *[_type == "producto" && destacado == true][0...8] {
-      _id, nombre, slug, categoria, marca, imagen, disponible,
-      precio, precioAnterior, esNuevo, esOferta,
+      _id,
+      nombre,
+      slug,
+      categoria,
+      marca,
+      imagen,
+      disponible,
+      precio,
+      precioAnterior,
+      esNuevo,
+      esOferta,
     }
   `,
 };

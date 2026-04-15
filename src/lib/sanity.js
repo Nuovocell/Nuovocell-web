@@ -83,7 +83,7 @@ export const queries = {
 
   // Productos destacados homepage
   destacados: `
-    *[_type == "producto" && destacado == true][0...8] {
+    *[_type == "producto" && destacado == true] | order(orden asc) [0...8] {
       _id,
       nombre,
       slug,

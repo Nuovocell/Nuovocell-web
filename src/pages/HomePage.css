@@ -104,22 +104,32 @@
   border-radius: 0;
 }
 
-/* Desktop visible por defecto, móvil oculto */
-.home-digitel__desktop { display: block; }
-.home-digitel__mobile  { display: none; }
+/* Por defecto (modo oscuro): solo desktop-dark visible */
+.home-digitel__desktop.home-digitel__banner-light { display: none; }
+.home-digitel__desktop.home-digitel__banner-dark  { display: block; }
+.home-digitel__mobile.home-digitel__banner-light  { display: none; }
+.home-digitel__mobile.home-digitel__banner-dark   { display: none; }
 
-/* Modo oscuro: dark visible, light oculto */
-.home-digitel__banner-light { display: none; }
-.home-digitel__banner-dark  { display: block; }
+/* Modo claro: solo desktop-light visible */
+[data-theme="light"] .home-digitel__desktop.home-digitel__banner-light { display: block; }
+[data-theme="light"] .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
+[data-theme="light"] .home-digitel__mobile.home-digitel__banner-light  { display: none; }
+[data-theme="light"] .home-digitel__mobile.home-digitel__banner-dark   { display: none; }
 
-/* Modo claro: light visible, dark oculto */
-[data-theme="light"] .home-digitel__banner-light { display: block; }
-[data-theme="light"] .home-digitel__banner-dark  { display: none; }
-
-/* Móvil: ocultar desktop, mostrar móvil */
+/* Móvil modo oscuro: solo mobile-dark visible */
 @media (max-width: 768px) {
-  .home-digitel__desktop { display: none !important; }
-  .home-digitel__mobile  { display: block; }
+  .home-digitel__desktop.home-digitel__banner-light { display: none; }
+  .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
+  .home-digitel__mobile.home-digitel__banner-light  { display: none; }
+  .home-digitel__mobile.home-digitel__banner-dark   { display: block; }
+}
+
+/* Móvil modo claro: solo mobile-light visible */
+@media (max-width: 768px) {
+  [data-theme="light"] .home-digitel__desktop.home-digitel__banner-light { display: none; }
+  [data-theme="light"] .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
+  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-light  { display: block; }
+  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-dark   { display: none; }
 }
 
 .home-digitel__btn-primary {

@@ -96,55 +96,25 @@
   line-height: 0;
 }
 
-.home-digitel__banner-img {
-  width: 100%;
-  height: auto;
-  display: none;
-}
+/* Ocultar todas por defecto */
+.home-digitel img { display: none; width: 100%; height: auto; }
 
-/* ── Desktop (>768px): mostrar imagen horizontal ── */
-@media (min-width: 769px) {
-  /* Modo oscuro */
-  .home-digitel__desktop.home-digitel__banner-dark  { display: block; }
-  /* Modo claro */
-  [data-theme="light"] .home-digitel__desktop.home-digitel__banner-light { display: block; }
-  [data-theme="light"] .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
-}
+/* DESKTOP modo oscuro → horizontal dark */
+.home-digitel .digi-desk-dark  { display: block; }
 
-/* ── Móvil (<=768px): mostrar imagen cuadrada ── */
+/* DESKTOP modo claro → horizontal light */
+[data-theme="light"] .home-digitel .digi-desk-dark  { display: none; }
+[data-theme="light"] .home-digitel .digi-desk-light { display: block; }
+
+/* MÓVIL modo oscuro → cuadrada dark */
 @media (max-width: 768px) {
-  /* Modo oscuro */
-  .home-digitel__mobile.home-digitel__banner-dark  { display: block; }
-  /* Modo claro */
-  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-light { display: block; }
-  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-dark  { display: none; }
+  .home-digitel .digi-desk-dark  { display: none; }
+  .home-digitel .digi-mob-dark   { display: block; }
+  [data-theme="light"] .home-digitel .digi-mob-dark  { display: none; }
+  [data-theme="light"] .home-digitel .digi-mob-light { display: block; }
 }
 
 
-.home-digitel__btn-primary {
-  background: #7B2D8B;
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 40px;
-  border-radius: 10px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-
-.home-digitel__btn-primary:hover {
-  background: #5e1f6e;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(123,45,139,0.4);
-}
-
-@media (max-width: 768px) {
-  .home-digitel__banner-img { max-width: 320px; }
-}
 .home-pagos__grid {
   display: flex;
   flex-wrap: wrap;

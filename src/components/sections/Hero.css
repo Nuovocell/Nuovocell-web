@@ -494,3 +494,14 @@
     max-width: 320px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero__visual {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .hero__3d-wrap {
+    max-width: 280px;
+  }
+}

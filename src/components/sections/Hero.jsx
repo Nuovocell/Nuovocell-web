@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { client, queries, urlFor } from '../../lib/sanity';
-import { Link } from 'react-router-dom';
 import { WA_URL, DIGITEL_URL } from '../../lib/data';
 import './Hero.css';
 
@@ -131,7 +130,7 @@ export default function Hero() {
                 {p.imagen ? (
                   <div className="hero__phone-icon hero__phone-icon--img">
                     <img
-                      src={urlFor(p.imagen).width(120).height(120).fit('contain').url()}
+                      src={p.imagen ? urlFor(p.imagen).width(120).height(120).fit('contain').url() : ''}
                       alt={p.nombre}
                     />
                   </div>

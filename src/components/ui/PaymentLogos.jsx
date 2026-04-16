@@ -47,44 +47,11 @@ const SVG_LOGOS = {
   ),
 };
 
-const CREDIT_SVG_LOGOS = {
-  Cashea: (
-    <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="4" width="40" height="40" rx="8" fill="#F5C300"/>
-      <text x="20" y="32" textAnchor="middle" fontFamily="Arial Black,sans-serif" fontSize="22" fontWeight="900" fill="#000">C</text>
-      <text x="105" y="31" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="16" fontWeight="700" fill="currentColor">Cashea</text>
-    </svg>
-  ),
-  'Zona Naranja': (
-    <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="20" cy="24" r="16" fill="none" stroke="#F08105" strokeWidth="2.5"/>
-      <line x1="20" y1="8" x2="20" y2="40" stroke="#F08105" strokeWidth="2"/>
-      <line x1="12" y1="10" x2="12" y2="38" stroke="#F08105" strokeWidth="1.5"/>
-      <line x1="28" y1="10" x2="28" y2="38" stroke="#F08105" strokeWidth="1.5"/>
-      <text x="100" y="20" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="10" fontWeight="700" fill="currentColor">tu zona</text>
-      <text x="100" y="34" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="10" fontWeight="700" fill="#F08105">naranja</text>
-    </svg>
-  ),
-  Krece: (
-    <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="4" width="40" height="40" rx="8" fill="#29C5CC"/>
-      <text x="20" y="32" textAnchor="middle" fontFamily="Arial Black,sans-serif" fontSize="22" fontWeight="900" fill="#fff">K</text>
-      <text x="105" y="31" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="16" fontWeight="700" fill="currentColor">Krece</text>
-    </svg>
-  ),
-  Chollo: (
-    <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="80" y="30" textAnchor="middle" fontFamily="Arial Black,sans-serif" fontSize="20" fontWeight="900" fill="currentColor">Chollo</text>
-      <text x="138" y="30" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="18" fontWeight="700" fill="#00C853">✦</text>
-    </svg>
-  ),
-  Lysto: (
-    <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="4" width="40" height="40" rx="8" fill="#0057FF"/>
-      <text x="20" y="32" textAnchor="middle" fontFamily="Arial Black,sans-serif" fontSize="16" fontWeight="900" fill="#fff">Ly</text>
-      <text x="105" y="31" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="16" fontWeight="700" fill="currentColor">Lysto</text>
-    </svg>
-  ),
+const CREDIT_LOGOS = {
+  Cashea:           'https://cdn.sanity.io/images/wwy5bykm/production/5849e1c8f236b473d7527da16b90782c476d64b2-417x418.jpg',
+  'Chollo Crédito': 'https://cdn.sanity.io/images/wwy5bykm/production/132d47544ea71248316f0f17c75efa85854538f4-417x418.jpg',
+  Krece:            'https://cdn.sanity.io/images/wwy5bykm/production/b19f7606644ce2531358006b586a1c9c09050e87-417x418.jpg',
+  Lysto:            'https://cdn.sanity.io/images/wwy5bykm/production/e586bd893e5247a97d133072a9682021316bb07d-417x418.jpg',
 };
 
 const WA_BASE = 'https://wa.me/584123621133?text=';
@@ -98,19 +65,17 @@ const PAYMENT_WA_MSGS = {
 };
 
 const CREDIT_URLS = {
-  Cashea: 'https://play.google.com/store/apps/details?id=com.cashea.app',
-  'Zona Naranja': 'https://tuzonanaranja.com',
-  Krece: 'https://www.krece.app',
-  Chollo: 'https://chollo.app',
-  Lysto: 'https://lysto.app',
+  Cashea:           'https://play.google.com/store/apps/details?id=com.cashea.app',
+  'Chollo Crédito': 'https://chollo.app',
+  Krece:            'https://www.krece.app',
+  Lysto:            'https://lysto.app',
 };
 
 const CREDIT_FALLBACK = {
-  Cashea: { bg: '#F5C300', color: '#000' },
-  'Zona Naranja': { bg: '#FF6B00', color: '#fff' },
-  Krece: { bg: '#29C5CC', color: '#fff' },
-  Chollo: { bg: '#111', color: '#fff' },
-  Lysto: { bg: '#0057FF', color: '#fff' },
+  Cashea:           { bg: '#F5C300', color: '#000' },
+  'Chollo Crédito': { bg: '#0033CC', color: '#fff' },
+  Krece:            { bg: '#29C5CC', color: '#000' },
+  Lysto:            { bg: '#FF6600', color: '#fff' },
 };
 
 export function PaymentLogo({ icon, label }) {
@@ -148,7 +113,7 @@ export function PaymentLogo({ icon, label }) {
 }
 
 export function CreditBadge({ nombre, url }) {
-  const svg = CREDIT_SVG_LOGOS[nombre];
+  const imgSrc = CREDIT_LOGOS[nombre];
   const href = CREDIT_URLS[nombre] || url || '#';
   const fallback = CREDIT_FALLBACK[nombre] || { bg: '#333', color: '#fff' };
   return (
@@ -156,10 +121,17 @@ export function CreditBadge({ nombre, url }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="credit-badge credit-badge--svg"
+      className="credit-badge credit-badge--img"
       title={nombre}
     >
-      {svg || (
+      {imgSrc ? (
+        <img
+          src={imgSrc}
+          alt={nombre}
+          className="credit-badge__logo"
+          onError={e => { e.target.style.display = 'none'; }}
+        />
+      ) : (
         <span style={{ background: fallback.bg, color: fallback.color, padding: '6px 12px', borderRadius: '6px', fontWeight: 700 }}>
           {nombre}
         </span>

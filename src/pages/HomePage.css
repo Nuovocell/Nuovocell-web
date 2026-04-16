@@ -94,7 +94,6 @@
   padding: 0;
   overflow: hidden;
   line-height: 0;
-  background: #000;
 }
 
 .home-digitel__banner-img {
@@ -105,9 +104,13 @@
   border-radius: 0;
 }
 
-[data-theme="light"] .home-digitel {
-  background: #fff;
-}
+/* Modo oscuro: mostrar imagen dark, ocultar light */
+.home-digitel__banner-light { display: none; }
+.home-digitel__banner-dark  { display: block; }
+
+/* Modo claro: mostrar imagen light, ocultar dark */
+[data-theme="light"] .home-digitel__banner-light { display: block; }
+[data-theme="light"] .home-digitel__banner-dark  { display: none; }
 
 .home-digitel__btn-primary {
   background: #7B2D8B;

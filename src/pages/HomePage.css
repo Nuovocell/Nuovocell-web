@@ -99,19 +99,24 @@
 /* Ocultar todas por defecto */
 .home-digitel img { display: none; width: 100%; height: auto; }
 
-/* DESKTOP modo oscuro → horizontal dark */
+/* ── DESKTOP modo oscuro ── */
 .home-digitel .digi-desk-dark  { display: block; }
 
-/* DESKTOP modo claro → horizontal light */
+/* ── DESKTOP modo claro ── */
 [data-theme="light"] .home-digitel .digi-desk-dark  { display: none; }
 [data-theme="light"] .home-digitel .digi-desk-light { display: block; }
 
-/* MÓVIL modo oscuro → cuadrada dark */
+/* ── MÓVIL modo oscuro ── */
 @media (max-width: 768px) {
-  .home-digitel .digi-desk-dark  { display: none; }
-  .home-digitel .digi-mob-dark   { display: block; }
-  [data-theme="light"] .home-digitel .digi-mob-dark  { display: none; }
-  [data-theme="light"] .home-digitel .digi-mob-light { display: block; }
+  .home-digitel .digi-desk-dark { display: none; }
+  .home-digitel .digi-mob-dark  { display: block; }
+}
+
+/* ── MÓVIL modo claro ── */
+@media (max-width: 768px) {
+  [data-theme="light"] .home-digitel .digi-desk-light { display: none; }
+  [data-theme="light"] .home-digitel .digi-mob-dark   { display: none; }
+  [data-theme="light"] .home-digitel .digi-mob-light  { display: block; }
 }
 
 

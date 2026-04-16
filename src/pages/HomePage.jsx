@@ -200,7 +200,7 @@ export default function HomePage() {
       <section className="home-digitel">
         <div className="container home-digitel__inner">
           <img
-            src="https://cdn.sanity.io/images/wwy5bykm/production/7e5fe0fc383dc7dca43bfa0efa56e192e1af16ad-600x600.jpg"
+            src="https://cdn.sanity.io/images/wwy5bykm/production/5e2c40ba316ac786717e3da986bc852292daaa6c-1400x467.jpg"
             alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
             className="home-digitel__banner-img"
           />

@@ -89,26 +89,34 @@
 
 /* Digitel */
 .home-digitel {
-  background: #f0f0f8;
   border-top: 3px solid #7B2D8B;
   border-bottom: 1px solid rgba(123,45,139,0.15);
-  padding: 56px 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .home-digitel__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
-  padding: 0 0 8px;
+  gap: 0;
 }
 
 .home-digitel__banner-img {
   width: 100%;
-  max-width: 1200px;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  max-width: 100%;
+  height: auto;
   display: block;
+  border-radius: 0;
+}
+
+.home-digitel__btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 28px 0;
+  background: #f0f0f8;
 }
 
 .home-digitel__btn-primary {

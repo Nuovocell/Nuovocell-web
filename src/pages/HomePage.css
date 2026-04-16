@@ -44,29 +44,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;
-  height: 140px;
-  border-radius: 0;
+  width: 120px;
+  height: 120px;
   background: transparent;
-  transition: background 0.2s, color 0.2s;
-  overflow: visible;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .home-cat-card__img {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
-  border-radius: 0;
   transition: transform 0.3s;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
-
-/* Tamaños específicos por categoría */
-.home-cat-card--repuestos .home-cat-card__icon { width: 70px; height: 70px; }
-.home-cat-card--smartphones .home-cat-card__icon { width: 75px; height: 135px; }
-.home-cat-card--internet .home-cat-card__icon { width: 110px; height: 110px; }
-.home-cat-card--laptops .home-cat-card__icon { width: 140px; height: 100px; }
-.home-cat-card--accesorios .home-cat-card__icon { width: 100px; height: 100px; }
 
 .home-cat-card:hover .home-cat-card__img {
   transform: scale(1.08) translateY(-4px);

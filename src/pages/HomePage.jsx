@@ -185,7 +185,7 @@ export default function HomePage() {
                   href={externalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="home-cat-card card"
+                  className={`home-cat-card card home-cat-card--${id}`}
                   style={{ '--cat-color': color }}
                 >
                   <span className="home-cat-card__icon" style={{ color, background: id === 'digitel' ? 'transparent' : undefined }}>
@@ -198,7 +198,7 @@ export default function HomePage() {
               <Link
                 key={id}
                 to={`/catalogo?cat=${id}`}
-                className="home-cat-card card"
+                className={`home-cat-card card home-cat-card--${id}`}
                 style={{ '--cat-color': color }}
               >
                 <span className="home-cat-card__icon" style={{ color }}>

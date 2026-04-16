@@ -187,28 +187,110 @@ export default function HomePage() {
                   className="home-cat-card card"
                   style={{ '--cat-color': color }}
                 >
-                  <span className="home-cat-card__icon" style={{ color, background: 'transparent' }}>
-                    {img
-                      ? <img src={img} alt={label} className="home-cat-card__img" />
-                      : Icon && <Icon />
-                    }
+                  <span className="home-cat-card__icon" style={{ color, background: id === 'digitel' ? 'transparent' : undefined }}>
+                    {img ? <img src={img} alt={label} className="home-cat-card__img" /> : Icon && <Icon />}
                   </span>
                   <span className="home-cat-card__label">{label}</span>
+                  <svg className="home-cat-card__arrow" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <Link
-                  key={id}
-                  to={`/catalogo?cat=${id}`}
-                  className="home-cat-card card"
-                  style={{ '--cat-color': color }}
-                >
-                  <span className="home-cat-card__icon" style={{ color }}>
-                    {img
-                      ? <img src={img} alt={label} className="home-cat-card__img" />
-                      : Icon && <Icon />
-                    }
-                  </span>
-                  <span className="home-cat-card__label">{label}</span>
-                </Link>
+              <Link
+                key={id}
+                to={`/catalogo?cat=${id}`}
+                className="home-cat-card card"
+                style={{ '--cat-color': color }}
+              >
+                <span className="home-cat-card__icon" style={{ color }}>
+                  {img ? <img src={img} alt={label} className="home-cat-card__img" /> : Icon && <Icon />}
+                </span>
+                <span className="home-cat-card__label">{label}</span>
+                <svg className="home-cat-card__arrow" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </Link>
               )
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured products */}
+      <section className="section home-featured">
+        <div className="container">
+          <div className="home-featured__header">
+            <div>
+              <div className="section-label">Destacados</div>
+              <h2 className="section-title">Productos <span>populares</span></h2>
+            </div>
+            <Link to="/catalogo" className="btn btn-outline">
+              Ver todo el catálogo
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </Link>
+          </div>
+          <div className="home-featured__grid">
+            {featured.map(p => <ProductCard key={p._id} product={p} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Digitel banner */}
+      <DigitelBanner />
+
+      {/* Métodos de pago */}
+      <section className="section home-pagos">
+        <div className="container">
+          <div className="section-label">Facilidades</div>
+          <h2 className="section-title">Métodos de <span>pago</span></h2>
+          <p className="home-pagos__sub">Haz click en cualquier método para consultar los datos de pago por WhatsApp.</p>
+          <div className="home-pagos__grid">
+            {PAGOS.map(p => <PaymentLogo key={p.label} icon={p.icon} label={p.label} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Crédito disponible */}
+      <section className="section home-credito-section">
+        <div className="container">
+          <div className="section-label">Financiamiento</div>
+          <h2 className="section-title">Crédito <span>disponible</span></h2>
+          <p className="home-credito-section__sub">Lleva tu equipo hoy y págalo en cuotas sin intereses con nuestras alianzas.</p>
+          <div className="home-credito__tags">
+            {CREDITO.map(c => <CreditBadge key={c.nombre} {...c} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="section home-services">
+        <div className="container">
+          <div className="section-label">Servicios</div>
+          <h2 className="section-title">Más que una <span>tienda</span></h2>
+          <div className="home-services__grid">
+            {SERVICES.map(({ Icon, title, desc, link }) => (
+              <div key={title} className="home-service-card card">
+                <span className="home-service-card__icon"><Icon /></span>
+                <h3 className="home-service-card__title">{title}</h3>
+                <p className="home-service-card__desc">{desc}</p>
+                {link && (
+                  <Link to={link} className="home-service-card__link">Ver más →</Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+
+
+
+
+
+
+
+
+

@@ -94,6 +94,7 @@
   padding: 0;
   overflow: hidden;
   line-height: 0;
+  background: #000;
 }
 
 .home-digitel__banner-img {
@@ -102,6 +103,10 @@
   height: auto;
   display: block;
   border-radius: 0;
+}
+
+[data-theme="light"] .home-digitel {
+  background: #fff;
 }
 
 .home-digitel__btn-primary {

@@ -198,18 +198,20 @@ export default function HomePage() {
 
       {/* Digitel banner */}
       <section className="home-digitel">
-        <div className="container home-digitel__inner">
+        <div className="home-digitel__inner">
           <img
             src="https://cdn.sanity.io/images/wwy5bykm/production/5e2c40ba316ac786717e3da986bc852292daaa6c-1400x467.jpg"
             alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
             className="home-digitel__banner-img"
           />
-          <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
-            Consultar planes
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+          <div className="home-digitel__btn-wrapper">
+            <a href={DIGITEL_URL} className="btn home-digitel__btn-primary" target="_blank" rel="noopener noreferrer">
+              Consultar planes
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 

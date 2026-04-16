@@ -62,9 +62,11 @@
 }
 
 /* Tamaños específicos por categoría */
-.home-cat-card--repuestos .home-cat-card__icon { width: 80px; height: 80px; }
-.home-cat-card--smartphone .home-cat-card__icon { width: 80px; height: 140px; }
-.home-cat-card--internet .home-cat-card__icon { width: 120px; height: 120px; }
+.home-cat-card--repuestos .home-cat-card__icon { width: 70px; height: 70px; }
+.home-cat-card--smartphones .home-cat-card__icon { width: 75px; height: 135px; }
+.home-cat-card--internet .home-cat-card__icon { width: 110px; height: 110px; }
+.home-cat-card--laptops .home-cat-card__icon { width: 140px; height: 100px; }
+.home-cat-card--accesorios .home-cat-card__icon { width: 100px; height: 100px; }
 
 .home-cat-card:hover .home-cat-card__img {
   transform: scale(1.08) translateY(-4px);

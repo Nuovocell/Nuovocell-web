@@ -104,13 +104,23 @@
   border-radius: 0;
 }
 
-/* Modo oscuro: mostrar imagen dark, ocultar light */
+/* Desktop visible por defecto, móvil oculto */
+.home-digitel__desktop { display: block; }
+.home-digitel__mobile  { display: none; }
+
+/* Modo oscuro: dark visible, light oculto */
 .home-digitel__banner-light { display: none; }
 .home-digitel__banner-dark  { display: block; }
 
-/* Modo claro: mostrar imagen light, ocultar dark */
+/* Modo claro: light visible, dark oculto */
 [data-theme="light"] .home-digitel__banner-light { display: block; }
 [data-theme="light"] .home-digitel__banner-dark  { display: none; }
+
+/* Móvil: ocultar desktop, mostrar móvil */
+@media (max-width: 768px) {
+  .home-digitel__desktop { display: none !important; }
+  .home-digitel__mobile  { display: block; }
+}
 
 .home-digitel__btn-primary {
   background: #7B2D8B;

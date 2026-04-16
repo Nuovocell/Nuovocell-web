@@ -198,16 +198,12 @@ export default function HomePage() {
 
       {/* Digitel banner */}
       <section className="home-digitel">
-        <img
-          src='https://cdn.sanity.io/images/wwy5bykm/production/7e82bbfa965b233e8fc7c3b31ae6af473ecdaad2-2501x834.jpg'
-          alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
-          className="home-digitel__banner-img home-digitel__banner-light"
-        />
-        <img
-          src='https://cdn.sanity.io/images/wwy5bykm/production/78a5fb5711cadf4065f765d8f1bdf21fa6aeb699-2501x834.jpg'
-          alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
-          className="home-digitel__banner-img home-digitel__banner-dark"
-        />
+        {/* Desktop */}
+        <img src='https://cdn.sanity.io/images/wwy5bykm/production/7e82bbfa965b233e8fc7c3b31ae6af473ecdaad2-2501x834.jpg' alt="Adquiere tu línea Digitel 4G LTE con Nuovocell" className="home-digitel__banner-img home-digitel__desktop home-digitel__banner-light" />
+        <img src='https://cdn.sanity.io/images/wwy5bykm/production/78a5fb5711cadf4065f765d8f1bdf21fa6aeb699-2501x834.jpg'  alt="Adquiere tu línea Digitel 4G LTE con Nuovocell" className="home-digitel__banner-img home-digitel__desktop home-digitel__banner-dark" />
+        {/* Móvil */}
+        <img src='https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg' alt="Adquiere tu línea Digitel 4G LTE con Nuovocell" className="home-digitel__banner-img home-digitel__mobile home-digitel__banner-light" />
+        <img src='https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg'  alt="Adquiere tu línea Digitel 4G LTE con Nuovocell" className="home-digitel__banner-img home-digitel__mobile home-digitel__banner-dark" />
       </section>
 
       {/* Métodos de pago */}

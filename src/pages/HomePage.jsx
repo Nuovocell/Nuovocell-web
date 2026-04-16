@@ -87,11 +87,11 @@ const IconDollar = () => (
 );
 
 const CATEGORIAS_HOME = [
-  { id: 'smartphones', img: 'https://cdn.sanity.io/images/wwy5bykm/production/7f37b109488591ae4492cbedf47096fca64770fc-197x425.jpg',  label: 'Smartphones',      color: '#00aaff' },
-  { id: 'laptops',     img: 'https://cdn.sanity.io/images/wwy5bykm/production/1e9f1072c6b0c48b9374aa2a1e075388733456ed-426x248.jpg',      label: 'Laptops',          color: '#7c3aed' },
-  { id: 'accesorios',  img: 'https://cdn.sanity.io/images/wwy5bykm/production/f9a6bb1492bb560086f6da1afdf1b41ce64ce476-351x515.jpg',  label: 'Accesorios',       color: '#00e676' },
-  { id: 'internet',    img: 'https://cdn.sanity.io/images/wwy5bykm/production/2569856fcce346c17c188b3a48453b1e8e96c846-376x414.jpg', label: 'Internet Portátil', color: '#ffab00' },
-  { id: 'digitel',     Icon: IconDigitel4G,          label: 'Planes Digitel',   color: '#7B2D8B', externalUrl: DIGITEL_URL },
+  { id: 'smartphones', img: 'https://cdn.sanity.io/images/wwy5bykm/production/a678d75b2fb347676ccaf91a9a4bdb28e83db854-243x343.svg',  label: 'Smartphones',       color: '#00aaff' },
+  { id: 'laptops',     img: 'https://cdn.sanity.io/images/wwy5bykm/production/750c6e2f997bfac9bc10cf1da3f884fccb7a9177-234x331.svg', label: 'Laptops',           color: '#7c3aed' },
+  { id: 'accesorios',  img: 'https://cdn.sanity.io/images/wwy5bykm/production/0a4a147844c894bc4335845e293ee37c4b5a373a-168x246.svg',  label: 'Accesorios',        color: '#00e676' },
+  { id: 'internet',    img: 'https://cdn.sanity.io/images/wwy5bykm/production/b0efc91c6f7019432011e3e4f717ce3874353cd2-206x334.svg',   label: 'Internet Portátil', color: '#ffab00' },
+  { id: 'digitel',     Icon: IconDigitel4G, label: 'Planes Digitel',    color: '#7B2D8B', externalUrl: DIGITEL_URL },
 ];
 
 const TRUST_ITEMS = [

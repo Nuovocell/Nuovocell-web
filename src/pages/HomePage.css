@@ -98,39 +98,28 @@
 
 .home-digitel__banner-img {
   width: 100%;
-  max-width: 100%;
   height: auto;
-  display: block;
-  border-radius: 0;
+  display: none;
 }
 
-/* Por defecto (modo oscuro): solo desktop-dark visible */
-.home-digitel__desktop.home-digitel__banner-light { display: none; }
-.home-digitel__desktop.home-digitel__banner-dark  { display: block; }
-.home-digitel__mobile.home-digitel__banner-light  { display: none; }
-.home-digitel__mobile.home-digitel__banner-dark   { display: none; }
-
-/* Modo claro: solo desktop-light visible */
-[data-theme="light"] .home-digitel__desktop.home-digitel__banner-light { display: block; }
-[data-theme="light"] .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
-[data-theme="light"] .home-digitel__mobile.home-digitel__banner-light  { display: none; }
-[data-theme="light"] .home-digitel__mobile.home-digitel__banner-dark   { display: none; }
-
-/* Móvil modo oscuro: solo mobile-dark visible */
-@media (max-width: 768px) {
-  .home-digitel__desktop.home-digitel__banner-light { display: none; }
-  .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
-  .home-digitel__mobile.home-digitel__banner-light  { display: none; }
-  .home-digitel__mobile.home-digitel__banner-dark   { display: block; }
-}
-
-/* Móvil modo claro: solo mobile-light visible */
-@media (max-width: 768px) {
-  [data-theme="light"] .home-digitel__desktop.home-digitel__banner-light { display: none; }
+/* ── Desktop (>768px): mostrar imagen horizontal ── */
+@media (min-width: 769px) {
+  /* Modo oscuro */
+  .home-digitel__desktop.home-digitel__banner-dark  { display: block; }
+  /* Modo claro */
+  [data-theme="light"] .home-digitel__desktop.home-digitel__banner-light { display: block; }
   [data-theme="light"] .home-digitel__desktop.home-digitel__banner-dark  { display: none; }
-  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-light  { display: block; }
-  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-dark   { display: none; }
 }
+
+/* ── Móvil (<=768px): mostrar imagen cuadrada ── */
+@media (max-width: 768px) {
+  /* Modo oscuro */
+  .home-digitel__mobile.home-digitel__banner-dark  { display: block; }
+  /* Modo claro */
+  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-light { display: block; }
+  [data-theme="light"] .home-digitel__mobile.home-digitel__banner-dark  { display: none; }
+}
+
 
 .home-digitel__btn-primary {
   background: #7B2D8B;

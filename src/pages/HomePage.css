@@ -96,27 +96,34 @@
   line-height: 0;
 }
 
-/* Ocultar todas por defecto */
-.home-digitel img { display: none; width: 100%; height: auto; }
-
-/* ── DESKTOP modo oscuro ── */
-.home-digitel .digi-desk-dark  { display: block; }
-
-/* ── DESKTOP modo claro ── */
-[data-theme="light"] .home-digitel .digi-desk-dark  { display: none; }
-[data-theme="light"] .home-digitel .digi-desk-light { display: block; }
-
-/* ── MÓVIL modo oscuro ── */
-@media (max-width: 768px) {
-  .home-digitel .digi-desk-dark { display: none; }
-  .home-digitel .digi-mob-dark  { display: block; }
+/* Ocultar todas por defecto con !important */
+.home-digitel .digi-desk-dark,
+.home-digitel .digi-desk-light,
+.home-digitel .digi-mob-dark,
+.home-digitel .digi-mob-light {
+  display: none !important;
+  width: 100%;
+  height: auto;
 }
 
-/* ── MÓVIL modo claro ── */
+/* ── MODO OSCURO DESKTOP ── */
+.home-digitel .digi-desk-dark { display: block !important; }
+
+/* ── MODO CLARO DESKTOP ── */
+[data-theme="light"] .home-digitel .digi-desk-dark  { display: none !important; }
+[data-theme="light"] .home-digitel .digi-desk-light { display: block !important; }
+
+/* ── MODO OSCURO MÓVIL ── */
 @media (max-width: 768px) {
-  [data-theme="light"] .home-digitel .digi-desk-light { display: none; }
-  [data-theme="light"] .home-digitel .digi-mob-dark   { display: none; }
-  [data-theme="light"] .home-digitel .digi-mob-light  { display: block; }
+  .home-digitel .digi-desk-dark { display: none !important; }
+  .home-digitel .digi-mob-dark  { display: block !important; }
+}
+
+/* ── MODO CLARO MÓVIL ── */
+@media (max-width: 768px) {
+  [data-theme="light"] .home-digitel .digi-desk-light { display: none !important; }
+  [data-theme="light"] .home-digitel .digi-mob-dark   { display: none !important; }
+  [data-theme="light"] .home-digitel .digi-mob-light  { display: block !important; }
 }
 
 

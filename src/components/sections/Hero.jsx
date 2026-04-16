@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { client, queries, urlFor } from '../../lib/sanity';
 import { WA_URL, DIGITEL_URL } from '../../lib/data';
 import './Hero.css';
 
@@ -12,126 +11,54 @@ const WAIcon = () => (
 );
 
 const TRUST_ITEMS = [
-  { key: 'digitel', icon: (<svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M1 6l5 6-5 6M8 6h8M8 12h6M8 18h8"/></svg>) },
-  { key: 'envios',  icon: (<svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>) },
-  { key: 'garantia',icon: (<svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>) },
-  { key: 'credito', icon: (<svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>) },
-  { key: 'pagos',   icon: (<svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>) },
+  {
+    key: 'digitel',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M1 6l5 6-5 6M8 6h8M8 12h6M8 18h8"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'envios',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'garantia',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'credito',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+      </svg>
+    ),
+  },
+  {
+    key: 'pagos',
+    icon: (
+      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+      </svg>
+    ),
+  },
 ];
-
-function ProductCarousel({ products }) {
-  const [active, setActive] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const autoRef = useRef(null);
-  const total = products.length;
-
-  const next = () => setActive(a => (a + 1) % total);
-  const prev = () => setActive(a => (a - 1 + total) % total);
-
-  // Auto-rotate every 3s
-  useEffect(() => {
-    autoRef.current = setInterval(next, 3000);
-    return () => clearInterval(autoRef.current);
-  }, [total]);
-
-  const resetAuto = () => {
-    clearInterval(autoRef.current);
-    autoRef.current = setInterval(next, 3000);
-  };
-
-  const onDragStart = (e) => {
-    setDragging(true);
-    setStartX(e.touches ? e.touches[0].clientX : e.clientX);
-  };
-  const onDragEnd = (e) => {
-    if (!dragging) return;
-    setDragging(false);
-    const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-    const diff = startX - endX;
-    if (Math.abs(diff) > 40) {
-      diff > 0 ? next() : prev();
-      resetAuto();
-    }
-  };
-
-  const getPos = (i) => {
-    const diff = (i - active + total) % total;
-    if (diff === 0) return 'active';
-    if (diff === 1 || diff === -(total - 1)) return 'next';
-    if (diff === total - 1 || diff === -1) return 'prev';
-    return 'hidden';
-  };
-
-  return (
-    <div className="hero__carousel"
-      onMouseDown={onDragStart} onMouseUp={onDragEnd}
-      onTouchStart={onDragStart} onTouchEnd={onDragEnd}>
-
-      <div className="hero__carousel-track">
-        {products.map((p, i) => {
-          const pos = getPos(i);
-          return (
-            <Link
-              to={`/catalogo`}
-              key={p._id}
-              className={`hero__carousel-card hero__carousel-card--${pos}`}
-              draggable={false}
-            >
-              {p.imagen && (
-                <div className="hero__carousel-img-wrap">
-                  <img
-                    src={urlFor(p.imagen).width(280).height(280).fit('contain').url()}
-                    alt={p.nombre}
-                    className="hero__carousel-img"
-                    draggable={false}
-                  />
-                </div>
-              )}
-              <div className="hero__carousel-info">
-                <p className="hero__carousel-brand">{p.marca}</p>
-                <p className="hero__carousel-name">{p.nombre}</p>
-                {p.precio && <p className="hero__carousel-price">${p.precio}</p>}
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      {/* Dots */}
-      <div className="hero__carousel-dots">
-        {products.map((_, i) => (
-          <button
-            key={i}
-            className={`hero__carousel-dot${i === active ? ' active' : ''}`}
-            onClick={() => { setActive(i); resetAuto(); }}
-          />
-        ))}
-      </div>
-
-      {/* Arrows */}
-      <button className="hero__carousel-arrow hero__carousel-arrow--prev" onClick={() => { prev(); resetAuto(); }}>
-        <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button className="hero__carousel-arrow hero__carousel-arrow--next" onClick={() => { next(); resetAuto(); }}>
-        <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-  );
-}
 
 export default function Hero() {
   const { t } = useTranslation();
-  const [featured, setFeatured] = useState([]);
-
-  useEffect(() => {
-    client.fetch(queries.destacados)
-      .then(data => { if (data && data.length) setFeatured(data); })
-      .catch(() => {});
-  }, []);
 
   return (
     <section className="hero">
+      {/* Background effects */}
       <div className="hero__bg">
         <div className="hero__glow hero__glow--1" />
         <div className="hero__glow hero__glow--2" />
@@ -140,6 +67,7 @@ export default function Hero() {
 
       <div className="hero__inner container">
         <div className="hero__content">
+          {/* Badge Agente Autorizado — con logotema Digitel segun guia de marca */}
           <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="hero__digitel-badge">
             <div className="hero__digitel-logotema">
               <span className="hero__digitel-agente">Agente Autorizado</span>
@@ -147,13 +75,16 @@ export default function Hero() {
             </div>
           </a>
 
+          {/* Title */}
           <h1 className="hero__title">
             <span className="hero__title-line">{t('hero.title1')}</span>
             <span className="hero__title-line hero__title-blue">{t('hero.title2')}</span>
           </h1>
 
+          {/* Subtitle */}
           <p className="hero__sub">{t('hero.sub')}</p>
 
+          {/* CTAs */}
           <div className="hero__ctas">
             <Link to="/catalogo" className="btn btn-primary hero__cta-main">
               {t('hero.cta_catalog')}
@@ -167,6 +98,7 @@ export default function Hero() {
             </a>
           </div>
 
+          {/* Trust bar — chips/etiquetas con iconos SVG (Lai) */}
           <div className="hero__trust">
             {TRUST_ITEMS.map(item => (
               <div key={item.key} className="hero__trust-chip">
@@ -177,16 +109,20 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — 3D Carousel */}
-        <div className="hero__visual" aria-hidden="false">
-          {featured.length > 0
-            ? <ProductCarousel products={featured} />
-            : (
-              <div className="hero__carousel-skeleton">
-                <div className="hero__carousel-skeleton-card" />
+        {/* Right — decorative phone grid */}
+        <div className="hero__visual" aria-hidden="true">
+          <div className="hero__phone-grid">
+            {['Honor', 'Samsung', 'iPhone', 'Infinix', 'Redmi', 'Tecno'].map((brand, i) => (
+              <div key={brand} className="hero__phone-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="hero__phone-icon">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"/>
+                  </svg>
+                </div>
+                <div className="hero__phone-brand">{brand}</div>
               </div>
-            )
-          }
+            ))}
+          </div>
           <div className="hero__sucursales-badge">
             <span className="hero__suc-num">8</span>
             <span className="hero__suc-label" style={{color:'#FCFCFC'}}>SUCURSALES<br/>EN VENEZUELA</span>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { client, queries, urlFor } from '../../lib/sanity';
 import { WA_URL, DIGITEL_URL } from '../../lib/data';
 import './Hero.css';
 
@@ -56,13 +55,6 @@ const TRUST_ITEMS = [
 
 export default function Hero() {
   const { t } = useTranslation();
-  const [featured, setFeatured] = useState([]);
-
-  useEffect(() => {
-    client.fetch(queries.destacados)
-      .then(data => { if (data && data.length) setFeatured(data); })
-      .catch(() => {});
-  }, []);
 
   return (
     <section className="hero">
@@ -117,34 +109,18 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — product image grid with 3D hover */}
-        <div className="hero__visual" aria-hidden="false">
+        {/* Right — decorative phone grid */}
+        <div className="hero__visual" aria-hidden="true">
           <div className="hero__phone-grid">
-            {featured.slice(0, 6).map((p, i) => (
-              <Link
-                key={p._id}
-                to="/catalogo"
-                className="hero__phone-card"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {p.imagen ? (
-                  <div className="hero__phone-icon hero__phone-icon--img">
-                    <img
-                      src={p.imagen ? urlFor(p.imagen).width(120).height(120).fit('contain').url() : ''}
-                      alt={p.nombre}
-                    />
-                  </div>
-                ) : (
-                  <div className="hero__phone-icon">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"/>
-                    </svg>
-                  </div>
-                )}
-                <div className="hero__phone-brand">{p.marca || ''}</div>
-                <div className="hero__phone-name">{p.nombre}</div>
-                {p.precio && <div className="hero__phone-price">${p.precio}</div>}
-              </Link>
+            {['Honor', 'Samsung', 'iPhone', 'Infinix', 'Redmi', 'Tecno'].map((brand, i) => (
+              <div key={brand} className="hero__phone-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="hero__phone-icon">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"/>
+                  </svg>
+                </div>
+                <div className="hero__phone-brand">{brand}</div>
+              </div>
             ))}
           </div>
           <div className="hero__sucursales-badge">

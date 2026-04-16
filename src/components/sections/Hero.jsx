@@ -109,19 +109,16 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — decorative phone grid */}
-        <div className="hero__visual" aria-hidden="true">
-          <div className="hero__phone-grid">
-            {['Honor', 'Samsung', 'iPhone', 'Infinix', 'Redmi', 'Tecno'].map((brand, i) => (
-              <div key={brand} className="hero__phone-card" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className="hero__phone-icon">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"/>
-                  </svg>
-                </div>
-                <div className="hero__phone-brand">{brand}</div>
-              </div>
-            ))}
+        {/* Right — 3D iPhone model */}
+        <div className="hero__visual" aria-hidden="false">
+          <div className="hero__3d-wrap">
+            <iframe
+              src="https://embed.studio.binkies3d.com/live3d/69e11bebd07eec00371709dc"
+              className="hero__3d-frame"
+              frameBorder="0"
+              allowFullScreen
+              title="iPhone 17 Pro Max 3D"
+            />
           </div>
           <div className="hero__sucursales-badge">
             <span className="hero__suc-num">8</span>

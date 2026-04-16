@@ -90,7 +90,6 @@ const CATEGORIAS_HOME = [
   { id: 'smartphones', img: 'https://cdn.sanity.io/images/wwy5bykm/production/a678d75b2fb347676ccaf91a9a4bdb28e83db854-243x343.svg',  label: 'Smartphones',       color: '#00aaff' },
   { id: 'laptops',     img: 'https://cdn.sanity.io/images/wwy5bykm/production/ba4225a459413617d29554275e39ae3f1561e96f-341x482.svg', label: 'Laptops',           color: '#7c3aed' },
   { id: 'accesorios',  img: 'https://cdn.sanity.io/images/wwy5bykm/production/0a4a147844c894bc4335845e293ee37c4b5a373a-168x246.svg',  label: 'Accesorios',        color: '#00e676' },
-  { id: 'repuestos',   img: 'https://cdn.sanity.io/images/wwy5bykm/production/b9cc3e5c3ed38b619322ee5034db619e71be405b-134x139.svg', label: 'Repuestos',          color: '#ff6b35' },
   { id: 'internet',    img: 'https://cdn.sanity.io/images/wwy5bykm/production/b0efc91c6f7019432011e3e4f717ce3874353cd2-206x334.svg',   label: 'Internet Portátil', color: '#ffab00' },
   { id: 'digitel',     Icon: IconDigitel4G, label: 'Planes Digitel',    color: '#7B2D8B', externalUrl: DIGITEL_URL },
 ];

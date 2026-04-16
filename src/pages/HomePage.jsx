@@ -199,9 +199,14 @@ export default function HomePage() {
       {/* Digitel banner */}
       <section className="home-digitel">
         <img
-          src="https://cdn.sanity.io/images/wwy5bykm/production/5e2c40ba316ac786717e3da986bc852292daaa6c-1400x467.jpg"
+          src='https://cdn.sanity.io/images/wwy5bykm/production/7e82bbfa965b233e8fc7c3b31ae6af473ecdaad2-2501x834.jpg'
           alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
-          className="home-digitel__banner-img"
+          className="home-digitel__banner-img home-digitel__banner-light"
+        />
+        <img
+          src='https://cdn.sanity.io/images/wwy5bykm/production/78a5fb5711cadf4065f765d8f1bdf21fa6aeb699-2501x834.jpg'
+          alt="Adquiere tu línea Digitel 4G LTE con Nuovocell"
+          className="home-digitel__banner-img home-digitel__banner-dark"
         />
       </section>
 

@@ -93,14 +93,7 @@
   border-bottom: 1px solid rgba(123,45,139,0.15);
   padding: 0;
   overflow: hidden;
-  position: relative;
-}
-
-.home-digitel__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
+  line-height: 0;
 }
 
 .home-digitel__banner-img {
@@ -109,14 +102,6 @@
   height: auto;
   display: block;
   border-radius: 0;
-}
-
-.home-digitel__btn-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 28px 0;
-  background: #f0f0f8;
 }
 
 .home-digitel__btn-primary {

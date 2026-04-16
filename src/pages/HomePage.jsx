@@ -139,8 +139,7 @@ function DigitelBanner() {
     const obs = new MutationObserver(update);
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     return () => { window.removeEventListener('resize', update); obs.disconnect(); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <section className="home-digitel">

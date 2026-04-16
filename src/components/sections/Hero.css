@@ -303,3 +303,186 @@
 }
 
 
+
+/* ── Product Carousel ─────────────────────────────────── */
+.hero__carousel {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+}
+.hero__carousel:active { cursor: grabbing; }
+
+.hero__carousel-track {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  perspective: 1000px;
+}
+
+.hero__carousel-card {
+  position: absolute;
+  width: 240px;
+  background: var(--bg-card);
+  border: var(--border);
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  left: 50%;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.hero__carousel-card--active {
+  transform: translate(-50%, -50%) translateZ(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  pointer-events: all;
+  border-color: rgba(0,170,255,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,170,255,0.15);
+}
+
+.hero__carousel-card--next {
+  transform: translate(-10%, -50%) translateZ(-120px) rotateY(-15deg) scale(0.88);
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.hero__carousel-card--prev {
+  transform: translate(-90%, -50%) translateZ(-120px) rotateY(15deg) scale(0.88);
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.hero__carousel-card--hidden {
+  transform: translate(-50%, -50%) translateZ(-200px) scale(0.7);
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero__carousel-img-wrap {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+  transition: transform 0.3s;
+}
+
+.hero__carousel-card--active:hover .hero__carousel-img {
+  transform: scale(1.05) translateY(-4px);
+}
+
+.hero__carousel-info { width: 100%; }
+
+.hero__carousel-brand {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+.hero__carousel-name {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.hero__carousel-price {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+/* Dots */
+.hero__carousel-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.hero__carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--white-20, rgba(255,255,255,0.2));
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.hero__carousel-dot.active {
+  width: 20px;
+  border-radius: 3px;
+  background: var(--blue);
+}
+
+/* Arrows */
+.hero__carousel-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: var(--border);
+  color: var(--white-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.hero__carousel-arrow:hover { color: var(--white); border-color: var(--blue); }
+.hero__carousel-arrow--prev { left: -8px; }
+.hero__carousel-arrow--next { right: -8px; }
+
+/* Skeleton */
+.hero__carousel-skeleton { width: 240px; height: 360px; display: flex; align-items: center; justify-content: center; }
+.hero__carousel-skeleton-card {
+  width: 240px;
+  height: 320px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: var(--border);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .hero__carousel { max-width: 300px; height: 380px; }
+  .hero__carousel-card { width: 200px; }
+  .hero__carousel-img-wrap { width: 130px; height: 130px; }
+}

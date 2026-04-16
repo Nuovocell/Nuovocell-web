@@ -110,6 +110,34 @@ const SERVICES = [
   { Icon: IconBot,     title: 'Asistente IA',        desc: 'Consulta disponibilidad, precios y más con nuestro asistente virtual 24/7.', link: '/servicio-tecnico' },
 ];
 
+const DIGITEL_IMGS = {
+  'dark-desktop':  'https://cdn.sanity.io/images/wwy5bykm/production/78a5fb5711cadf4065f765d8f1bdf21fa6aeb699-2501x834.jpg',
+  'light-desktop': 'https://cdn.sanity.io/images/wwy5bykm/production/7e82bbfa965b233e8fc7c3b31ae6af473ecdaad2-2501x834.jpg',
+  'dark-mobile':   'https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg',
+  'light-mobile':  'https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg',
+};
+
+function DigitelBanner() {
+  const [key, setKey] = React.useState('dark-desktop');
+  React.useEffect(() => {
+    const update = () => {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const mobile = window.innerWidth <= 768;
+      setKey(`${theme}-${mobile ? 'mobile' : 'desktop'}`);
+    };
+    update();
+    window.addEventListener('resize', update);
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => { window.removeEventListener('resize', update); observer.disconnect(); };
+  }, []);
+  return (
+    <section className="home-digitel">
+      <img src={DIGITEL_IMGS[key]} alt="Adquiere tu línea Digitel 4G LTE con Nuovocell" className="home-digitel__banner-img" />
+    </section>
+  );
+}
+
 export default function HomePage() {
   const { t } = useTranslation();
   const [featured, setFeatured] = useState([]);
@@ -197,12 +225,7 @@ export default function HomePage() {
       </section>
 
       {/* Digitel banner */}
-      <section className="home-digitel">
-        <img src="https://cdn.sanity.io/images/wwy5bykm/production/78a5fb5711cadf4065f765d8f1bdf21fa6aeb699-2501x834.jpg"  alt="Digitel" className="digi-desk-dark" />
-        <img src="https://cdn.sanity.io/images/wwy5bykm/production/7e82bbfa965b233e8fc7c3b31ae6af473ecdaad2-2501x834.jpg" alt="Digitel" className="digi-desk-light" />
-        <img src="https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg"   alt="Digitel" className="digi-mob-dark" />
-        <img src="https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg"  alt="Digitel" className="digi-mob-light" />
-      </section>
+      <DigitelBanner />
 
       {/* Métodos de pago */}
       <section className="section home-pagos">

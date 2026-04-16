@@ -61,6 +61,11 @@
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
+/* Tamaños específicos por categoría */
+.home-cat-card--repuestos .home-cat-card__icon { width: 80px; height: 80px; }
+.home-cat-card--smartphone .home-cat-card__icon { width: 80px; height: 140px; }
+.home-cat-card--internet .home-cat-card__icon { width: 120px; height: 120px; }
+
 .home-cat-card:hover .home-cat-card__img {
   transform: scale(1.08) translateY(-4px);
 }

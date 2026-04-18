@@ -38,12 +38,6 @@ export default function Footer() {
           <img src='/logos/nuovocell-logo.png' alt="Nuovocell" className="footer__logo-img" />
           <p className="footer__tagline">{t('footer.tagline')}</p>
           {/* Logotema Agente Autorizado Digitel — colores oficiales Pantone */}
-          <a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer" className="footer__digitel-badge">
-            <div className="footer__digitel-logotema">
-              <span className="footer__digitel-agente">Agente Autorizado</span>
-              <span className="footer__digitel-nombre">DIGITEL</span>
-            </div>
-          </a>
           <p className="footer__siguenos">Síguenos</p>
           <div className="footer__socials">
             <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="footer__social footer__social--wa" aria-label="WhatsApp">

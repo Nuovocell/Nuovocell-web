@@ -114,7 +114,7 @@ export default function Hero() {
             />
           </div>
           <div className="hero__sucursales-badge">
-            <span className="hero__suc-num">8</span>
+            <span className="hero__suc-num">9</span>
             <span className="hero__suc-label" style={{color:'#FCFCFC'}}>SUCURSALES<br/>EN VENEZUELA</span>
           </div>
         </div>

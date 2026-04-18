@@ -53,13 +53,13 @@
   font-family: var(--font-display);
   font-size: 0.70rem;
   font-weight: 600;
-  color: #1a1a2e;
+  color: #111 !important;
   text-align: center;
   line-height: 1.2;
 }
 
 [data-theme="dark"] .payment-logo__label {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9) !important;
 }
 
 /* Digitel logo */

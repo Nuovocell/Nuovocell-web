@@ -51,6 +51,7 @@ const CREDIT_LOGOS = {
   Cashea:           'https://cdn.sanity.io/images/wwy5bykm/production/5849e1c8f236b473d7527da16b90782c476d64b2-417x418.jpg',
   'Chollo Crédito': 'https://cdn.sanity.io/images/wwy5bykm/production/132d47544ea71248316f0f17c75efa85854538f4-417x418.jpg',
   Krece:            'https://cdn.sanity.io/images/wwy5bykm/production/b19f7606644ce2531358006b586a1c9c09050e87-417x418.jpg',
+  Weppa:            'https://cdn.sanity.io/images/wwy5bykm/production/40cc1173430dc397bedc3013a944495bfe77dba0-293x200.svg',
 };
 
 const WA_BASE = 'https://wa.me/584123621133?text=';
@@ -67,12 +68,14 @@ const CREDIT_URLS = {
   Cashea:           'https://play.google.com/store/apps/details?id=com.cashea.app',
   'Chollo Crédito': 'https://chollo.app',
   Krece:            'https://www.krece.app',
+  Weppa:            'https://weppa.app',
 };
 
 const CREDIT_FALLBACK = {
   Cashea:           { bg: '#F5C300', color: '#000' },
   'Chollo Crédito': { bg: '#0033CC', color: '#fff' },
   Krece:            { bg: '#29C5CC', color: '#000' },
+  Weppa:            { bg: '#6C3CE1', color: '#fff' },
 };
 
 export function PaymentLogo({ icon, label }) {

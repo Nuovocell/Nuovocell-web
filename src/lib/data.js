@@ -155,11 +155,14 @@ export const CATALOGO_SEED = [
 ];
 
 export const PAGOS = [
-  { type: 'svg', icon: 'cash', label: 'Efectivo USD' },
-  { type: 'svg', icon: 'zelle', label: 'Zelle' },
-  { type: 'svg', icon: 'pagomovil', label: 'Pago Móvil' },
-  { type: 'svg', icon: 'binance', label: 'Binance' },
-  { type: 'svg', icon: 'card', label: 'Tarjeta' },
+  { icon: 'cash',         label: 'Efectivo USD' },
+  { icon: 'pagomovil',    label: 'Pago Móvil' },
+  { icon: 'zinli',        label: 'Zinli' },
+  { icon: 'mercantil',    label: 'Mercantil Panamá' },
+  { icon: 'banesco',      label: 'Banesco Panamá' },
+  { icon: 'transferencia',label: 'Transferencia' },
+  { icon: 'binance',      label: 'Binance' },
+  { icon: 'card',         label: 'Tarjeta' },
 ];
 
 export const CREDITO = [

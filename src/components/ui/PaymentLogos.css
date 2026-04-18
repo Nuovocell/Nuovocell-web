@@ -2,26 +2,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0;
+  text-decoration: none;
+}
+
+/* Tarjeta que contiene logo + nombre */
+.payment-logo__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
+  width: 110px;
+  min-height: 90px;
+  padding: 14px 10px 12px;
+  border-radius: 14px;
+  background: var(--bg-card, #fff);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.payment-logo__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,170,255,0.15);
+  border-color: rgba(0,170,255,0.3);
 }
 
 .payment-logo__img {
-  width: 80px;
-  height: 48px;
+  width: 72px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #e8e8e8;
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 6px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.payment-logo__img:hover {
-  border-color: rgba(0,170,255,0.3);
-  transform: translateY(-2px);
+  flex-shrink: 0;
 }
 
 .payment-logo__img svg {
@@ -37,10 +51,15 @@
 
 .payment-logo__label {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.70rem;
   font-weight: 600;
-  color: var(--white-50);
+  color: var(--text-primary, #1a1a2e);
   text-align: center;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .payment-logo__label {
+  color: rgba(255,255,255,0.8);
 }
 
 /* Digitel logo */

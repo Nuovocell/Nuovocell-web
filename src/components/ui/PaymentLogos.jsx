@@ -123,6 +123,16 @@ export function PaymentLogo({ icon, label }) {
 }
 
 export function CreditBadge({ nombre, url }) {
+  const [isDark, setIsDark] = React.useState(
+    document.documentElement.getAttribute('data-theme') !== 'light'
+  );
+  React.useEffect(() => {
+    const obs = new MutationObserver(() => {
+      setIsDark(document.documentElement.getAttribute('data-theme') !== 'light');
+    });
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
   const imgSrc = CREDIT_LOGOS[nombre];
   const href = CREDIT_URLS[nombre] || url || '#';
   const fallback = CREDIT_FALLBACK[nombre] || { bg: '#333', color: '#fff' };
@@ -146,6 +156,7 @@ export function CreditBadge({ nombre, url }) {
           {nombre}
         </span>
       )}
+      <span className="credit-badge__label" style={{color: isDark ? "rgba(255,255,255,0.9)" : "#111"}}>{nombre}</span>
     </a>
   );
 }

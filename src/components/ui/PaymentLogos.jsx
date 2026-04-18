@@ -45,6 +45,33 @@ const SVG_LOGOS = {
       <circle cx="41" cy="22" r="4" fill="#f79e1b" opacity="0.8"/>
     </svg>
   ),
+  zinli: (
+    <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="80" height="32" rx="4" fill="#6A0DAD"/>
+      <text x="40" y="21" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="14" fontWeight="900" fill="white">Zinli</text>
+    </svg>
+  ),
+  mercantil: (
+    <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="80" height="32" rx="4" fill="#C8102E"/>
+      <text x="40" y="14" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="7" fontWeight="700" fill="white">Mercantil</text>
+      <text x="40" y="25" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="7" fontWeight="700" fill="white">Panamá</text>
+    </svg>
+  ),
+  banesco: (
+    <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="80" height="32" rx="4" fill="#0033A0"/>
+      <text x="40" y="14" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="7" fontWeight="700" fill="white">Banesco</text>
+      <text x="40" y="25" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="7" fontWeight="700" fill="white">Panamá</text>
+    </svg>
+  ),
+  transferencia: (
+    <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="80" height="32" rx="4" fill="#1a7a3f"/>
+      <text x="40" y="14" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="7" fontWeight="700" fill="white">Transferencia</text>
+      <text x="40" y="25" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="7" fontWeight="700" fill="white">Bancaria</text>
+    </svg>
+  ),
 };
 
 const CREDIT_LOGOS = {
@@ -57,11 +84,14 @@ const CREDIT_LOGOS = {
 const WA_BASE = 'https://wa.me/584123621133?text=';
 
 const PAYMENT_WA_MSGS = {
-  cash:      encodeURIComponent('Hola! Quiero pagar en efectivo USD. ¿Cómo procedo?'),
-  zelle:     encodeURIComponent('Hola! Quiero pagar por Zelle. ¿Cuál es el correo/número?'),
-  pagomovil: encodeURIComponent('Hola! Quiero pagar por Pago Móvil. ¿Cuáles son los datos?'),
-  binance:   encodeURIComponent('Hola! Quiero pagar por Binance Pay. ¿Cuál es el ID?'),
-  card:      encodeURIComponent('Hola! Quiero pagar con tarjeta débito/crédito. ¿En qué sucursal puedo hacerlo?'),
+  cash:          encodeURIComponent('Hola! Quiero pagar en efectivo USD. ¿Cómo procedo?'),
+  pagomovil:     encodeURIComponent('Hola! Quiero pagar por Pago Móvil. ¿Cuáles son los datos?'),
+  zinli:         encodeURIComponent('Hola! Quiero pagar por Zinli. ¿Cuáles son los datos?'),
+  mercantil:     encodeURIComponent('Hola! Quiero pagar por Mercantil Panamá. ¿Cuáles son los datos?'),
+  banesco:       encodeURIComponent('Hola! Quiero pagar por Banesco Panamá. ¿Cuáles son los datos?'),
+  transferencia: encodeURIComponent('Hola! Quiero pagar por transferencia bancaria. ¿Cuáles son los datos?'),
+  binance:       encodeURIComponent('Hola! Quiero pagar por Binance Pay. ¿Cuál es el ID?'),
+  card:          encodeURIComponent('Hola! Quiero pagar con tarjeta débito/crédito. ¿En qué sucursal puedo hacerlo?'),
 };
 
 const CREDIT_URLS = {

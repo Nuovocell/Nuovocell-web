@@ -79,6 +79,16 @@ const CREDIT_FALLBACK = {
 };
 
 export function PaymentLogo({ icon, label }) {
+  const [isDark, setIsDark] = React.useState(
+    document.documentElement.getAttribute('data-theme') !== 'light'
+  );
+  React.useEffect(() => {
+    const obs = new MutationObserver(() => {
+      setIsDark(document.documentElement.getAttribute('data-theme') !== 'light');
+    });
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
   const src = icon === 'pagomovil' ? '/logos/pagomovil.jpg' : null;
   const waMsg = PAYMENT_WA_MSGS[icon];
   const href = waMsg ? WA_BASE + waMsg : null;
@@ -91,7 +101,7 @@ export function PaymentLogo({ icon, label }) {
           : SVG_LOGOS[icon] || <span>{label[0]}</span>
         }
       </div>
-      <span className="payment-logo__label">{label}</span>
+      <span className="payment-logo__label" style={{color: isDark ? "rgba(255,255,255,0.9)" : "#111"}}>{label}</span>
     </div>
   );
 

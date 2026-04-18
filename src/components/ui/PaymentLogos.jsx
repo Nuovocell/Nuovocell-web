@@ -83,8 +83,8 @@ export function PaymentLogo({ icon, label }) {
   const waMsg = PAYMENT_WA_MSGS[icon];
   const href = waMsg ? WA_BASE + waMsg : null;
 
-  const inner = (
-    <>
+  const card = (
+    <div className="payment-logo__card">
       <div className="payment-logo__img">
         {src
           ? <img src={src} alt={label} onError={e => { e.target.style.display = 'none'; }} />
@@ -92,7 +92,7 @@ export function PaymentLogo({ icon, label }) {
         }
       </div>
       <span className="payment-logo__label">{label}</span>
-    </>
+    </div>
   );
 
   if (href) {
@@ -104,12 +104,12 @@ export function PaymentLogo({ icon, label }) {
         className="payment-logo payment-logo--link"
         title={`Consultar pago con ${label}`}
       >
-        {inner}
+        {card}
       </a>
     );
   }
 
-  return <div className="payment-logo">{inner}</div>;
+  return <div className="payment-logo">{card}</div>;
 }
 
 export function CreditBadge({ nombre, url }) {

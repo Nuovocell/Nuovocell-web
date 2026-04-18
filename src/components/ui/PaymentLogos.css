@@ -141,13 +141,12 @@
 
 /* Weppa — logo horizontal, misma altura que los demás */
 .credit-badge--weppa {
-  width: 150px;
+  width: 140px;
 }
 
 .credit-badge--weppa .credit-badge__logo {
-  width: 120px;
-  height: 44px;
+  width: 116px;
+  height: auto;
   object-fit: contain;
   border-radius: 6px;
-  padding: 4px;
 }

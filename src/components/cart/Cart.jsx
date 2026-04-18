@@ -143,25 +143,25 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
               <label className={`checkout-form__radio${customer.entrega === 'retiro' ? ' active' : ''}`}>
                 <input type="radio" value="retiro" checked={customer.entrega === 'retiro'}
                   onChange={() => updateCustomer({ entrega: 'retiro', sucursal: '', direccion: '', empresa_envio: '', ciudad_destino: '', agencia_envio: '' })} />
-                🏪 Retiro
+                🏪 Retiro en tienda
               </label>
               <label className={`checkout-form__radio${customer.entrega === 'delivery_local' ? ' active' : ''}`}>
                 <input type="radio" value="delivery_local" checked={customer.entrega === 'delivery_local'}
                   onChange={() => updateCustomer({ entrega: 'delivery_local', sucursal: '', empresa_envio: '', ciudad_destino: '', agencia_envio: '' })} />
-                🛵 Local
+                🛵 Delivery local
               </label>
               <label className={`checkout-form__radio${customer.entrega === 'delivery_nacional' ? ' active' : ''}`}>
                 <input type="radio" value="delivery_nacional" checked={customer.entrega === 'delivery_nacional'}
                   onChange={() => updateCustomer({ entrega: 'delivery_nacional', sucursal: '', direccion: '' })} />
-                📦 Nacional
+                📦 Envío nacional
               </label>
             </div>
           </div>
 
-          {/* Retiro: elegir sucursal */}
+          {/* Retiro: elegir sucursal de Nuovocell */}
           {customer.entrega === 'retiro' && (
             <div className="checkout-form__group">
-              <label className="checkout-form__label">Sucursal</label>
+              <label className="checkout-form__label">¿En cuál sucursal Nuovocell retiras?</label>
               <select className="checkout-form__select"
                 value={customer.sucursal}
                 onChange={e => updateCustomer({ sucursal: e.target.value })}>
@@ -185,7 +185,7 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
           {/* Delivery nacional: empresa + ciudad + agencia */}
           {customer.entrega === 'delivery_nacional' && (<>
             <div className="checkout-form__group">
-              <label className="checkout-form__label">Empresa de envío</label>
+              <label className="checkout-form__label">Empresa de envío preferida</label>
               <select className="checkout-form__select"
                 value={customer.empresa_envio}
                 onChange={e => updateCustomer({ empresa_envio: e.target.value })}>
@@ -201,9 +201,9 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
                 onChange={e => updateCustomer({ ciudad_destino: e.target.value })} />
             </div>
             <div className="checkout-form__group">
-              <label className="checkout-form__label">Número o dirección de agencia</label>
+              <label className="checkout-form__label">Sucursal de la empresa de envío</label>
               <input className="checkout-form__input" type="text"
-                placeholder="Ej: Agencia MRW Las Mercedes #342"
+                placeholder="Ej: MRW Las Mercedes, Agencia #342"
                 value={customer.agencia_envio}
                 onChange={e => updateCustomer({ agencia_envio: e.target.value })} />
             </div>

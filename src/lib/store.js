@@ -12,8 +12,14 @@ export const useCartStore = create(
         nombre: '',
         telefono: '',
         ciudad: '',
-        entrega: 'retiro', // 'retiro' | 'delivery'
+        entrega: 'retiro',      // 'retiro' | 'delivery_local' | 'delivery_nacional'
         sucursal: '',
+        // Delivery local
+        direccion: '',
+        // Delivery nacional
+        empresa_envio: '',      // MRW, Zoom, Tealca, etc.
+        ciudad_destino: '',
+        agencia_envio: '',
         metodoPago: '',
         notas: '',
       },
@@ -36,7 +42,9 @@ export const useCartStore = create(
       },
 
       clearCart: () => set({ items: [], step: 'cart', customer: {
-        nombre: '', telefono: '', ciudad: '', entrega: 'retiro', sucursal: '', metodoPago: '', notas: '',
+        nombre: '', telefono: '', ciudad: '', entrega: 'retiro', sucursal: '',
+        direccion: '', empresa_envio: '', ciudad_destino: '', agencia_envio: '',
+        metodoPago: '', notas: '',
       }}),
 
       setStep: (step) => set({ step }),
@@ -67,8 +75,14 @@ export const useCartStore = create(
           customer.nombre     ? `👤 Nombre: ${customer.nombre}` : '',
           customer.telefono   ? `📱 Teléfono: ${customer.telefono}` : '',
           customer.ciudad     ? `📍 Ciudad: ${customer.ciudad}` : '',
-          customer.entrega === 'delivery' ? '🚚 Entrega: Delivery' : '🏪 Entrega: Retiro en tienda',
-          customer.sucursal   ? `🏢 Sucursal: ${customer.sucursal}` : '',
+          customer.entrega === 'retiro'           ? '🏪 Entrega: Retiro en tienda' :
+          customer.entrega === 'delivery_local'    ? '🛵 Entrega: Delivery local' :
+                                                    '📦 Entrega: Envío nacional',
+          customer.sucursal        ? `🏢 Sucursal: ${customer.sucursal}` : '',
+          customer.direccion       ? `📍 Dirección: ${customer.direccion}` : '',
+          customer.empresa_envio   ? `🚚 Empresa de envío: ${customer.empresa_envio}` : '',
+          customer.ciudad_destino  ? `📍 Ciudad destino: ${customer.ciudad_destino}` : '',
+          customer.agencia_envio   ? `🏪 Agencia: ${customer.agencia_envio}` : '',
           customer.metodoPago ? `💳 Método de pago: ${customer.metodoPago}` : '',
           customer.notas      ? `📝 Notas: ${customer.notas}` : '',
         ].filter(Boolean).join('\n');

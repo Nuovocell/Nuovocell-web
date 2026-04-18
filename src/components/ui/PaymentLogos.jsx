@@ -49,7 +49,7 @@ const SVG_LOGOS = {
 
 const CREDIT_LOGOS = {
   Cashea:           'https://cdn.sanity.io/images/wwy5bykm/production/5849e1c8f236b473d7527da16b90782c476d64b2-417x418.jpg',
-  'Chollo Crédito': 'https://cdn.sanity.io/images/wwy5bykm/production/132d47544ea71248316f0f17c75efa85854538f4-417x418.jpg',
+  'Chollo': 'https://cdn.sanity.io/images/wwy5bykm/production/132d47544ea71248316f0f17c75efa85854538f4-417x418.jpg',
   Krece:            'https://cdn.sanity.io/images/wwy5bykm/production/b19f7606644ce2531358006b586a1c9c09050e87-417x418.jpg',
   Weppa:            'https://cdn.sanity.io/images/wwy5bykm/production/d57da0aaa9c165ee74849bc3ab20b88c2e7d5f0f-200x80.svg',
 };
@@ -66,14 +66,14 @@ const PAYMENT_WA_MSGS = {
 
 const CREDIT_URLS = {
   Cashea:           'https://play.google.com/store/apps/details?id=com.cashea.app',
-  'Chollo Crédito': 'https://chollo.app',
+  'Chollo': 'https://chollo.app',
   Krece:            'https://www.krece.app',
   Weppa:            'https://weppa.app',
 };
 
 const CREDIT_FALLBACK = {
   Cashea:           { bg: '#F5C300', color: '#000' },
-  'Chollo Crédito': { bg: '#0033CC', color: '#fff' },
+  'Chollo': { bg: '#0033CC', color: '#fff' },
   Krece:            { bg: '#29C5CC', color: '#000' },
   Weppa:            { bg: '#6C3CE1', color: '#fff' },
 };

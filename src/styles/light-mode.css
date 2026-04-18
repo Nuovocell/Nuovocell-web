@@ -115,3 +115,9 @@
 [data-theme="light"] .pcard__marca { color: var(--blue); }
 [data-theme="light"] .pcard__price { color: #1a1a2e; }
 [data-theme="light"] .home-cat-card__label { color: #1a1a2e; }
+
+/* Payment & credit labels — black in light mode */
+[data-theme="light"] .payment-logo__label,
+[data-theme="light"] .credit-badge__label {
+  color: #111111 !important;
+}

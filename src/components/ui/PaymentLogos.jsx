@@ -141,7 +141,7 @@ export function CreditBadge({ nombre, url }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="credit-badge credit-badge--img"
+      className={`credit-badge credit-badge--img${nombre === "Weppa" ? " credit-badge--weppa" : ""}`}
       title={nombre}
     >
       {imgSrc ? (

@@ -95,7 +95,6 @@ function CartStep({ items, removeItem, updateQty, total, hasTotal, onNext, onClo
 function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTotal }) {
   const sucursalesOpts = SUCURSALES.map(s => s.nombre);
   const pagosOpts = PAGOS.map(p => p.label);
-
   const isValid = customer.nombre.trim() && customer.telefono.trim() && customer.metodoPago;
 
   return (
@@ -103,49 +102,43 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
       <div className="cart__header">
         <button className="cart__back" onClick={onBack}>
           <BackIcon />
-          <span>Volver</span>
+          <span>Volver al carrito</span>
         </button>
-        <h2 className="cart__title">Tus datos</h2>
       </div>
 
       <div className="cart__body cart__body--form">
         <div className="checkout-form">
 
+          {/* Datos personales */}
           <div className="checkout-form__group">
             <label className="checkout-form__label">Nombre completo *</label>
-            <input
-              className="checkout-form__input"
-              type="text"
+            <input className="checkout-form__input" type="text"
               placeholder="Ej: Juan Pérez"
               value={customer.nombre}
-              onChange={e => updateCustomer({ nombre: e.target.value })}
-            />
+              onChange={e => updateCustomer({ nombre: e.target.value })} />
           </div>
 
           <div className="checkout-form__group">
-            <label className="checkout-form__label">Teléfono / WhatsApp *</label>
-            <input
-              className="checkout-form__input"
-              type="tel"
-              placeholder="Ej: 0412-1234567"
+            <label className="checkout-form__label">WhatsApp *</label>
+            <input className="checkout-form__input" type="tel"
+              placeholder="0412-1234567"
               value={customer.telefono}
-              onChange={e => updateCustomer({ telefono: e.target.value })}
-            />
+              onChange={e => updateCustomer({ telefono: e.target.value })} />
           </div>
 
           <div className="checkout-form__group">
             <label className="checkout-form__label">Ciudad</label>
-            <input
-              className="checkout-form__input"
-              type="text"
-              placeholder="Ej: Valencia, Carabobo"
+            <input className="checkout-form__input" type="text"
+              placeholder="Valencia, Carabobo"
               value={customer.ciudad}
-              onChange={e => updateCustomer({ ciudad: e.target.value })}
-            />
+              onChange={e => updateCustomer({ ciudad: e.target.value })} />
           </div>
 
+          <div className="checkout-form__divider" />
+
+          {/* Entrega */}
           <div className="checkout-form__group">
-            <label className="checkout-form__label">¿Cómo quieres recibir tu pedido?</label>
+            <label className="checkout-form__label">¿Cómo recibes tu pedido?</label>
             <div className="checkout-form__radio-group">
               <label className={`checkout-form__radio${customer.entrega === 'retiro' ? ' active' : ''}`}>
                 <input type="radio" value="retiro" checked={customer.entrega === 'retiro'}
@@ -162,7 +155,7 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
 
           {customer.entrega === 'retiro' && (
             <div className="checkout-form__group">
-              <label className="checkout-form__label">Sucursal de retiro</label>
+              <label className="checkout-form__label">Sucursal</label>
               <select className="checkout-form__select"
                 value={customer.sucursal}
                 onChange={e => updateCustomer({ sucursal: e.target.value })}>
@@ -172,6 +165,9 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
             </div>
           )}
 
+          <div className="checkout-form__divider" />
+
+          {/* Pago */}
           <div className="checkout-form__group">
             <label className="checkout-form__label">Método de pago *</label>
             <select className="checkout-form__select"
@@ -183,14 +179,11 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
           </div>
 
           <div className="checkout-form__group">
-            <label className="checkout-form__label">Notas adicionales</label>
-            <textarea
-              className="checkout-form__textarea"
-              placeholder="Color preferido, variante, alguna pregunta..."
-              rows={3}
+            <label className="checkout-form__label">Notas / variante</label>
+            <textarea className="checkout-form__textarea"
+              placeholder="Color, almacenamiento, alguna pregunta..."
               value={customer.notas}
-              onChange={e => updateCustomer({ notas: e.target.value })}
-            />
+              onChange={e => updateCustomer({ notas: e.target.value })} />
           </div>
 
         </div>
@@ -203,7 +196,6 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
             <span className="cart__total-num">${total.toFixed(0)}</span>
           </div>
         )}
-        <p className="cart__note">Un asesor confirmará disponibilidad y coordinará el pago por WhatsApp.</p>
         <button
           className={`btn btn-wa cart__checkout${!isValid ? ' cart__checkout--disabled' : ''}`}
           onClick={isValid ? onSubmit : undefined}
@@ -212,7 +204,10 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
           <WAIcon />
           Enviar pedido por WhatsApp
         </button>
-        {!isValid && <p className="checkout-form__required-hint">* Completa nombre, teléfono y método de pago</p>}
+        {!isValid
+          ? <p className="checkout-form__required-hint">Completa nombre, WhatsApp y método de pago</p>
+          : <p className="cart__note">Un asesor confirmará disponibilidad y coordinará el pago.</p>
+        }
       </div>
     </>
   );

@@ -148,7 +148,7 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
               <label className={`checkout-form__radio${customer.entrega === 'delivery_local' ? ' active' : ''}`}>
                 <input type="radio" value="delivery_local" checked={customer.entrega === 'delivery_local'}
                   onChange={() => updateCustomer({ entrega: 'delivery_local', sucursal: '', empresa_envio: '', ciudad_destino: '', agencia_envio: '' })} />
-                🛵 Delivery local
+                🛵 Delivery (ciudad)
               </label>
               <label className={`checkout-form__radio${customer.entrega === 'delivery_nacional' ? ' active' : ''}`}>
                 <input type="radio" value="delivery_nacional" checked={customer.entrega === 'delivery_nacional'}

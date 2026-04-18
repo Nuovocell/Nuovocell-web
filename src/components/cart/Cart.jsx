@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCartStore, useUIStore } from '../../lib/store';
-import { WA_URL } from '../../lib/data';
+import { WA_URL, SUCURSALES, PAGOS } from '../../lib/data';
 import './Cart.css';
 
 const CloseIcon = () => (
@@ -22,6 +22,202 @@ const WAIcon = () => (
   </svg>
 );
 
+const BackIcon = () => (
+  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+    <path d="M19 12H5M12 5l-7 7 7 7"/>
+  </svg>
+);
+
+function CartStep({ items, removeItem, updateQty, total, hasTotal, onNext, onClose, t }) {
+  return (
+    <>
+      <div className="cart__header">
+        <div>
+          <h2 className="cart__title">{t('cart.title')}</h2>
+        </div>
+        <button className="cart__close" onClick={onClose}><CloseIcon /></button>
+      </div>
+
+      <div className="cart__body">
+        {items.length === 0 ? (
+          <div className="cart__empty">
+            <div className="cart__empty-icon">🛍️</div>
+            <p className="cart__empty-text">{t('cart.empty')}</p>
+            <p className="cart__empty-sub">{t('cart.empty_sub')}</p>
+          </div>
+        ) : (
+          <ul className="cart__list">
+            {items.map(item => (
+              <li key={item._id} className="cart__item">
+                <div className="cart__item-info">
+                  <span className="cart__item-name">{item.nombre}</span>
+                  {item.precio
+                    ? <span className="cart__item-price">${item.precio}</span>
+                    : <span className="cart__item-price cart__item-price--na">{t('catalog.no_price')}</span>
+                  }
+                </div>
+                <div className="cart__item-actions">
+                  <div className="cart__qty">
+                    <button onClick={() => updateQty(item._id, item.qty - 1)}>−</button>
+                    <span>{item.qty}</span>
+                    <button onClick={() => updateQty(item._id, item.qty + 1)}>+</button>
+                  </div>
+                  <button className="cart__remove" onClick={() => removeItem(item._id)}>
+                    <TrashIcon />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {items.length > 0 && (
+        <div className="cart__footer">
+          {hasTotal && (
+            <div className="cart__total">
+              <span>{t('cart.total')}</span>
+              <span className="cart__total-num">${total.toFixed(0)}</span>
+            </div>
+          )}
+          <button className="btn btn-primary cart__checkout" onClick={onNext}>
+            Continuar con el pedido
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      )}
+    </>
+  );
+}
+
+function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTotal }) {
+  const sucursalesOpts = SUCURSALES.map(s => s.nombre);
+  const pagosOpts = PAGOS.map(p => p.label);
+
+  const isValid = customer.nombre.trim() && customer.telefono.trim() && customer.metodoPago;
+
+  return (
+    <>
+      <div className="cart__header">
+        <button className="cart__back" onClick={onBack}>
+          <BackIcon />
+          <span>Volver</span>
+        </button>
+        <h2 className="cart__title">Tus datos</h2>
+      </div>
+
+      <div className="cart__body cart__body--form">
+        <div className="checkout-form">
+
+          <div className="checkout-form__group">
+            <label className="checkout-form__label">Nombre completo *</label>
+            <input
+              className="checkout-form__input"
+              type="text"
+              placeholder="Ej: Juan Pérez"
+              value={customer.nombre}
+              onChange={e => updateCustomer({ nombre: e.target.value })}
+            />
+          </div>
+
+          <div className="checkout-form__group">
+            <label className="checkout-form__label">Teléfono / WhatsApp *</label>
+            <input
+              className="checkout-form__input"
+              type="tel"
+              placeholder="Ej: 0412-1234567"
+              value={customer.telefono}
+              onChange={e => updateCustomer({ telefono: e.target.value })}
+            />
+          </div>
+
+          <div className="checkout-form__group">
+            <label className="checkout-form__label">Ciudad</label>
+            <input
+              className="checkout-form__input"
+              type="text"
+              placeholder="Ej: Valencia, Carabobo"
+              value={customer.ciudad}
+              onChange={e => updateCustomer({ ciudad: e.target.value })}
+            />
+          </div>
+
+          <div className="checkout-form__group">
+            <label className="checkout-form__label">¿Cómo quieres recibir tu pedido?</label>
+            <div className="checkout-form__radio-group">
+              <label className={`checkout-form__radio${customer.entrega === 'retiro' ? ' active' : ''}`}>
+                <input type="radio" value="retiro" checked={customer.entrega === 'retiro'}
+                  onChange={() => updateCustomer({ entrega: 'retiro', sucursal: '' })} />
+                🏪 Retiro en tienda
+              </label>
+              <label className={`checkout-form__radio${customer.entrega === 'delivery' ? ' active' : ''}`}>
+                <input type="radio" value="delivery" checked={customer.entrega === 'delivery'}
+                  onChange={() => updateCustomer({ entrega: 'delivery', sucursal: '' })} />
+                🚚 Delivery
+              </label>
+            </div>
+          </div>
+
+          {customer.entrega === 'retiro' && (
+            <div className="checkout-form__group">
+              <label className="checkout-form__label">Sucursal de retiro</label>
+              <select className="checkout-form__select"
+                value={customer.sucursal}
+                onChange={e => updateCustomer({ sucursal: e.target.value })}>
+                <option value="">Selecciona una sucursal</option>
+                {sucursalesOpts.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+          )}
+
+          <div className="checkout-form__group">
+            <label className="checkout-form__label">Método de pago *</label>
+            <select className="checkout-form__select"
+              value={customer.metodoPago}
+              onChange={e => updateCustomer({ metodoPago: e.target.value })}>
+              <option value="">Selecciona un método</option>
+              {pagosOpts.map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
+          </div>
+
+          <div className="checkout-form__group">
+            <label className="checkout-form__label">Notas adicionales</label>
+            <textarea
+              className="checkout-form__textarea"
+              placeholder="Color preferido, variante, alguna pregunta..."
+              rows={3}
+              value={customer.notas}
+              onChange={e => updateCustomer({ notas: e.target.value })}
+            />
+          </div>
+
+        </div>
+      </div>
+
+      <div className="cart__footer">
+        {hasTotal && (
+          <div className="cart__total">
+            <span>Total estimado</span>
+            <span className="cart__total-num">${total.toFixed(0)}</span>
+          </div>
+        )}
+        <p className="cart__note">Un asesor confirmará disponibilidad y coordinará el pago por WhatsApp.</p>
+        <button
+          className={`btn btn-wa cart__checkout${!isValid ? ' cart__checkout--disabled' : ''}`}
+          onClick={isValid ? onSubmit : undefined}
+          disabled={!isValid}
+        >
+          <WAIcon />
+          Enviar pedido por WhatsApp
+        </button>
+        {!isValid && <p className="checkout-form__required-hint">* Completa nombre, teléfono y método de pago</p>}
+      </div>
+    </>
+  );
+}
+
 export default function Cart() {
   const { t } = useTranslation();
   const { cartOpen, toggleCart } = useUIStore();
@@ -29,85 +225,47 @@ export default function Cart() {
   const removeItem = useCartStore(s => s.removeItem);
   const updateQty = useCartStore(s => s.updateQty);
   const buildWAMessage = useCartStore(s => s.buildWAMessage);
+  const step = useCartStore(s => s.step);
+  const setStep = useCartStore(s => s.setStep);
+  const customer = useCartStore(s => s.customer);
+  const updateCustomer = useCartStore(s => s.updateCustomer);
 
   const total = items.reduce((sum, i) => sum + (i.precio || 0) * i.qty, 0);
   const hasTotal = items.some(i => i.precio);
 
-  const handleCheckout = () => {
+  const handleSubmit = () => {
     const msg = buildWAMessage();
     window.open(`https://wa.me/584123621133?text=${msg}`, '_blank');
+    setStep('cart');
   };
 
   return (
     <>
-      {/* Overlay */}
       <div
         className={`cart-overlay${cartOpen ? ' cart-overlay--open' : ''}`}
         onClick={toggleCart}
       />
-
-      {/* Drawer */}
       <aside className={`cart${cartOpen ? ' cart--open' : ''}`}>
-        {/* Header */}
-        <div className="cart__header">
-          <div>
-            <h2 className="cart__title">{t('cart.title')}</h2>
-          </div>
-          <button className="cart__close" onClick={toggleCart}>
-            <CloseIcon />
-          </button>
-        </div>
-
-        {/* Items */}
-        <div className="cart__body">
-          {items.length === 0 ? (
-            <div className="cart__empty">
-              <div className="cart__empty-icon">🛍️</div>
-              <p className="cart__empty-text">{t('cart.empty')}</p>
-              <p className="cart__empty-sub">{t('cart.empty_sub')}</p>
-            </div>
-          ) : (
-            <ul className="cart__list">
-              {items.map(item => (
-                <li key={item._id} className="cart__item">
-                  <div className="cart__item-info">
-                    <span className="cart__item-name">{item.nombre}</span>
-                    {item.precio
-                      ? <span className="cart__item-price">${item.precio}</span>
-                      : <span className="cart__item-price cart__item-price--na">{t('catalog.no_price')}</span>
-                    }
-                  </div>
-                  <div className="cart__item-actions">
-                    <div className="cart__qty">
-                      <button onClick={() => updateQty(item._id, item.qty - 1)}>−</button>
-                      <span>{item.qty}</span>
-                      <button onClick={() => updateQty(item._id, item.qty + 1)}>+</button>
-                    </div>
-                    <button className="cart__remove" onClick={() => removeItem(item._id)}>
-                      <TrashIcon />
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        {/* Footer */}
-        {items.length > 0 && (
-          <div className="cart__footer">
-            {hasTotal && (
-              <div className="cart__total">
-                <span>{t('cart.total')}</span>
-                <span className="cart__total-num">${total.toFixed(0)}</span>
-              </div>
-            )}
-            <p className="cart__note">{t('cart.note')}</p>
-            <button className="btn btn-wa cart__checkout" onClick={handleCheckout}>
-              <WAIcon />
-              {t('cart.checkout_wa')}
-            </button>
-          </div>
+        {step === 'cart' ? (
+          <CartStep
+            items={items}
+            removeItem={removeItem}
+            updateQty={updateQty}
+            total={total}
+            hasTotal={hasTotal}
+            onNext={() => setStep('checkout')}
+            onClose={toggleCart}
+            t={t}
+          />
+        ) : (
+          <CheckoutStep
+            customer={customer}
+            updateCustomer={updateCustomer}
+            onBack={() => setStep('cart')}
+            onSubmit={handleSubmit}
+            total={total}
+            hasTotal={hasTotal}
+          />
         )}
       </aside>
     </>

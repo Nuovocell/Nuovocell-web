@@ -84,14 +84,14 @@ const CREDIT_LOGOS = {
 const WA_BASE = 'https://wa.me/584123621133?text=';
 
 const PAYMENT_WA_MSGS = {
-  cash:          encodeURIComponent('Hola! Quiero pagar en efectivo USD. ¿Cómo procedo?'),
-  pagomovil:     encodeURIComponent('Hola! Quiero pagar por Pago Móvil. ¿Cuáles son los datos?'),
-  zinli:         encodeURIComponent('Hola! Quiero pagar por Zinli. ¿Cuáles son los datos?'),
-  mercantil:     encodeURIComponent('Hola! Quiero pagar por Mercantil Panamá. ¿Cuáles son los datos?'),
-  banesco:       encodeURIComponent('Hola! Quiero pagar por Banesco Panamá. ¿Cuáles son los datos?'),
-  transferencia: encodeURIComponent('Hola! Quiero pagar por transferencia bancaria. ¿Cuáles son los datos?'),
-  binance:       encodeURIComponent('Hola! Quiero pagar por Binance Pay. ¿Cuál es el ID?'),
-  card:          encodeURIComponent('Hola! Quiero pagar con tarjeta débito/crédito. ¿En qué sucursal puedo hacerlo?'),
+  cash:          encodeURIComponent('Hola! 👋 Estoy interesado en realizar un pago en *Efectivo USD*. ¿Me pueden indicar cómo proceder y en cuál sucursal puedo hacerlo? Gracias.'),
+  pagomovil:     encodeURIComponent('Hola! 👋 Quiero realizar un pago por *Pago Móvil*. ¿Me pueden proporcionar los datos bancarios (banco, número de teléfono, cédula y nombre del titular)? Gracias.'),
+  zinli:         encodeURIComponent('Hola! 👋 Quiero realizar un pago a través de *Zinli*. ¿Me pueden proporcionar el número de cuenta o usuario de Zinli para realizar la transferencia? Gracias.'),
+  mercantil:     encodeURIComponent('Hola! 👋 Quiero realizar un pago por *Mercantil Panamá*. ¿Me pueden indicar los datos de la cuenta (número de cuenta, nombre del titular y banco) para proceder? Gracias.'),
+  banesco:       encodeURIComponent('Hola! 👋 Quiero realizar un pago por *Banesco Panamá*. ¿Me pueden indicar los datos de la cuenta (número de cuenta, nombre del titular y banco) para proceder? Gracias.'),
+  transferencia: encodeURIComponent('Hola! 👋 Quiero realizar un pago por *Transferencia Bancaria*. ¿Me pueden proporcionar los datos bancarios completos (banco, número de cuenta, nombre del titular y RIF/cédula)? Gracias.'),
+  binance:       encodeURIComponent('Hola! 👋 Quiero realizar un pago por *Binance Pay*. ¿Me pueden proporcionar el ID de Binance Pay o el Pay ID para realizar la transferencia? Gracias.'),
+  card:          encodeURIComponent('Hola! 👋 Quiero pagar con *tarjeta de débito/crédito*. ¿En cuál de sus sucursales puedo realizar el pago con tarjeta? Gracias.'),
 };
 
 const CREDIT_URLS = {

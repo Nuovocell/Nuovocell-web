@@ -131,3 +131,14 @@
   font-weight: 600;
   text-align: center;
 }
+
+/* Weppa — horizontal logo, tarjeta más ancha */
+.credit-badge--weppa {
+  min-width: 130px;
+}
+
+.credit-badge--weppa .credit-badge__logo {
+  width: 110px;
+  height: auto;
+  border-radius: 8px;
+}

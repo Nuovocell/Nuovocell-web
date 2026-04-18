@@ -5,6 +5,18 @@ export const useCartStore = create(
   persist(
     (set, get) => ({
       items: [],
+      // Checkout step: 'cart' | 'checkout'
+      step: 'cart',
+      // Customer data
+      customer: {
+        nombre: '',
+        telefono: '',
+        ciudad: '',
+        entrega: 'retiro', // 'retiro' | 'delivery'
+        sucursal: '',
+        metodoPago: '',
+        notas: '',
+      },
 
       addItem: (product) => {
         const { items } = get();
@@ -23,7 +35,13 @@ export const useCartStore = create(
         set({ items: get().items.map(i => i._id === id ? { ...i, qty } : i) });
       },
 
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], step: 'cart', customer: {
+        nombre: '', telefono: '', ciudad: '', entrega: 'retiro', sucursal: '', metodoPago: '', notas: '',
+      }}),
+
+      setStep: (step) => set({ step }),
+
+      updateCustomer: (data) => set(s => ({ customer: { ...s.customer, ...data } })),
 
       get total() {
         return get().items.reduce((sum, i) => sum + (i.precio || 0) * i.qty, 0);
@@ -33,18 +51,34 @@ export const useCartStore = create(
         return get().items.reduce((sum, i) => sum + i.qty, 0);
       },
 
-      // Build WhatsApp message with cart content
+      // Build WhatsApp message with cart + customer data
       buildWAMessage: () => {
-        const { items } = get();
+        const { items, customer } = get();
         if (items.length === 0) return '';
 
         const lines = items.map(i =>
           `• ${i.nombre} x${i.qty}${i.precio ? ` — $${i.precio}` : ''}`
         ).join('\n');
 
-        return encodeURIComponent(
-          `Hola! Me interesa el siguiente equipo de Nuovocell:\n\n${lines}\n\n¿Pueden confirmarme disponibilidad y precio final?`
-        );
+        const total = items.reduce((sum, i) => sum + (i.precio || 0) * i.qty, 0);
+        const totalLine = total > 0 ? `\n💰 *Total estimado: $${total}*` : '';
+
+        const clienteInfo = [
+          customer.nombre     ? `👤 Nombre: ${customer.nombre}` : '',
+          customer.telefono   ? `📱 Teléfono: ${customer.telefono}` : '',
+          customer.ciudad     ? `📍 Ciudad: ${customer.ciudad}` : '',
+          customer.entrega === 'delivery' ? '🚚 Entrega: Delivery' : '🏪 Entrega: Retiro en tienda',
+          customer.sucursal   ? `🏢 Sucursal: ${customer.sucursal}` : '',
+          customer.metodoPago ? `💳 Método de pago: ${customer.metodoPago}` : '',
+          customer.notas      ? `📝 Notas: ${customer.notas}` : '',
+        ].filter(Boolean).join('\n');
+
+        const msg = `Hola! Quiero hacer el siguiente pedido en *Nuovocell*:\n\n` +
+          `📦 *Productos:*\n${lines}${totalLine}\n\n` +
+          `👤 *Datos del cliente:*\n${clienteInfo}\n\n` +
+          `¿Pueden confirmarme disponibilidad y proceder con el pago? Gracias! 🙏`;
+
+        return encodeURIComponent(msg);
       },
     }),
     {

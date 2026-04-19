@@ -117,8 +117,8 @@ function DigitelBanner() {
 
   const [imgSrc, setImgSrc] = useState(() => {
     const imgs = {
-      'dark-desktop': '/images/digitel-banner.svg',
-      'light-desktop': '/images/digitel-banner.svg',
+      'dark-desktop': '/images/digitel-banner.jpg',
+      'light-desktop': '/images/digitel-banner.jpg',
       'dark-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg',
       'light-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg',
     };
@@ -127,8 +127,8 @@ function DigitelBanner() {
 
   useEffect(() => {
     const imgs = {
-      'dark-desktop': '/images/digitel-banner.svg',
-      'light-desktop': '/images/digitel-banner.svg',
+      'dark-desktop': '/images/digitel-banner.jpg',
+      'light-desktop': '/images/digitel-banner.jpg',
       'dark-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg',
       'light-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg',
     };

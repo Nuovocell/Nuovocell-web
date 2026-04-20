@@ -69,13 +69,13 @@ export default function Hero() {
         <div className="hero__content">
           {/* Badge Agente Autorizado — con logotema Digitel segun guia de marca */}
           {/* Title */}
-          <h1 className="hero__title">
-            <span className="hero__title-line">{t('hero.title1')}</span>
-            <span className="hero__title-line hero__title-blue">{t('hero.title2')}</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="hero__sub">{t('hero.sub')}</p>
+          <div className="hero__logo-large">
+            <img
+              src="/logos/nuovocell-logo.png"
+              alt="Nuovocell"
+              className="hero__logo-large-img"
+            />
+          </div>
 
           {/* CTAs */}
           <div className="hero__ctas">
@@ -113,10 +113,7 @@ export default function Hero() {
               title="iPhone 17 Pro Max 3D"
             />
           </div>
-          <div className="hero__sucursales-badge">
-            <span className="hero__suc-num">9</span>
-            <span className="hero__suc-label" style={{color:'#FCFCFC'}}>SUCURSALES<br/>EN VENEZUELA</span>
-          </div>
+
         </div>
       </div>
     </section>

@@ -508,15 +508,23 @@
 
 /* ── Large logo replacing title ──────────────────── */
 .hero__logo-large {
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .hero__logo-large-img {
-  height: 80px;
+  height: 100px;
   width: auto;
   object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(0,170,255,0.25));
 }
 
 @media (max-width: 768px) {
-  .hero__logo-large-img { height: 56px; }
+  .hero__logo-large {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .hero__logo-large-img {
+    height: 80px;
+  }
 }

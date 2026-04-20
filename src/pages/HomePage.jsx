@@ -110,42 +110,6 @@ const SERVICES = [
 ];
 
 
-function DigitelBanner() {
-  const isMobile = () => window.innerWidth <= 768;
-  const getTheme = () => document.documentElement.getAttribute('data-theme') || 'dark';
-  const getKey = () => `${getTheme()}-${isMobile() ? 'mobile' : 'desktop'}`;
-
-  const [imgSrc, setImgSrc] = useState(() => {
-    const imgs = {
-      'dark-desktop': '/images/digitel-banner.jpg',
-      'light-desktop': '/images/digitel-banner.jpg',
-      'dark-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg',
-      'light-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg',
-    };
-    return imgs['dark-desktop'];
-  });
-
-  useEffect(() => {
-    const imgs = {
-      'dark-desktop': '/images/digitel-banner.jpg',
-      'light-desktop': '/images/digitel-banner.jpg',
-      'dark-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/edff88bf1ee9b9b60ecab2decbeb516b204cae18-1668x1668.jpg',
-      'light-mobile': 'https://cdn.sanity.io/images/wwy5bykm/production/abc3ed1539a97c9c559ad0b6d22b24b26b70853d-1668x1668.jpg',
-    };
-    const update = () => setImgSrc(imgs[getKey()] || imgs['dark-desktop']);
-    update();
-    window.addEventListener('resize', update);
-    const obs = new MutationObserver(update);
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    return () => { window.removeEventListener('resize', update); obs.disconnect(); };
-  }, []); // eslint-disable-line
-
-  return (
-    <section className="home-digitel">
-      <img src={imgSrc} alt="Adquiere tu línea Digitel 4G LTE con Nuovocell" className="home-digitel__banner-img" />
-    </section>
-  );
-}
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -235,8 +199,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Digitel banner */}
-      <DigitelBanner />
+
 
       {/* Métodos de pago */}
       <section className="section home-pagos">

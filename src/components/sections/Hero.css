@@ -504,6 +504,18 @@
   .hero__3d-wrap {
     max-width: 280px;
   }
+  .hero__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero__ctas {
+    justify-content: center;
+  }
+  .hero__trust {
+    justify-content: center;
+  }
 }
 
 /* ── Large logo replacing title ──────────────────── */

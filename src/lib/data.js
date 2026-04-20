@@ -176,4 +176,5 @@ export const WA_NUMBER = '584123621133';
 export const WA_URL = `https://wa.me/${WA_NUMBER}`;
 export const INSTAGRAM = 'https://instagram.com/nuovocell';
 export const FACEBOOK = 'https://facebook.com/nuovocell';
+export const TIKTOK = 'https://www.tiktok.com/@nuovo.celll';
 export const DIGITEL_URL = 'https://digitel.com.ve/planes-paquetes-datos-personas';

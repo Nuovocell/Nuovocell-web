@@ -31,6 +31,27 @@ export default function Footer() {
 
   return (
     <footer className="footer">
+      {/* Sucursales */}
+      <div className="footer__sucursales-section container">
+        <p className="footer__sucursales-title">📍 Nuestras Sucursales</p>
+        <div className="footer__sucursales-grid">
+          {SUCURSALES.map(s => (
+            <div key={s._id} className="footer__sucursal-card">
+              <p className="footer__sucursal-nombre">{s.nombre}</p>
+              <p className="footer__sucursal-dir">{s.direccion}</p>
+              <a
+                href={`https://wa.me/${s.whatsapp.replace(/[^0-9]/g,'')}?text=${encodeURIComponent('Hola! Quiero información sobre la sucursal ' + s.nombre)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__sucursal-tel"
+              >
+                {s.whatsapp}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="footer__top container">
 
         {/* Brand */}
@@ -98,27 +119,6 @@ export default function Footer() {
               <CreditBadge key={c.nombre} {...c} />
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Sucursales */}
-      <div className="footer__sucursales-section container">
-        <p className="footer__sucursales-title">📍 Nuestras Sucursales</p>
-        <div className="footer__sucursales-grid">
-          {SUCURSALES.map(s => (
-            <div key={s._id} className="footer__sucursal-card">
-              <p className="footer__sucursal-nombre">{s.nombre}</p>
-              <p className="footer__sucursal-dir">{s.direccion}</p>
-              <a
-                href={`https://wa.me/${s.whatsapp.replace(/[^0-9]/g,'')}?text=${encodeURIComponent('Hola! Quiero información sobre la sucursal ' + s.nombre)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__sucursal-tel"
-              >
-                {s.whatsapp}
-              </a>
-            </div>
-          ))}
         </div>
       </div>
 

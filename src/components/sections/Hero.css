@@ -542,12 +542,18 @@
 }
 
 /* Hero lema */
+.hero__logo-large {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .hero__lema {
   font-size: 1rem;
   font-weight: 500;
   color: var(--white-50);
   letter-spacing: 0.02em;
-  margin-top: 8px;
+  margin-top: 10px;
   font-style: italic;
 }
 
@@ -556,6 +562,9 @@
 }
 
 @media (max-width: 768px) {
+  .hero__logo-large {
+    align-items: center;
+  }
   .hero__lema {
     text-align: center;
     font-size: 0.88rem;

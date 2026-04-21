@@ -521,6 +521,9 @@
 /* ── Large logo replacing title ──────────────────── */
 .hero__logo-large {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero__logo-large-img {

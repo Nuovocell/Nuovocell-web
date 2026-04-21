@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { WA_URL, DIGITEL_URL } from '../../lib/data';
@@ -53,8 +53,23 @@ const TRUST_ITEMS = [
   },
 ];
 
+function useTheme() {
+  const [theme, setTheme] = useState(
+    () => document.documentElement.getAttribute('data-theme') || 'dark'
+  );
+  useEffect(() => {
+    const obs = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+    });
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => obs.disconnect();
+  }, []);
+  return theme;
+}
+
 export default function Hero() {
   const { t } = useTranslation();
+  const theme = useTheme();
 
   return (
     <section className="hero">
@@ -71,9 +86,7 @@ export default function Hero() {
           {/* Title */}
           <div className="hero__logo-large">
             <img
-              src={document.documentElement.getAttribute('data-theme') === 'light'
-                ? '/logos/nuovocell-logo-black.png'
-                : '/logos/nuovocell-logo.png'}
+              src={theme === 'light' ? '/logos/nuovocell-logo-black.png' : '/logos/nuovocell-logo.png'}
               alt="Nuovocell"
               className="hero__logo-large-img"
             />

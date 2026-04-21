@@ -100,7 +100,7 @@ export default function Footer() {
           <ul className="footer__links">
             <li><Link to="/sucursales">{t('nav.sucursales')}</Link></li>
             <li><Link to="/servicio-tecnico">{t('nav.servicio')}</Link></li>
-            <li><a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer">{t('digitel.planes')}</a></li>
+            <li><a href={DIGITEL_URL} target="_blank" rel="noopener noreferrer">Digitel</a></li>
             <li><a href={WA_URL} target="_blank" rel="noopener noreferrer">{t('footer.contacto')}</a></li>
           </ul>
         </div>

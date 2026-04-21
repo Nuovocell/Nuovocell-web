@@ -383,3 +383,8 @@
 }
 
 .footer__sucursal-tel:hover { opacity: 0.8; }
+
+/* Space between sucursales and footer brand section */
+.footer__sucursales-section + .footer__top {
+  padding-top: 48px;
+}

@@ -12,14 +12,6 @@ const WAIcon = () => (
 
 const TRUST_ITEMS = [
   {
-    key: 'digitel',
-    icon: (
-      <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-        <path d="M1 6l5 6-5 6M8 6h8M8 12h6M8 18h8"/>
-      </svg>
-    ),
-  },
-  {
     key: 'envios',
     icon: (
       <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">

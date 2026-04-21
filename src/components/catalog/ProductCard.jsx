@@ -102,7 +102,7 @@ export default function ProductCard({ product }) {
 
         {/* Actions */}
         <div className="pcard__actions">
-          {disponible && (
+          {disponible !== false && (
             <button
               className={`btn pcard__add${inCart ? ' pcard__add--added' : ' btn-primary'}`}
               onClick={handleAdd}

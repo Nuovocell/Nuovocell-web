@@ -75,6 +75,7 @@ export default function Hero() {
               alt="Nuovocell"
               className="hero__logo-large-img"
             />
+            <p className="hero__lema">Excelencia en servicio.</p>
           </div>
 
           {/* CTAs */}
@@ -85,10 +86,7 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </Link>
-            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn btn-wa">
-              <WAIcon />
-              {t('hero.cta_wa')}
-            </a>
+
           </div>
 
           {/* Trust bar — chips/etiquetas con iconos SVG (Lai) */}

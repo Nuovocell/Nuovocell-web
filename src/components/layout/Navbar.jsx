@@ -108,6 +108,9 @@ export default function Navbar() {
     { to: '/sucursales', label: t('nav.sucursales') },
     { to: '/servicio-tecnico', label: t('nav.servicio') },
   ];
+  const externalLinks = [
+    { href: 'https://digitel.com.ve/planes-paquetes-datos-personas', label: 'Digitel' },
+  ];
   return (
     <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
@@ -155,6 +158,13 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+          {externalLinks.map(link => (
+            <li key={link.href}>
+              <a href={link.href} target="_blank" rel="noopener noreferrer" className="navbar__link">
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
         <div className="navbar__actions">
           <button className="navbar__theme" onClick={toggleTheme} aria-label="Cambiar tema" title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}>
@@ -196,6 +206,11 @@ export default function Navbar() {
             <Link key={link.to} to={link.to} className="navbar__mobile-link">
               {link.label}
             </Link>
+          ))}
+          {externalLinks.map(link => (
+            <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="navbar__mobile-link">
+              {link.label}
+            </a>
           ))}
           <div className="navbar__mobile-footer">
             <button onClick={toggleLang} className="btn btn-ghost">

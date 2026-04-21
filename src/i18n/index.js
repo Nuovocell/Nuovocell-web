@@ -29,6 +29,7 @@ const resources = {
         garantia: 'Garantía oficial',
         credito: 'Crédito disponible',
         pagos: 'Múltiples pagos',
+        servicio: 'Servicios',
         digitel: 'Agente Digitel',
       },
       catalog: {
@@ -146,6 +147,7 @@ const resources = {
         garantia: 'Official warranty',
         credito: 'Credit available',
         pagos: 'Multiple payments',
+        servicio: 'Services',
         digitel: 'Digitel Agent',
       },
       catalog: {

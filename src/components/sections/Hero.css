@@ -540,3 +540,24 @@
     height: 80px;
   }
 }
+
+/* Hero lema */
+.hero__lema {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white-50);
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+[data-theme="light"] .hero__lema {
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .hero__lema {
+    text-align: center;
+    font-size: 0.88rem;
+  }
+}

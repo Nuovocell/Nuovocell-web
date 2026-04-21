@@ -71,7 +71,9 @@ export default function Hero() {
           {/* Title */}
           <div className="hero__logo-large">
             <img
-              src="/logos/nuovocell-logo.png"
+              src={document.documentElement.getAttribute('data-theme') === 'light'
+                ? '/logos/nuovocell-logo-black.png'
+                : '/logos/nuovocell-logo.png'}
               alt="Nuovocell"
               className="hero__logo-large-img"
             />

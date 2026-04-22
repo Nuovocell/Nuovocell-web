@@ -54,9 +54,12 @@ const TRUST_ITEMS = [
 ];
 
 function useTheme() {
-  const [theme, setTheme] = useState(
-    () => document.documentElement.getAttribute('data-theme') || 'dark'
-  );
+  const getInitial = () => {
+    const saved = localStorage.getItem('nuovocell-theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  };
+  const [theme, setTheme] = useState(getInitial);
   useEffect(() => {
     const obs = new MutationObserver(() => {
       setTheme(document.documentElement.getAttribute('data-theme') || 'dark');

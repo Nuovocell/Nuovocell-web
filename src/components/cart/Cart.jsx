@@ -88,7 +88,11 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
     };
 
     try {
-      sdk.createCheckoutButton({ payload, container: containerRef.current });
+      sdk.createCheckoutButton({
+        apiKey: CASHEA_PUBLIC_KEY,
+        payload,
+        container: containerRef.current,
+      });
     } catch(e) {
       console.error('[Cashea SDK]', e);
       setSdkError(true);

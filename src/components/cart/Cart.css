@@ -403,3 +403,19 @@
 }
 
 .btn-cashea:hover { background: #e0b000; }
+
+/* Fix select options visibility in light/dark mode */
+.checkout-form__select option {
+  background: #1a1a2e;
+  color: #ffffff;
+}
+
+[data-theme="light"] .checkout-form__select {
+  background: #f7f8fa;
+  color: #111;
+}
+
+[data-theme="light"] .checkout-form__select option {
+  background: #ffffff;
+  color: #111;
+}

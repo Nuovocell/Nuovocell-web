@@ -77,18 +77,18 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
         products: items.map(item => ({
           id:          item._id,
           name:        item.nombre,
-          price:       item.precio || 0,
-          quantity:    item.qty,
           sku:         item._id,
           description: item.nombre,
-          imageUrl:    'https://nuovocell.com.ve/logos/nuovocell-logo.png',
+          imageUrl:    'https://s3.rsgve.com/admin/images/logo.png',
+          quantity:    item.qty,
+          price:       item.precio || 0,
           tax:         0,
           discount:    0,
         })),
       }],
     };
     
-    console.log('[Cashea] Payload:', JSON.stringify(payload, null, 2));
+    console.log('[Cashea] Payload enviado:', JSON.stringify(payload, null, 2));
 
     try {
       sdk.createCheckoutButton({

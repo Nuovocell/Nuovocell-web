@@ -175,7 +175,7 @@ function CartStep({ items, removeItem, updateQty, total, hasTotal, onNext, onClo
   );
 }
 
-function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTotal }) {
+function CheckoutStep({ items, customer, updateCustomer, onBack, onSubmit, total, hasTotal }) {
   const sucursalesOpts = SUCURSALES.map(s => s.nombre);
   const pagosOpts = PAGOS.map(p => p.label);
   const isValid = customer.nombre.trim() && customer.telefono.trim() && customer.metodoPago;
@@ -398,6 +398,7 @@ export default function Cart() {
           />
         ) : (
           <CheckoutStep
+            items={items}
             customer={customer}
             updateCustomer={updateCustomer}
             onBack={() => setStep('cart')}

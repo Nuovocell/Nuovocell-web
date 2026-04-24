@@ -383,12 +383,30 @@
 .cashea-sdk-container {
   width: 100%;
   margin-top: 4px;
+  background: transparent !important;
 }
 
-.cashea-sdk-container button,
+/* SDK injects iframe/div with black background — override */
 .cashea-sdk-container > * {
   width: 100% !important;
   border-radius: 12px !important;
+  background: transparent !important;
+}
+
+.cashea-sdk-container iframe {
+  background: transparent !important;
+  border-radius: 12px !important;
+}
+
+/* Override Cashea SDK button styles to match Nuovocell */
+.cashea-sdk-container button {
+  width: 100% !important;
+  border-radius: 12px !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  padding: 14px !important;
+  font-size: 0.95rem !important;
+  cursor: pointer !important;
 }
 
 .btn-cashea {
@@ -400,6 +418,11 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
 .btn-cashea:hover { background: #e0b000; }

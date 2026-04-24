@@ -378,3 +378,28 @@
 [data-theme="light"] .checkout-form__required-hint {
   color: #e05;
 }
+
+/* ── Cashea SDK container ─────────────────────────── */
+.cashea-sdk-container {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.cashea-sdk-container button,
+.cashea-sdk-container > * {
+  width: 100% !important;
+  border-radius: 12px !important;
+}
+
+.btn-cashea {
+  background: #F5C300;
+  color: #000;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-cashea:hover { background: #e0b000; }

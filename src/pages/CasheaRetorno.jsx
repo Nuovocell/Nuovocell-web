@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCartStore } from '../../lib/store';
+import { useCartStore } from '../lib/store';
 import './CasheaRetorno.css';
 
 const WA_NUMBER = '584123621133';

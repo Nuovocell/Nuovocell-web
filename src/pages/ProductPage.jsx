@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { client, queries, urlFor } from '../lib/sanity';
 import { CATALOGO_SEED, WA_URL } from '../lib/data';
 import { useCartStore } from '../lib/store';
+import { CasheaInstallments } from '../components/ui/CasheaInstallments';
 import './ProductPage.css';
 
 const ArrowLeft = () => (

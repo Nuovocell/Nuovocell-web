@@ -64,13 +64,13 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
     const invoiceId = `NC-${Date.now()}`;
 
     const payload = {
-      deliveryMethod:         customer.entrega === 'retiro' ? 'IN_STORE' : 'DELIVERY',
-      redirectUrl:            CASHEA_REDIRECT,
-      merchantName:           'Nuovocell',
-      identificationNumber:   customer.cedula || '',
+      deliveryMethod:       customer.entrega === 'retiro' ? 'IN_STORE' : 'DELIVERY',
+      redirectUrl:          CASHEA_REDIRECT,
+      merchantName:         'Nuovocell',
+      identificationNumber: customer.cedula || '',
       invoiceId,
-      externalClientId:       CASHEA_EXT_CLIENT,
-      deliveryPrice:          0,
+      externalClientId:     CASHEA_EXT_CLIENT,
+      deliveryPrice:        0,
       orders: [{
         store: { id: CASHEA_STORE_ID, name: 'Nuovocell', enabled: true },
         products: items.map(item => ({
@@ -80,12 +80,14 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
           quantity:    item.qty,
           sku:         item._id,
           description: item.nombre,
-          imageUrl:    item.imagen ? `https://cdn.sanity.io/images/wwy5bykm/production/${item.imagen.asset._ref.replace('image-','').replace('-jpg','.jpg').replace('-png','.png').replace('-webp','.webp')}` : 'https://nuovocell.com.ve/logos/nuovocell-logo.png',
+          imageUrl:    item.imagen || 'https://nuovocell.com.ve/logos/nuovocell-logo.png',
           tax:         0,
           discount:    0,
         })),
       }],
     };
+    
+    console.log('[Cashea] Payload:', JSON.stringify(payload, null, 2));
 
     try {
       sdk.createCheckoutButton({

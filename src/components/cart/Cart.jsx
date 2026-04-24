@@ -92,6 +92,7 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
 
     try {
       sdk.createCheckoutButton({
+        apiKey: CASHEA_PUBLIC_KEY,
         payload,
         container: containerRef.current,
       });

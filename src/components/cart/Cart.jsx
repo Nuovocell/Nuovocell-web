@@ -60,6 +60,7 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
     containerRef.current.innerHTML = '';
 
     const sdk = new window.WebCheckoutSDK({ apiKey: CASHEA_PUBLIC_KEY });
+    console.log('[Cashea] SDK initialized with key:', CASHEA_PUBLIC_KEY?.slice(0,8) + '...');
 
     const invoiceId = `NC-${Date.now()}`;
 
@@ -72,7 +73,7 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
       externalClientId:     CASHEA_EXT_CLIENT,
       deliveryPrice:        0,
       orders: [{
-        store: { id: CASHEA_STORE_ID, name: 'Nuovocell', enabled: true },
+        store: { id: CASHEA_STORE_ID, name: 'Web Pruebas Boton Cashea', enabled: true },
         products: items.map(item => ({
           id:          item._id,
           name:        item.nombre,
@@ -80,7 +81,7 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
           quantity:    item.qty,
           sku:         item._id,
           description: item.nombre,
-          imageUrl:    item.imagen || 'https://nuovocell.com.ve/logos/nuovocell-logo.png',
+          imageUrl:    'https://nuovocell.com.ve/logos/nuovocell-logo.png',
           tax:         0,
           discount:    0,
         })),

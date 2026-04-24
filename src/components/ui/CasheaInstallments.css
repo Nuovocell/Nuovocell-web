@@ -1,0 +1,106 @@
+.cashea-inst--compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 200, 0, 0.08);
+  border: 1px solid rgba(255, 200, 0, 0.2);
+  border-radius: 8px;
+}
+
+[data-theme="light"] .cashea-inst--compact {
+  background: rgba(245, 195, 0, 0.08);
+  border-color: rgba(245, 195, 0, 0.25);
+}
+
+.cashea-inst__logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cashea-inst__text {
+  font-size: 0.78rem;
+  color: var(--white-50);
+  line-height: 1.4;
+}
+
+[data-theme="light"] .cashea-inst__text { color: #555; }
+
+.cashea-inst__text strong {
+  color: #F5C300;
+  font-weight: 700;
+}
+
+/* Detailed */
+.cashea-inst--detailed {
+  background: rgba(255, 200, 0, 0.05);
+  border: 1px solid rgba(255, 200, 0, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+[data-theme="light"] .cashea-inst--detailed {
+  background: #fffbeb;
+  border-color: rgba(245, 195, 0, 0.3);
+}
+
+.cashea-inst__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cashea-inst__title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+[data-theme="light"] .cashea-inst__title { color: #111; }
+
+.cashea-inst__breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cashea-inst__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.80rem;
+  color: var(--white-50);
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+[data-theme="light"] .cashea-inst__row {
+  color: #666;
+  border-bottom-color: rgba(0,0,0,0.06);
+}
+
+.cashea-inst__row--highlight {
+  color: var(--white);
+  font-size: 0.88rem;
+}
+
+[data-theme="light"] .cashea-inst__row--highlight { color: #111; }
+
+.cashea-inst__row--highlight strong {
+  color: #F5C300;
+  font-weight: 700;
+}
+
+.cashea-inst__note {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2px;
+}
+
+[data-theme="light"] .cashea-inst__note { color: #aaa; }

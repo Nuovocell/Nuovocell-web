@@ -13,6 +13,7 @@ import CatalogPage from './pages/CatalogPage';
 import ProductPage from './pages/ProductPage';
 import SucursalesPage from './pages/SucursalesPage';
 import ServicioPage from './pages/ServicioPage';
+import CasheaRetorno from './pages/CasheaRetorno';
 
 import './styles/globals.css';
 import './styles/light-mode.css';
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/catalogo/:id" element={<ProductPage />} />
             <Route path="/sucursales" element={<SucursalesPage />} />
             <Route path="/servicio-tecnico" element={<ServicioPage />} />
+          <Route path="/checkout/cashea/retorno" element={<CasheaRetorno />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -28,6 +28,89 @@ const BackIcon = () => (
   </svg>
 );
 
+
+// ── Cashea Checkout Button ────────────────────────────────────
+const CASHEA_PUBLIC_KEY = process.env.REACT_APP_CASHEA_PUBLIC_KEY || '6639416be49c36e98d5876d4fc29cdc4bee4d7490516bcd5c4589c07379c3136';
+const CASHEA_STORE_ID   = parseInt(process.env.REACT_APP_CASHEA_STORE_ID || '12467');
+const CASHEA_EXT_CLIENT = process.env.REACT_APP_CASHEA_EXTERNAL_CLIENT_ID || '1097';
+const CASHEA_REDIRECT   = 'https://nuovocell.com.ve/checkout/cashea/retorno';
+
+function CasheaCheckoutButton({ items, customer, total, isValid }) {
+  const containerRef = React.useRef(null);
+  const [sdkReady, setSdkReady] = React.useState(false);
+  const [sdkError, setSdkError] = React.useState(false);
+
+  // Load Cashea SDK script dynamically
+  React.useEffect(() => {
+    if (document.getElementById('cashea-sdk')) { setSdkReady(true); return; }
+    const script = document.createElement('script');
+    script.id  = 'cashea-sdk';
+    script.src = 'https://unpkg.com/cashea-web-checkout-sdk@latest/dist/webcheckout-sdk.min.js';
+    script.onload = () => setSdkReady(true);
+    script.onerror = () => setSdkError(true);
+    document.head.appendChild(script);
+    return () => {};
+  }, []);
+
+  // Render button when SDK is ready
+  React.useEffect(() => {
+    if (!sdkReady || !containerRef.current || !isValid || !window.WebCheckoutSDK) return;
+
+    // Clear previous button
+    containerRef.current.innerHTML = '';
+
+    const sdk = new window.WebCheckoutSDK({ apiKey: CASHEA_PUBLIC_KEY });
+
+    const invoiceId = `NC-${Date.now()}`;
+
+    const payload = {
+      deliveryMethod:         customer.entrega === 'retiro' ? 'IN_STORE' : 'DELIVERY',
+      redirectUrl:            CASHEA_REDIRECT,
+      merchantName:           'Nuovocell',
+      identificationNumber:   customer.cedula || '',
+      invoiceId,
+      externalClientId:       CASHEA_EXT_CLIENT,
+      deliveryPrice:          0,
+      orders: [{
+        store: { id: CASHEA_STORE_ID, name: 'Nuovocell', enabled: true },
+        products: items.map(item => ({
+          id:          item._id,
+          name:        item.nombre,
+          price:       item.precio || 0,
+          quantity:    item.qty,
+          sku:         item._id,
+          description: item.nombre,
+          imageUrl:    item.imagen ? `https://cdn.sanity.io/images/wwy5bykm/production/${item.imagen.asset._ref.replace('image-','').replace('-jpg','.jpg').replace('-png','.png').replace('-webp','.webp')}` : 'https://nuovocell.com.ve/logos/nuovocell-logo.png',
+          tax:         0,
+          discount:    0,
+        })),
+      }],
+    };
+
+    try {
+      sdk.createCheckoutButton({ payload, container: containerRef.current });
+    } catch(e) {
+      console.error('[Cashea SDK]', e);
+      setSdkError(true);
+    }
+  }, [sdkReady, isValid, items, customer, total]);
+
+  if (sdkError) return (
+    <p className="checkout-form__required-hint">
+      Error al cargar Cashea. Intenta recargar la página.
+    </p>
+  );
+
+  if (!isValid) return (
+    <button className="btn btn-cashea cart__checkout cart__checkout--disabled" disabled>
+      <img src="https://cdn.sanity.io/images/wwy5bykm/production/5849e1c8f236b473d7527da16b90782c476d64b2-417x418.jpg" alt="Cashea" style={{width:18,height:18,borderRadius:4}} />
+      Pagar con Cashea
+    </button>
+  );
+
+  return <div ref={containerRef} className="cashea-sdk-container" />;
+}
+
 function CartStep({ items, removeItem, updateQty, total, hasTotal, onNext, onClose, t }) {
   return (
     <>
@@ -213,6 +296,14 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
 
           {/* Pago */}
           <div className="checkout-form__group">
+            <label className="checkout-form__label">Cédula de identidad</label>
+            <input className="checkout-form__input" type="text"
+              placeholder="Ej: 12345678 (solo números, sin V)"
+              value={customer.cedula || ''}
+              onChange={e => updateCustomer({ cedula: e.target.value.replace(/[^0-9]/g,'') })} />
+          </div>
+
+          <div className="checkout-form__group">
             <label className="checkout-form__label">Método de pago *</label>
             <select className="checkout-form__select"
               value={customer.metodoPago}
@@ -240,14 +331,23 @@ function CheckoutStep({ customer, updateCustomer, onBack, onSubmit, total, hasTo
             <span className="cart__total-num">${total.toFixed(0)}</span>
           </div>
         )}
-        <button
-          className={`btn btn-wa cart__checkout${!isValid ? ' cart__checkout--disabled' : ''}`}
-          onClick={isValid ? onSubmit : undefined}
-          disabled={!isValid}
-        >
-          <WAIcon />
-          Enviar pedido por WhatsApp
-        </button>
+        {customer.metodoPago === 'Cashea (Crédito)' ? (
+          <CasheaCheckoutButton
+            items={items}
+            customer={customer}
+            total={total}
+            isValid={isValid}
+          />
+        ) : (
+          <button
+            className={`btn btn-wa cart__checkout${!isValid ? ' cart__checkout--disabled' : ''}`}
+            onClick={isValid ? onSubmit : undefined}
+            disabled={!isValid}
+          >
+            <WAIcon />
+            Enviar pedido por WhatsApp
+          </button>
+        )}
         {!isValid
           ? <p className="checkout-form__required-hint">Completa nombre, WhatsApp y método de pago</p>
           : <p className="cart__note">Un asesor confirmará disponibilidad y coordinará el pago.</p>

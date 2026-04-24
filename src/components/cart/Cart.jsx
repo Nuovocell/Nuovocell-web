@@ -82,8 +82,6 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
           imageUrl:    'https://s3.rsgve.com/admin/images/logo.png',
           quantity:    item.qty,
           price:       item.precio || 0,
-          tax:         0,
-          discount:    0,
         })),
       }],
     };

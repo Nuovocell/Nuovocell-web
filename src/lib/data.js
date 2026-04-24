@@ -163,6 +163,7 @@ export const PAGOS = [
   { type: 'svg', icon: 'transferencia', label: 'Transferencia' },
   { type: 'svg', icon: 'binance',       label: 'Binance' },
   { type: 'svg', icon: 'card',          label: 'Tarjeta' },
+  { type: 'svg', icon: 'cashea',        label: 'Cashea (Crédito)' },
 ];
 
 export const CREDITO = [

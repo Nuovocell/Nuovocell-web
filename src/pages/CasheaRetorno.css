@@ -74,3 +74,22 @@
   text-decoration: none;
   margin-top: 4px;
 }
+
+.cashea-retorno__btn--wa {
+  font-size: 1rem;
+  padding: 16px 28px;
+  border-radius: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.cashea-retorno__link {
+  font-size: 0.85rem;
+  color: var(--blue);
+  text-decoration: none;
+  margin-top: 12px;
+}

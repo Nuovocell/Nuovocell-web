@@ -1,8 +1,8 @@
 const { HttpsProxyAgent } = require('https-proxy-agent');
 
 const FIXIE_URL   = process.env.FIXIE_URL;
-const PRIVATE_KEY = process.env.CASHEA_PRIVATE_KEY;
-const BASE_URL    = process.env.CASHEA_BASE_URL || 'https://external.cashea.app';
+const PRIVATE_KEY = process.env.PRIVATE_API_KEY;
+const BASE_URL    = 'https://external.cashea.app';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

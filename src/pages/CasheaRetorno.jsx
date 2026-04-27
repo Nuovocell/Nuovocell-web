@@ -1,121 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCartStore } from '../lib/store';
 import './CasheaRetorno.css';
 
 const WA_NUMBER = '584123621133';
 
 export default function CasheaRetorno() {
-  const [status, setStatus]   = useState('loading'); // loading | success | error
-  const [details, setDetails] = useState(null);
-  const [errMsg, setErrMsg]   = useState('');
-  const clearCart = useCartStore(s => s.clearCart);
+  const [opened, setOpened] = useState(false);
 
   useEffect(() => {
-    const params   = new URLSearchParams(window.location.search);
-    // Cashea may send either 'idNumber' or 'order-payload-id'
-    const idNumber = params.get('idNumber') || params.get('order-payload-id');
+    // Get order ID from URL — Cashea may use different param names
+    const params    = new URLSearchParams(window.location.search);
+    const orderId   = params.get('idNumber') || params.get('order-payload-id') || params.get('orderId') || 'N/A';
+    
+    console.log('[Cashea Retorno] URL:', window.location.href);
+    console.log('[Cashea Retorno] orderId:', orderId);
 
-    console.log('[Cashea Retorno] URL params:', window.location.search);
-    console.log('[Cashea Retorno] idNumber:', idNumber);
+    // Recover saved order data
+    const savedOrder = JSON.parse(sessionStorage.getItem('cashea_pending_order') || '{}');
+    const productos  = (savedOrder.items || [])
+      .map(i => `• ${i.nombre} x${i.qty}${i.precio ? ` — $${(i.precio * i.qty).toFixed(0)}` : ''}`)
+      .join('\n');
 
-    if (!idNumber) {
-      setStatus('error');
-      setErrMsg(`No se recibió el número de orden. URL: ${window.location.href}`);
-      return;
-    }
+    const total = (savedOrder.items || []).reduce((s, i) => s + (i.precio || 0) * i.qty, 0);
+    const enganche = total > 0 ? `$${(total * 0.40).toFixed(0)}` : 'a confirmar';
 
-    // Call backend to confirm down-payment
-    fetch('/api/cashea/confirm', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ idNumber }),
-    })
-      .then(r => r.json())
-      .then(data => {
-        if (data.success) {
-          setDetails(data);
-          setStatus('success');
-          clearCart();
+    // Build WhatsApp message
+    const msg = encodeURIComponent(
+      `✅ *Pago aprobado con Cashea*\n\n` +
+      `🔖 Orden Cashea: ${orderId}\n` +
+      `💰 Enganche a cobrar: ${enganche}\n\n` +
+      (productos ? `📦 *Productos:*\n${productos}\n\n` : '') +
+      `👤 *Cliente:*\n` +
+      `Nombre: ${savedOrder.nombre || 'N/A'}\n` +
+      `Teléfono: ${savedOrder.telefono || 'N/A'}\n` +
+      `Ciudad: ${savedOrder.ciudad || 'N/A'}\n` +
+      `Entrega: ${savedOrder.entrega === 'retiro' ? 'Retiro en tienda' : savedOrder.entrega === 'delivery_local' ? 'Delivery local' : 'Envío nacional'}\n` +
+      (savedOrder.sucursal ? `Sucursal: ${savedOrder.sucursal}\n` : '') +
+      (savedOrder.direccion ? `Dirección: ${savedOrder.direccion}\n` : '') +
+      `\n⚠️ Coordinar entrega y cobrar enganche inicial.`
+    );
 
-          // Build WhatsApp message with all order details
-          const savedOrder = JSON.parse(sessionStorage.getItem('cashea_pending_order') || '{}');
-          const productos = (savedOrder.items || [])
-            .map(i => `• ${i.nombre} x${i.qty}${i.precio ? ` — $${i.precio}` : ''}`)
-            .join('\n');
-          
-          const msg = encodeURIComponent(
-            `✅ *Pago Cashea Confirmado*\n\n` +
-            `🔖 Orden Cashea: ${idNumber}\n` +
-            `💰 Enganche cobrado: $${data.downPayment}\n` +
-            `📋 Invoice: ${data.invoiceId || 'N/A'}\n\n` +
-            `📦 *Productos:*\n${productos || 'Ver orden en sistema'}\n\n` +
-            `👤 *Cliente:*\n` +
-            `Nombre: ${savedOrder.nombre || 'N/A'}\n` +
-            `Teléfono: ${savedOrder.telefono || 'N/A'}\n` +
-            `Ciudad: ${savedOrder.ciudad || 'N/A'}\n` +
-            `Entrega: ${savedOrder.entrega === 'retiro' ? 'Retiro en tienda' : savedOrder.entrega === 'delivery_local' ? 'Delivery local' : 'Envío nacional'}\n` +
-            (savedOrder.sucursal ? `Sucursal: ${savedOrder.sucursal}\n` : '') +
-            (savedOrder.direccion ? `Dirección: ${savedOrder.direccion}\n` : '') +
-            `\n⚠️ Coordinar entrega y confirmar pago inicial.`
-          );
-          
-          // Clear session storage
-          sessionStorage.removeItem('cashea_pending_order');
-          
-          // Open WhatsApp immediately
-          window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-        } else {
-          setStatus('error');
-          setErrMsg(data.error || 'Error al confirmar el pago con Cashea.');
-        }
-      })
-      .catch(() => {
-        setStatus('error');
-        setErrMsg('Error de conexión. Por favor contacta a soporte.');
-      });
-  }, [clearCart]);
+    // Clear session storage
+    sessionStorage.removeItem('cashea_pending_order');
 
-  if (status === 'loading') return (
-    <div className="cashea-retorno cashea-retorno--loading">
-      <div className="cashea-retorno__spinner" />
-      <p>Confirmando tu pago con Cashea...</p>
-    </div>
-  );
+    // Open WhatsApp after 2 seconds
+    setTimeout(() => {
+      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+      setOpened(true);
+    }, 2000);
+  }, []);
 
-  if (status === 'success') return (
+  return (
     <div className="cashea-retorno cashea-retorno--success">
       <div className="cashea-retorno__icon">✅</div>
-      <h1 className="cashea-retorno__title">¡Pago confirmado!</h1>
+      <h1 className="cashea-retorno__title">¡Pago aprobado con Cashea!</h1>
       <p className="cashea-retorno__sub">
-        Tu pago inicial con Cashea fue procesado exitosamente.<br/>
-        En unos segundos abrirá WhatsApp para coordinar la entrega.
+        Tu financiamiento fue aprobado exitosamente.{' '}
+        {opened
+          ? 'Ya se abrió WhatsApp para coordinar la entrega.'
+          : 'En un momento abrirá WhatsApp para coordinar la entrega y el cobro del enganche.'}
       </p>
-      {details && (
-        <div className="cashea-retorno__details">
-          <p>🔖 Orden: <strong>{details.idNumber}</strong></p>
-          <p>💰 Enganche: <strong>${details.downPayment}</strong></p>
-        </div>
-      )}
+      <div className="cashea-retorno__details">
+        <p>Un asesor de Nuovocell te contactará para confirmar.</p>
+      </div>
       <Link to="/" className="btn btn-primary cashea-retorno__btn">
         Volver al inicio
       </Link>
-    </div>
-  );
-
-  return (
-    <div className="cashea-retorno cashea-retorno--error">
-      <div className="cashea-retorno__icon">❌</div>
-      <h1 className="cashea-retorno__title">Ocurrió un problema</h1>
-      <p className="cashea-retorno__sub">{errMsg}</p>
-      <a
-        href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola, tuve un problema al pagar con Cashea. ¿Pueden ayudarme?')}`}
-        target="_blank" rel="noopener noreferrer"
-        className="btn btn-wa cashea-retorno__btn"
-      >
-        Contactar soporte
-      </a>
-      <Link to="/" className="cashea-retorno__link">Volver al inicio</Link>
     </div>
   );
 }

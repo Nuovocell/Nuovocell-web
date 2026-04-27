@@ -15,7 +15,8 @@
     "react-i18next": "^13.5.0",
     "zustand": "^4.4.7",
     "react-helmet-async": "^2.0.4",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "https-proxy-agent": "^7.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
@@ -27,7 +28,15 @@
     "test": "react-scripts test"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

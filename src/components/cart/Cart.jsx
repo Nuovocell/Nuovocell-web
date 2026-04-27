@@ -30,9 +30,9 @@ const BackIcon = () => (
 
 
 // ── Cashea Checkout Button — v2 ─────────────────────────────────
-const CASHEA_PUBLIC_KEY = process.env.REACT_APP_CASHEA_PUBLIC_KEY || '47f7a6f6c0fd7b87a8f86710217736fedee47ff9';
-const CASHEA_STORE_ID   = parseInt(process.env.REACT_APP_CASHEA_STORE_ID || '34981');
-const CASHEA_EXT_CLIENT = process.env.REACT_APP_CASHEA_EXTERNAL_CLIENT_ID || '3279';
+const CASHEA_PUBLIC_KEY = process.env.REACT_APP_PUBLIC_API_KEY || '47f7a6f6c0fd7b87a8f86710217736fedee47ff9';
+const CASHEA_STORE_ID   = parseInt(process.env.REACT_APP_Store_ID || '34981');
+const CASHEA_EXT_CLIENT = process.env.REACT_APP_External_Client_ID || '3279';
 const CASHEA_REDIRECT   = 'https://nuovocell.com.ve/checkout/cashea/retorno';
 
 function CasheaCheckoutButton({ items, customer, total, isValid }) {

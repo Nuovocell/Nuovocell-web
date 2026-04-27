@@ -64,6 +64,18 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
 
     const invoiceId = `NC-${Date.now()}`;
 
+    // Save order data for WhatsApp message after Cashea redirect
+    sessionStorage.setItem('cashea_pending_order', JSON.stringify({
+      items,
+      nombre:    customer.nombre,
+      telefono:  customer.telefono,
+      ciudad:    customer.ciudad,
+      entrega:   customer.entrega,
+      sucursal:  customer.sucursal,
+      direccion: customer.direccion,
+      invoiceId,
+    }));
+
     const payload = {
       deliveryMethod:       customer.entrega === 'retiro' ? 'IN_STORE' : 'DELIVERY',
       redirectUrl:          CASHEA_REDIRECT,

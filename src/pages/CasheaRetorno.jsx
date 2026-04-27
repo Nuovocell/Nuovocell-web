@@ -13,11 +13,15 @@ export default function CasheaRetorno() {
 
   useEffect(() => {
     const params   = new URLSearchParams(window.location.search);
-    const idNumber = params.get('idNumber');
+    // Cashea may send either 'idNumber' or 'order-payload-id'
+    const idNumber = params.get('idNumber') || params.get('order-payload-id');
+
+    console.log('[Cashea Retorno] URL params:', window.location.search);
+    console.log('[Cashea Retorno] idNumber:', idNumber);
 
     if (!idNumber) {
       setStatus('error');
-      setErrMsg('No se recibió el número de orden. Por favor contacta a soporte.');
+      setErrMsg(`No se recibió el número de orden. URL: ${window.location.href}`);
       return;
     }
 

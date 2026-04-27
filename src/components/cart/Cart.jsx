@@ -30,9 +30,9 @@ const BackIcon = () => (
 
 
 // ── Cashea Checkout Button — v2 ─────────────────────────────────
-const CASHEA_PUBLIC_KEY = process.env.REACT_APP_CASHEA_PUBLIC_KEY || '6639416be49c36e98d5876d4fc29cdc4bee4d7490516bcd5c4589c07379c3136';
-const CASHEA_STORE_ID   = parseInt(process.env.REACT_APP_CASHEA_STORE_ID || '12467');
-const CASHEA_EXT_CLIENT = process.env.REACT_APP_CASHEA_EXTERNAL_CLIENT_ID || '1097';
+const CASHEA_PUBLIC_KEY = process.env.REACT_APP_CASHEA_PUBLIC_KEY || '47f7a6f6c0fd7b87a8f86710217736fedee47ff9';
+const CASHEA_STORE_ID   = parseInt(process.env.REACT_APP_CASHEA_STORE_ID || '34981');
+const CASHEA_EXT_CLIENT = process.env.REACT_APP_CASHEA_EXTERNAL_CLIENT_ID || '3279';
 const CASHEA_REDIRECT   = 'https://nuovocell.com.ve/checkout/cashea/retorno';
 
 function CasheaCheckoutButton({ items, customer, total, isValid }) {
@@ -85,7 +85,7 @@ function CasheaCheckoutButton({ items, customer, total, isValid }) {
       externalClientId:     CASHEA_EXT_CLIENT,
       deliveryPrice:        0,
       orders: [{
-        store: { id: CASHEA_STORE_ID, name: 'Web Pruebas Boton Cashea', enabled: true },
+        store: { id: CASHEA_STORE_ID, name: 'Web Nuovocell', enabled: true },
         products: items.map(item => ({
           id:          item._id,
           name:        item.nombre,

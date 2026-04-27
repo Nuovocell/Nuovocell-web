@@ -34,18 +34,33 @@ export default function CasheaRetorno() {
           setStatus('success');
           clearCart();
 
-          // Notify Nuovocell via WhatsApp
+          // Build WhatsApp message with all order details
+          const savedOrder = JSON.parse(sessionStorage.getItem('cashea_pending_order') || '{}');
+          const productos = (savedOrder.items || [])
+            .map(i => `• ${i.nombre} x${i.qty}${i.precio ? ` — $${i.precio}` : ''}`)
+            .join('\n');
+          
           const msg = encodeURIComponent(
             `✅ *Pago Cashea Confirmado*\n\n` +
-            `🔖 Orden ID: ${idNumber}\n` +
+            `🔖 Orden Cashea: ${idNumber}\n` +
             `💰 Enganche cobrado: $${data.downPayment}\n` +
             `📋 Invoice: ${data.invoiceId || 'N/A'}\n\n` +
-            `Por favor confirmar el pedido al cliente.`
+            `📦 *Productos:*\n${productos || 'Ver orden en sistema'}\n\n` +
+            `👤 *Cliente:*\n` +
+            `Nombre: ${savedOrder.nombre || 'N/A'}\n` +
+            `Teléfono: ${savedOrder.telefono || 'N/A'}\n` +
+            `Ciudad: ${savedOrder.ciudad || 'N/A'}\n` +
+            `Entrega: ${savedOrder.entrega === 'retiro' ? 'Retiro en tienda' : savedOrder.entrega === 'delivery_local' ? 'Delivery local' : 'Envío nacional'}\n` +
+            (savedOrder.sucursal ? `Sucursal: ${savedOrder.sucursal}\n` : '') +
+            (savedOrder.direccion ? `Dirección: ${savedOrder.direccion}\n` : '') +
+            `\n⚠️ Coordinar entrega y confirmar pago inicial.`
           );
-          // Auto-open WA after 3 seconds
-          setTimeout(() => {
-            window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-          }, 3000);
+          
+          // Clear session storage
+          sessionStorage.removeItem('cashea_pending_order');
+          
+          // Open WhatsApp immediately
+          window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
         } else {
           setStatus('error');
           setErrMsg(data.error || 'Error al confirmar el pago con Cashea.');

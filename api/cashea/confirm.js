@@ -1,8 +1,11 @@
 const { HttpsProxyAgent } = require('https-proxy-agent');
 
 const FIXIE_URL   = process.env.FIXIE_URL;
-const PRIVATE_KEY = process.env.CASHEA_PRIVATE_KEY;
-const BASE_URL    = process.env.CASHEA_BASE_URL || 'https://external.cashea.app';
+const PRIVATE_KEY = process.env.PRIVATE_API_KEY;
+const BASE_URL    = 'https://external.cashea.app';
+const STORE_ID    = parseInt(process.env.Store_ID || '34981');
+const STORE_NAME  = process.env.Store_Name || 'Web Nuovocell';
+const EXT_CLIENT  = process.env.External_Client_ID || '3279';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -14,25 +17,23 @@ module.exports = async function handler(req, res) {
 
   const { idNumber } = req.body || {};
   if (!idNumber) return res.status(400).json({ error: 'idNumber is required' });
-  if (!PRIVATE_KEY) return res.status(500).json({ error: 'Cashea private key not configured', env: Object.keys(process.env).filter(k => k.includes('CASHEA')) });
+  if (!PRIVATE_KEY) return res.status(500).json({ error: 'Cashea private key not configured' });
 
-  const headers = { 
-    'Authorization': `ApiKey ${PRIVATE_KEY}`, 
-    'Content-Type': 'application/json' 
+  const headers = {
+    'Authorization': `ApiKey ${PRIVATE_KEY}`,
+    'Content-Type': 'application/json'
   };
 
-  const fetchOptions = { headers };
-  if (FIXIE_URL) {
-    fetchOptions.agent = new HttpsProxyAgent(FIXIE_URL);
-  }
+  const agent = FIXIE_URL ? new HttpsProxyAgent(FIXIE_URL) : undefined;
+  const fetchOpts = agent ? { headers, agent } : { headers };
 
   try {
-    const orderRes = await fetch(`${BASE_URL}/orders/${idNumber}`, fetchOptions);
+    const orderRes = await fetch(`${BASE_URL}/orders/${idNumber}`, fetchOpts);
 
     if (!orderRes.ok) {
       const err = await orderRes.text();
       console.error(`[Cashea] GET failed: ${orderRes.status} ${err}`);
-      return res.status(orderRes.status).json({ error: `Order not found: ${orderRes.status}`, detail: err });
+      return res.status(orderRes.status).json({ error: `Order not found: ${orderRes.status}` });
     }
 
     const order = await orderRes.json();
@@ -43,7 +44,7 @@ module.exports = async function handler(req, res) {
     }
 
     const confirmRes = await fetch(`${BASE_URL}/orders/${idNumber}/down-payment`, {
-      ...fetchOptions,
+      ...fetchOpts,
       method: 'POST',
       body: JSON.stringify({ amount: downPayment }),
     });

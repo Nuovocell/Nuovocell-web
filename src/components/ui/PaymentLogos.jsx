@@ -16,13 +16,7 @@ const SVG_LOGOS = {
       <text x="24" y="21" textAnchor="middle" fontFamily="Georgia,serif" fontSize="13" fontWeight="bold" fill="white">USD</text>
     </svg>
   ),
-  zelle: (
-    <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="80" height="32" rx="4" fill="white" stroke="#6D1ED4" strokeWidth="1.5"/>
-      <text x="14" y="20" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="11" fontWeight="900" fill="#6D1ED4">Z</text>
-      <text x="48" y="21" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="15" fontWeight="900" fill="#6D1ED4">zelle</text>
-    </svg>
-  ),
+
   pagomovil: (
     <svg viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="80" height="32" rx="4" fill="#E30613"/>

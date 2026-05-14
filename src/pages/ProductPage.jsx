@@ -192,6 +192,7 @@ export default function ProductPage() {
                     <span className="product-page__price-old">${product.precioAnterior}</span>
                   )}
                   <span className="product-page__price">${displayPrice}</span>
+                  <PrecioBs precioUSD={displayPrice} />
                   {product.precioAnterior && (
                     <span className="product-page__discount badge badge-amber">
                       -{Math.round((1 - displayPrice / product.precioAnterior) * 100)}%

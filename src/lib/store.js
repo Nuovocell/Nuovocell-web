@@ -111,3 +111,19 @@ export const useUIStore = create((set) => ({
   toggleMenu: () => set(s => ({ mobileMenuOpen: !s.mobileMenuOpen })),
   closeAll: () => set({ cartOpen: false, aiOpen: false, mobileMenuOpen: false }),
 }));
+
+// Tasa de cambio global
+export const useTasaStore = create((set) => ({
+  tasa: null,         // número: Bs. por $1
+  mostrarBs: true,    // mostrar precio en Bs.
+  label: 'Bs.',       // etiqueta de moneda
+  loaded: false,
+  setTasa: (tasa, mostrarBs, label) => set({ tasa, mostrarBs, label, loaded: true }),
+  // Helper: convierte $ a Bs. string
+  convertir: (precioUSD) => {
+    const { tasa, mostrarBs, label } = useTasaStore.getState();
+    if (!mostrarBs || !tasa || !precioUSD) return null;
+    const bs = (precioUSD * tasa).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return \`\${label} \${bs}\`;
+  },
+}));

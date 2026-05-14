@@ -14,6 +14,7 @@ import ProductPage from './pages/ProductPage';
 import SucursalesPage from './pages/SucursalesPage';
 import ServicioPage from './pages/ServicioPage';
 import CasheaRetorno from './pages/CasheaRetorno';
+import { TasaCambioProvider } from './providers/TasaCambioProvider';
 
 import './styles/globals.css';
 import './styles/light-mode.css';

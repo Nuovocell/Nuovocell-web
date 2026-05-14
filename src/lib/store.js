@@ -124,6 +124,6 @@ export const useTasaStore = create((set) => ({
     const { tasa, mostrarBs, label } = useTasaStore.getState();
     if (!mostrarBs || !tasa || !precioUSD) return null;
     const bs = (precioUSD * tasa).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    return \`\${label} \${bs}\`;
+    return label + ' ' + bs;
   },
 }));

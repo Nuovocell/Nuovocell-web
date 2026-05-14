@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCartStore, useUIStore } from '../../lib/store';
+import { PrecioBs } from '../ui/PrecioBs';
 import { urlFor } from '../../lib/sanity';
 import './ProductCard.css';
 

@@ -97,4 +97,7 @@ export const queries = {
       esOferta,
     }
   `,
-};
+;
+
+// Tasa de cambio
+export const tasaCambioQuery = '*[_type == "configuracion"][0]{ tasaCambio, mostrarBs, labelMoneda }';

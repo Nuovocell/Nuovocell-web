@@ -95,6 +95,7 @@ export default function ProductCard({ product }) {
               <>
                 {precioAnterior && <span className="pcard__price-old">${precioAnterior}</span>}
                 <span className="pcard__price">${displayPrice}</span>
+                <PrecioBs precioUSD={displayPrice} />
               </>
             )
             : <span className="pcard__price-consult">{t('catalog.no_price')}</span>

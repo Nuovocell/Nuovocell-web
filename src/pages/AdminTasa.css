@@ -1,0 +1,148 @@
+.admin-tasa {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+}
+
+.admin-tasa__card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+
+[data-theme="light"] .admin-tasa__card {
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+
+.admin-tasa__logo img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.admin-tasa__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+
+[data-theme="light"] .admin-tasa__title { color: #111; }
+
+.admin-tasa__actual {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,170,255,0.08);
+  border: 1px solid rgba(0,170,255,0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--white-50);
+}
+
+[data-theme="light"] .admin-tasa__actual { color: #555; }
+
+.admin-tasa__actual strong {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.admin-tasa__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-tasa__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-tasa__group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white-50);
+}
+
+[data-theme="light"] .admin-tasa__group label { color: #888; }
+
+.admin-tasa__group input {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: var(--white);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+[data-theme="light"] .admin-tasa__group input {
+  background: #f7f8fa;
+  border-color: #e0e3e8;
+  color: #111;
+}
+
+.admin-tasa__group input:focus {
+  border-color: var(--blue);
+}
+
+.admin-tasa__msg {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-tasa__msg--success {
+  background: rgba(0,200,100,0.1);
+  border: 1px solid rgba(0,200,100,0.3);
+  color: #00c864;
+}
+
+.admin-tasa__msg--error {
+  background: rgba(255,50,50,0.1);
+  border: 1px solid rgba(255,50,50,0.3);
+  color: #ff5050;
+}
+
+.admin-tasa__btn {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-display);
+  transition: opacity 0.2s;
+}
+
+.admin-tasa__btn:hover { opacity: 0.85; }
+.admin-tasa__btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.admin-tasa__note {
+  font-size: 0.72rem;
+  color: var(--white-50);
+  text-align: center;
+  line-height: 1.5;
+}
+
+[data-theme="light"] .admin-tasa__note { color: #999; }

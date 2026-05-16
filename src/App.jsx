@@ -14,6 +14,7 @@ import ProductPage from './pages/ProductPage';
 import SucursalesPage from './pages/SucursalesPage';
 import ServicioPage from './pages/ServicioPage';
 import CasheaRetorno from './pages/CasheaRetorno';
+import AdminTasa from './pages/AdminTasa';
 import { TasaCambioProvider } from './providers/TasaCambioProvider';
 
 import './styles/globals.css';
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/sucursales" element={<SucursalesPage />} />
             <Route path="/servicio-tecnico" element={<ServicioPage />} />
           <Route path="/checkout/cashea/retorno" element={<CasheaRetorno />} />
+          <Route path="/admin/tasa" element={<AdminTasa />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
